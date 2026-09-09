@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新NISAの年間360万円・生涯1,800万円、非課税枠はどう積み上がる？｜いくら積み立て帳</title>
+<meta name="description" content="新NISAの年間投資枠と非課税保有限度額、枠の復活の仕組みを、投資判断ではなく制度のルールとして整理して解説します。">
+
+<meta property="og:title" content="新NISAの年間360万円・生涯1,800万円、非課税枠はどう積み上がる？">
+<meta property="og:description" content="新NISAの年間投資枠と非課税保有限度額、枠の復活の仕組みを、投資判断ではなく制度のルールとして整理して解説します。">
+<meta property="og:url" content="https://garoro1654-sketch.github.io/ideco-nisa-simulator/articles/nisa-waku-rule.html">
+<meta property="og:site_name" content="いくら積み立て帳">
+<meta property="og:type" content="article">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='%231F3A5F'/%3E%3Ctext x='32' y='42' font-size='28' text-anchor='middle' fill='%23FFFFFF' font-family='-apple-system,sans-serif' font-weight='700'%3E積%3C/text%3E%3C/svg%3E">
+
+<style>
+  :root{
+    --paper:#F1F3F6;
+    --card:#FFFFFF;
+    --ink:#12151C;
+    --ink-soft:#545B66;
+    --ink-faint:#8A93A1;
+    --accent:#1F3A5F;
+    --accent-soft:#E9EEF5;
+    --brass:#0F7B5C;
+    --line:#DBE0E7;
+    --line-soft:#E7EAEF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Segoe UI", sans-serif;
+    line-height:1.8;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 20px 60px;}
+
+  header.art-header{padding:28px 0 8px;}
+  .back-link{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+    padding-bottom:1px;
+  }
+  .back-link:hover{color:var(--accent);border-color:var(--accent);}
+  header.art-header h1{
+    font-size:23px;
+    line-height:1.5;
+    margin:16px 0 6px;
+    letter-spacing:0.01em;
+  }
+  .meta-line{font-size:12px;color:var(--ink-faint);margin:0 0 6px;}
+
+  .ad-slot{
+    border:1px dashed var(--line);
+    color:var(--ink-faint);
+    text-align:center;
+    font-size:12.5px;
+    padding:14px;
+    margin:22px 0;
+    border-radius:8px;
+  }
+
+  article.prose{font-size:15.5px;color:var(--ink);}
+  article.prose h2{
+    font-size:17px;
+    margin:32px 0 12px;
+    padding-top:2px;
+    color:var(--accent);
+  }
+  article.prose h3{
+    font-size:15px;
+    margin:22px 0 8px;
+    color:var(--ink);
+  }
+  article.prose p{margin:0 0 16px;}
+  article.prose ul, article.prose ol{margin:0 0 16px;padding-left:22px;}
+  article.prose li{margin-bottom:6px;}
+  article.prose strong{color:var(--ink);}
+  article.prose a{color:var(--accent);}
+
+  table.data{
+    width:100%;
+    border-collapse:collapse;
+    margin:16px 0 20px;
+    font-size:13.5px;
+  }
+  table.data th, table.data td{
+    border:1px solid var(--line);
+    padding:9px 10px;
+    text-align:left;
+  }
+  table.data th{background:var(--accent-soft);font-weight:600;color:var(--ink);}
+  table.data td.num, table.data th.num{
+    font-family:SFMono-Regular, Consolas, "Courier New", monospace;
+    font-variant-numeric:tabular-nums;
+    text-align:right;
+  }
+
+  .calc-box{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px 16px;
+    margin:0 0 18px;
+    font-size:14px;
+  }
+  .calc-box .formula{
+    font-family:SFMono-Regular, Consolas, "Courier New", monospace;
+    font-variant-numeric:tabular-nums;
+    color:var(--accent);
+    font-weight:700;
+    display:block;
+    margin:6px 0;
+  }
+
+  .disclaimer{
+    font-size:12px;
+    color:var(--ink-faint);
+    background:var(--accent-soft);
+    border-radius:8px;
+    padding:14px 16px;
+    margin-top:20px;
+  }
+  .disclaimer p{margin:0 0 6px;}
+  .disclaimer p:last-child{margin-bottom:0;}
+  .source-line{font-size:11.5px;color:var(--ink-faint);margin-top:10px;}
+
+  nav.related{margin-top:32px;}
+  nav.related h2{font-size:14px;color:var(--ink-soft);margin:0 0 10px;font-weight:600;}
+  nav.related ul{list-style:none;margin:0;padding:0;}
+  nav.related li{margin-bottom:8px;}
+  nav.related a{
+    display:block;
+    font-size:13.5px;
+    color:var(--ink);
+    text-decoration:none;
+    padding:10px 14px;
+    background:var(--card);
+    border:1px solid var(--line-soft);
+    border-radius:8px;
+  }
+  nav.related a:hover{border-color:var(--accent);}
+
+  .cta-box{
+    margin-top:24px;
+    padding:22px 20px;
+    background:var(--accent);
+    border-radius:10px;
+    text-align:center;
+  }
+  .cta-box p{color:#fff;font-size:14px;margin:0 0 14px;}
+  .cta-box a.cta-btn{
+    display:inline-block;
+    background:#fff;
+    color:var(--accent);
+    font-weight:700;
+    font-size:14px;
+    padding:11px 26px;
+    border-radius:8px;
+    text-decoration:none;
+  }
+
+  footer.site-footer{
+    margin-top:36px;
+    padding-top:18px;
+    border-top:1px solid var(--line-soft);
+    font-size:11.5px;
+    color:var(--ink-faint);
+    text-align:center;
+    line-height:1.9;
+  }
+  footer.site-footer a{color:var(--ink-soft);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="art-header">
+    <a class="back-link" href="../index.html">← いくら積み立て帳 トップ（シミュレーター）</a>
+    <h1>新NISAの年間360万円・生涯1,800万円、非課税枠はどう積み上がる？</h1>
+  </header>
+
+  <div class="ad-slot">広告スペース（ここに広告タグを設置）</div>
+
+  <article class="prose">
+
+<p>新NISAについて調べると、「年間360万円」「生涯1,800万円」という数字がよく出てきます。この2つの数字がどう関係しているのか、この記事では投資判断ではなく、あくまで<strong>制度としての枠のルール</strong>を整理します。</p>
+
+<h2>「年間の枠」と「生涯の枠」、2つの上限がある</h2>
+<p>新NISAには、性質の異なる2種類の上限額があります。</p>
+<p><strong>① 年間投資枠（1年間に使える上限）</strong></p>
+<p>1年間に投資できる金額の上限は、合計で360万円です。内訳は次の2つに分かれています。</p>
+<ul>
+<li>つみたて投資枠：年間120万円まで</li>
+<li>成長投資枠：年間240万円まで</li>
+</ul>
+<p><strong>② 非課税保有限度額（生涯を通じての上限）</strong></p>
+<p>上記の年間枠を使って買い付けた商品を、非課税のまま保有し続けられる金額の上限が、合計で1,800万円です。そのうち、成長投資枠で保有できるのは1,200万円までという内訳になっています。</p>
+<p>つまり、「毎年最大360万円まで投資でき、それを生涯で合計1,800万円分まで非課税のまま持ち続けられる」というのが、この制度の骨格です。</p>
+
+<h2>売却すると、枠は翌年以降に復活する</h2>
+<p>新NISAのもう一つの特徴が、保有していた商品を売却すると、その分の非課税保有限度額が翌年以降に復活する、という仕組みです。ただし注意したいのは、復活するのはあくまで「取得したときの金額（簿価）」分であり、値上がりした分も含めて丸ごと復活するわけではないという点です。また、復活した枠が使えるようになるのは売却した年の翌年からで、同じ年のうちに再利用することはできません。</p>
+
+<h2>まとめ：制度のルールを知ったうえで、無理のない金額から</h2>
+<p>新NISAの枠のルールは、「年間いくらまで投資できるか」と「生涯でいくらまで非課税で持てるか」という2つの視点で整理すると理解しやすくなります。数字の大きさに惑わされず、ご自身の家計に無理のない金額から始めることが大切です。</p>
+<p>iDeCoとの役割分担に迷う方は、まず「iDeCoとNISA、何が違う？併用すべき人・しない方がいい人」もあわせてご覧ください。</p>
+
+  </article>
+
+  <div class="disclaimer">
+    <p>本記事は新NISA制度の仕組みを一般的に説明するものであり、特定の投資商品や投資方法を推奨するものではありません。投資信託等の運用商品は元本が保証されているものではなく、市況により損失が生じる可能性があります。制度の詳細や最新情報は金融庁の公式サイトでご確認のうえ、具体的な資金計画については金融機関やファイナンシャルプランナー等の専門家にご相談ください。</p>
+    <p class="source-line">出典：金融庁 新NISA制度ページを参考に作成。</p>
+  </div>
+
+  <div class="ad-slot">広告スペース（ここに広告タグを設置）</div>
+
+  <nav class="related">
+    <h2>関連記事</h2>
+    <ul>
+<li><a href="ideco-nisa-chigai.html">iDeCoとNISA、何が違う？併用すべき人・しない方がいい人</a></li>
+<li><a href="ideco-2027-kaisei.html">【2027年1月改正】iDeCoの掛金上限はどう変わる？職業別に解説</a></li>
+<li><a href="shokugyobetsu-hajimekata.html">会社員・公務員・自営業・専業主婦、職業別iDeCoのはじめ方</a></li>
+<li><a href="setsuzei-keisan.html">iDeCo・NISAの節税効果はどう計算する？仕組みをやさしく解説</a></li>
+    </ul>
+  </nav>
+
+  <div class="cta-box">
+    <p>ご自身の場合の節税額・資産額を試算してみませんか？</p>
+    <a class="cta-btn" href="../index.html">シミュレーターを使ってみる</a>
+  </div>
+
+  <footer class="site-footer">
+    いくら積み立て帳｜<a href="../privacy-policy.html">プライバシーポリシー</a><br>
+    入力内容が外部に送信されることはありません。
+  </footer>
+</div>
+</body>
+</html>

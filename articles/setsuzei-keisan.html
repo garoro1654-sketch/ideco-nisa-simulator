@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iDeCo・NISAの節税効果はどう計算する？仕組みをやさしく解説｜いくら積み立て帳</title>
+<meta name="description" content="シミュレーターの節税額・非課税メリット額がどんな計算式にもとづいているのか、iDeCoの所得控除とNISAの非課税の仕組みをやさしく解説します。">
+
+<meta property="og:title" content="iDeCo・NISAの節税効果はどう計算する？仕組みをやさしく解説">
+<meta property="og:description" content="シミュレーターの節税額・非課税メリット額がどんな計算式にもとづいているのか、iDeCoの所得控除とNISAの非課税の仕組みをやさしく解説します。">
+<meta property="og:url" content="https://garoro1654-sketch.github.io/ideco-nisa-simulator/articles/setsuzei-keisan.html">
+<meta property="og:site_name" content="いくら積み立て帳">
+<meta property="og:type" content="article">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='%231F3A5F'/%3E%3Ctext x='32' y='42' font-size='28' text-anchor='middle' fill='%23FFFFFF' font-family='-apple-system,sans-serif' font-weight='700'%3E積%3C/text%3E%3C/svg%3E">
+
+<style>
+  :root{
+    --paper:#F1F3F6;
+    --card:#FFFFFF;
+    --ink:#12151C;
+    --ink-soft:#545B66;
+    --ink-faint:#8A93A1;
+    --accent:#1F3A5F;
+    --accent-soft:#E9EEF5;
+    --brass:#0F7B5C;
+    --line:#DBE0E7;
+    --line-soft:#E7EAEF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Segoe UI", sans-serif;
+    line-height:1.8;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 20px 60px;}
+
+  header.art-header{padding:28px 0 8px;}
+  .back-link{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+    padding-bottom:1px;
+  }
+  .back-link:hover{color:var(--accent);border-color:var(--accent);}
+  header.art-header h1{
+    font-size:23px;
+    line-height:1.5;
+    margin:16px 0 6px;
+    letter-spacing:0.01em;
+  }
+  .meta-line{font-size:12px;color:var(--ink-faint);margin:0 0 6px;}
+
+  .ad-slot{
+    border:1px dashed var(--line);
+    color:var(--ink-faint);
+    text-align:center;
+    font-size:12.5px;
+    padding:14px;
+    margin:22px 0;
+    border-radius:8px;
+  }
+
+  article.prose{font-size:15.5px;color:var(--ink);}
+  article.prose h2{
+    font-size:17px;
+    margin:32px 0 12px;
+    padding-top:2px;
+    color:var(--accent);
+  }
+  article.prose h3{
+    font-size:15px;
+    margin:22px 0 8px;
+    color:var(--ink);
+  }
+  article.prose p{margin:0 0 16px;}
+  article.prose ul, article.prose ol{margin:0 0 16px;padding-left:22px;}
+  article.prose li{margin-bottom:6px;}
+  article.prose strong{color:var(--ink);}
+  article.prose a{color:var(--accent);}
+
+  table.data{
+    width:100%;
+    border-collapse:collapse;
+    margin:16px 0 20px;
+    font-size:13.5px;
+  }
+  table.data th, table.data td{
+    border:1px solid var(--line);
+    padding:9px 10px;
+    text-align:left;
+  }
+  table.data th{background:var(--accent-soft);font-weight:600;color:var(--ink);}
+  table.data td.num, table.data th.num{
+    font-family:SFMono-Regular, Consolas, "Courier New", monospace;
+    font-variant-numeric:tabular-nums;
+    text-align:right;
+  }
+
+  .calc-box{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px 16px;
+    margin:0 0 18px;
+    font-size:14px;
+  }
+  .calc-box .formula{
+    font-family:SFMono-Regular, Consolas, "Courier New", monospace;
+    font-variant-numeric:tabular-nums;
+    color:var(--accent);
+    font-weight:700;
+    display:block;
+    margin:6px 0;
+  }
+
+  .disclaimer{
+    font-size:12px;
+    color:var(--ink-faint);
+    background:var(--accent-soft);
+    border-radius:8px;
+    padding:14px 16px;
+    margin-top:20px;
+  }
+  .disclaimer p{margin:0 0 6px;}
+  .disclaimer p:last-child{margin-bottom:0;}
+  .source-line{font-size:11.5px;color:var(--ink-faint);margin-top:10px;}
+
+  nav.related{margin-top:32px;}
+  nav.related h2{font-size:14px;color:var(--ink-soft);margin:0 0 10px;font-weight:600;}
+  nav.related ul{list-style:none;margin:0;padding:0;}
+  nav.related li{margin-bottom:8px;}
+  nav.related a{
+    display:block;
+    font-size:13.5px;
+    color:var(--ink);
+    text-decoration:none;
+    padding:10px 14px;
+    background:var(--card);
+    border:1px solid var(--line-soft);
+    border-radius:8px;
+  }
+  nav.related a:hover{border-color:var(--accent);}
+
+  .cta-box{
+    margin-top:24px;
+    padding:22px 20px;
+    background:var(--accent);
+    border-radius:10px;
+    text-align:center;
+  }
+  .cta-box p{color:#fff;font-size:14px;margin:0 0 14px;}
+  .cta-box a.cta-btn{
+    display:inline-block;
+    background:#fff;
+    color:var(--accent);
+    font-weight:700;
+    font-size:14px;
+    padding:11px 26px;
+    border-radius:8px;
+    text-decoration:none;
+  }
+
+  footer.site-footer{
+    margin-top:36px;
+    padding-top:18px;
+    border-top:1px solid var(--line-soft);
+    font-size:11.5px;
+    color:var(--ink-faint);
+    text-align:center;
+    line-height:1.9;
+  }
+  footer.site-footer a{color:var(--ink-soft);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="art-header">
+    <a class="back-link" href="../index.html">← いくら積み立て帳 トップ（シミュレーター）</a>
+    <h1>iDeCo・NISAの節税効果はどう計算する？仕組みをやさしく解説</h1>
+  </header>
+
+  <div class="ad-slot">広告スペース（ここに広告タグを設置）</div>
+
+  <article class="prose">
+
+<p>このサイトのシミュレーターでは、iDeCoの「節税額」やNISAの「非課税メリット額」を試算できます。この記事では、その数字がどういう計算の仕組みにもとづいているのかを説明します。あくまで仕組みの解説であり、実際の税額はご自身の状況によって変わる点にご留意ください。</p>
+
+<h2>iDeCoの節税効果：所得控除の仕組み</h2>
+<p>iDeCoの掛金は、全額が「小規模企業共済等掛金控除」という所得控除の対象になります。所得控除とは、税金を計算するもとになる所得（課税所得）そのものを減らす仕組みです。課税所得が減れば、その分だけ所得税と住民税の負担も軽くなります。</p>
+<div class="calc-box">
+節税額は、大まかに次の式で計算できます。
+<span class="formula">年間の節税額 ＝ 年間の掛金 ×（所得税率 ＋ 住民税率10%）</span>
+</div>
+<p>住民税率は所得にかかわらずおおむね一律10%ですが、所得税率は課税所得の金額に応じて5%〜45%の間で段階的に上がっていきます（超過累進課税）。そのため、同じ掛金額でも、課税所得が多い方ほど1年あたりの節税額は大きくなります。</p>
+<p>たとえば、所得税率10%の方が月23,000円（年間276,000円）を拠出した場合、節税額の目安は次のようになります。</p>
+<ul>
+<li>所得税分：276,000円 × 10% ＝ 27,600円</li>
+<li>住民税分：276,000円 × 10% ＝ 27,600円</li>
+<li>年間の節税額の目安：合計 55,200円</li>
+</ul>
+<p>これはあくまで一例であり、実際の所得税率は課税所得の金額によって決まります。ご自身の所得税率が分からない場合は、源泉徴収票や確定申告書に記載されている課税所得の金額をもとに確認できます。</p>
+
+<h2>NISAの非課税メリット：運用益にかかる税金がゼロになる仕組み</h2>
+<p>通常、投資信託や株式を売却して利益が出たり、分配金・配当金を受け取ったりすると、その利益に対して約20.315%（所得税・復興特別所得税・住民税の合計）の税金がかかります。NISA口座で得た利益には、この税金がかかりません。</p>
+<div class="calc-box">
+非課税メリット額は、次の式で計算できます。
+<span class="formula">非課税メリット額 ＝ 運用で得られた利益 × 20.315%</span>
+</div>
+<p>たとえば、NISA口座での運用によって50万円の利益が出た場合、通常の課税口座であれば約101,575円の税金がかかるところ、NISA口座であればこの税金がまるごと不要になる、という計算です。</p>
+
+<h2>受け取るときの税金についての注意点</h2>
+<p>iDeCoは、掛金を拠出する時点・運用している間は税制上優遇されていますが、60歳以降に実際に受け取る際には、原則として税金がかかります。受け取り方（一時金として受け取るか、年金として分割で受け取るか、その組み合わせか）によって、退職所得控除や公的年金等控除といった別の控除の仕組みが適用され、計算が複雑になります。この点については本記事では詳しく扱わず、別の機会に改めて解説する予定です。受け取り方によって税負担が変わるということだけ、ここでは押さえておいてください。</p>
+
+<h2>まとめ</h2>
+<p>iDeCoの節税効果は「掛金を出す時点」の所得控除、NISAの非課税メリットは「運用の利益が出た時点」の非課税、というように、効果が生まれるタイミングが異なります。このサイトのシミュレーターは、この記事で説明した計算式にもとづいて試算しています。ご自身の掛金額や税率を入力して、実際の数字を確認してみてください。</p>
+
+  </article>
+
+  <div class="disclaimer">
+    <p>本記事の計算式は制度の仕組みを一般的に説明するためのものであり、実際の税額は所得の状況や控除の適用状況によって異なります。本記事およびシミュレーターの試算結果は概算であり、正確な税額を保証するものではありません。具体的な税務判断については、税理士等の専門家にご相談ください。</p>
+    <p class="source-line">出典：国税庁の公表資料、金融庁 新NISA制度ページを参考に作成。</p>
+  </div>
+
+  <div class="ad-slot">広告スペース（ここに広告タグを設置）</div>
+
+  <nav class="related">
+    <h2>関連記事</h2>
+    <ul>
+<li><a href="ideco-nisa-chigai.html">iDeCoとNISA、何が違う？併用すべき人・しない方がいい人</a></li>
+<li><a href="ideco-2027-kaisei.html">【2027年1月改正】iDeCoの掛金上限はどう変わる？職業別に解説</a></li>
+<li><a href="nisa-waku-rule.html">新NISAの年間360万円・生涯1,800万円、非課税枠はどう積み上がる？</a></li>
+<li><a href="shokugyobetsu-hajimekata.html">会社員・公務員・自営業・専業主婦、職業別iDeCoのはじめ方</a></li>
+    </ul>
+  </nav>
+
+  <div class="cta-box">
+    <p>ご自身の場合の節税額・資産額を試算してみませんか？</p>
+    <a class="cta-btn" href="../index.html">シミュレーターを使ってみる</a>
+  </div>
+
+  <footer class="site-footer">
+    いくら積み立て帳｜<a href="../privacy-policy.html">プライバシーポリシー</a><br>
+    入力内容が外部に送信されることはありません。
+  </footer>
+</div>
+</body>
+</html>

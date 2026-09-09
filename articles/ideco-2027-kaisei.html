@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【2027年1月改正】iDeCoの掛金上限はどう変わる？職業別に解説｜いくら積み立て帳</title>
+<meta name="description" content="2027年1月からiDeCoの掛金上限額が引き上げられる予定です。現行の上限額と改正後の予定額を、職業別に整理して解説します。">
+
+<meta property="og:title" content="【2027年1月改正】iDeCoの掛金上限はどう変わる？職業別に解説">
+<meta property="og:description" content="2027年1月からiDeCoの掛金上限額が引き上げられる予定です。現行の上限額と改正後の予定額を、職業別に整理して解説します。">
+<meta property="og:url" content="https://garoro1654-sketch.github.io/ideco-nisa-simulator/articles/ideco-2027-kaisei.html">
+<meta property="og:site_name" content="いくら積み立て帳">
+<meta property="og:type" content="article">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='%231F3A5F'/%3E%3Ctext x='32' y='42' font-size='28' text-anchor='middle' fill='%23FFFFFF' font-family='-apple-system,sans-serif' font-weight='700'%3E積%3C/text%3E%3C/svg%3E">
+
+<style>
+  :root{
+    --paper:#F1F3F6;
+    --card:#FFFFFF;
+    --ink:#12151C;
+    --ink-soft:#545B66;
+    --ink-faint:#8A93A1;
+    --accent:#1F3A5F;
+    --accent-soft:#E9EEF5;
+    --brass:#0F7B5C;
+    --line:#DBE0E7;
+    --line-soft:#E7EAEF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Segoe UI", sans-serif;
+    line-height:1.8;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 20px 60px;}
+
+  header.art-header{padding:28px 0 8px;}
+  .back-link{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+    padding-bottom:1px;
+  }
+  .back-link:hover{color:var(--accent);border-color:var(--accent);}
+  header.art-header h1{
+    font-size:23px;
+    line-height:1.5;
+    margin:16px 0 6px;
+    letter-spacing:0.01em;
+  }
+  .meta-line{font-size:12px;color:var(--ink-faint);margin:0 0 6px;}
+
+  .ad-slot{
+    border:1px dashed var(--line);
+    color:var(--ink-faint);
+    text-align:center;
+    font-size:12.5px;
+    padding:14px;
+    margin:22px 0;
+    border-radius:8px;
+  }
+
+  article.prose{font-size:15.5px;color:var(--ink);}
+  article.prose h2{
+    font-size:17px;
+    margin:32px 0 12px;
+    padding-top:2px;
+    color:var(--accent);
+  }
+  article.prose h3{
+    font-size:15px;
+    margin:22px 0 8px;
+    color:var(--ink);
+  }
+  article.prose p{margin:0 0 16px;}
+  article.prose ul, article.prose ol{margin:0 0 16px;padding-left:22px;}
+  article.prose li{margin-bottom:6px;}
+  article.prose strong{color:var(--ink);}
+  article.prose a{color:var(--accent);}
+
+  table.data{
+    width:100%;
+    border-collapse:collapse;
+    margin:16px 0 20px;
+    font-size:13.5px;
+  }
+  table.data th, table.data td{
+    border:1px solid var(--line);
+    padding:9px 10px;
+    text-align:left;
+  }
+  table.data th{background:var(--accent-soft);font-weight:600;color:var(--ink);}
+  table.data td.num, table.data th.num{
+    font-family:SFMono-Regular, Consolas, "Courier New", monospace;
+    font-variant-numeric:tabular-nums;
+    text-align:right;
+  }
+
+  .calc-box{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px 16px;
+    margin:0 0 18px;
+    font-size:14px;
+  }
+  .calc-box .formula{
+    font-family:SFMono-Regular, Consolas, "Courier New", monospace;
+    font-variant-numeric:tabular-nums;
+    color:var(--accent);
+    font-weight:700;
+    display:block;
+    margin:6px 0;
+  }
+
+  .disclaimer{
+    font-size:12px;
+    color:var(--ink-faint);
+    background:var(--accent-soft);
+    border-radius:8px;
+    padding:14px 16px;
+    margin-top:20px;
+  }
+  .disclaimer p{margin:0 0 6px;}
+  .disclaimer p:last-child{margin-bottom:0;}
+  .source-line{font-size:11.5px;color:var(--ink-faint);margin-top:10px;}
+
+  nav.related{margin-top:32px;}
+  nav.related h2{font-size:14px;color:var(--ink-soft);margin:0 0 10px;font-weight:600;}
+  nav.related ul{list-style:none;margin:0;padding:0;}
+  nav.related li{margin-bottom:8px;}
+  nav.related a{
+    display:block;
+    font-size:13.5px;
+    color:var(--ink);
+    text-decoration:none;
+    padding:10px 14px;
+    background:var(--card);
+    border:1px solid var(--line-soft);
+    border-radius:8px;
+  }
+  nav.related a:hover{border-color:var(--accent);}
+
+  .cta-box{
+    margin-top:24px;
+    padding:22px 20px;
+    background:var(--accent);
+    border-radius:10px;
+    text-align:center;
+  }
+  .cta-box p{color:#fff;font-size:14px;margin:0 0 14px;}
+  .cta-box a.cta-btn{
+    display:inline-block;
+    background:#fff;
+    color:var(--accent);
+    font-weight:700;
+    font-size:14px;
+    padding:11px 26px;
+    border-radius:8px;
+    text-decoration:none;
+  }
+
+  footer.site-footer{
+    margin-top:36px;
+    padding-top:18px;
+    border-top:1px solid var(--line-soft);
+    font-size:11.5px;
+    color:var(--ink-faint);
+    text-align:center;
+    line-height:1.9;
+  }
+  footer.site-footer a{color:var(--ink-soft);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="art-header">
+    <a class="back-link" href="../index.html">← いくら積み立て帳 トップ（シミュレーター）</a>
+    <h1>【2027年1月改正】iDeCoの掛金上限はどう変わる？職業別に解説</h1>
+  </header>
+
+  <div class="ad-slot">広告スペース（ここに広告タグを設置）</div>
+
+  <article class="prose">
+
+<p>2025年6月に成立した年金制度改正法にもとづき、iDeCo（個人型確定拠出年金）の掛金上限額が引き上げられる予定です。実際に掛金へ反映されるのは2027年1月引落分（2026年12月拠出分）からですが、「自分の場合いくらまで積み立てられるようになるのか」を早めに知っておくと、今後の資金計画を立てやすくなります。この記事では、現行の上限額と改正後の予定額を、職業別に整理します。</p>
+
+<h2>いつから変わるのか</h2>
+<p>今回の改正は、2026年12月1日に施行され、掛金の上限額に実際に反映されるのは2027年1月引落分（＝2026年12月分の拠出）からとされています。「施行日」と「実際に掛金が変わるタイミング」がずれている点に注意してください。あわせて、iDeCoに加入できる年齢の上限も、これまでの65歳未満から70歳未満まで延びる見込みです。</p>
+
+<h2>職業別・上限額の現行と改正後（予定）</h2>
+<table class="data">
+<thead>
+<tr><th>区分</th><th class="num">現行の月額上限<br>（2026年9月時点）</th><th class="num">2027年1月以降の<br>月額上限（予定）</th></tr>
+</thead>
+<tbody>
+<tr><td>自営業等（第1号被保険者）</td><td class="num">68,000円</td><td class="num">75,000円</td></tr>
+<tr><td>会社員・公務員（第2号被保険者）</td><td class="num">20,000円〜23,000円<br><span style="color:var(--ink-faint);font-size:11.5px;">（企業年金の有無により異なる）</span></td><td class="num">62,000円<br><span style="color:var(--ink-faint);font-size:11.5px;">（上限が統一される見込み）</span></td></tr>
+<tr><td>専業主婦(夫)（第3号被保険者）</td><td class="num">23,000円</td><td class="num">23,000円<br><span style="color:var(--ink-faint);font-size:11.5px;">（変更なしの見込み）</span></td></tr>
+</tbody>
+</table>
+<p>特に変化が大きいのは、会社員・公務員（第2号被保険者）です。現行では、企業年金のない会社員は月2.3万円、企業型DCや確定給付企業年金（DB）がある会社員・公務員は月2.0万円が上限となっています。これが2027年1月以降は、区分にかかわらず月6.2万円に統一される見込みで、掛金を大きく増やせる可能性がある層といえます。</p>
+
+<h2>注意しておきたい2つのポイント</h2>
+<h3>① 会社の企業年金がある場合、上限からその分が差し引かれる</h3>
+<p>会社員・公務員の上限が6.2万円に統一されるといっても、これは「iDeCoと会社の企業年金（企業型DC・DB等）を合わせた上限」です。勤務先がすでに企業型DCなどに掛金を出している場合は、その金額を差し引いた範囲がiDeCo単体の上限になります。実際にいくらまで拠出できるかは、勤務先の制度内容によって変わるため、正確な金額は勤務先の担当部署やiDeCoの運営管理機関に確認することをおすすめします。</p>
+<h3>② あくまで「予定」の内容である</h3>
+<p>本記事の改正後の金額は、2025年6月時点で成立した法律および関連する政令等にもとづく予定の内容です。今後、細部の制度設計や実施時期が変更される可能性はゼロではありません。最新の正式な情報は、厚生労働省やiDeCo公式サイトなどの公的な情報源で確認してください。</p>
+
+<h2>上限が増えると、何が変わるのか</h2>
+<p>iDeCoの掛金は全額が所得控除の対象になるため、単純に言えば「上限が増える＝毎年の節税額を増やせる余地が広がる」ということになります。特に企業年金のない会社員の方は、現行の2.3万円から6.2万円へと上限が大きく広がる見込みのため、影響が大きい層です。</p>
+<p>このサイトのシミュレーターでは、職業を選ぶと、現行の上限額と2027年1月以降の予定上限額を並べて確認でき、その差がどれくらいの節税額の違いにつながるかも試算できます。ご自身の場合の数字を、ぜひ一度確認してみてください。</p>
+
+  </article>
+
+  <div class="disclaimer">
+    <p>本記事の改正後の金額はすべて2025年6月時点で成立した年金制度改正法および関連情報にもとづく予定であり、確定した内容ではありません。今後の政令・省令の内容によって変更される可能性があります。特定の掛金額や運用方法を推奨するものではなく、実際の拠出可能額は勤務先の制度内容によって異なります。正確な情報は厚生労働省・iDeCo公式サイト等でご確認のうえ、必要に応じて専門家にご相談ください。</p>
+    <p class="source-line">出典：厚生労働省の年金制度改正に関する公表資料、iDeCo公式サイトを参考に作成。</p>
+  </div>
+
+  <div class="ad-slot">広告スペース（ここに広告タグを設置）</div>
+
+  <nav class="related">
+    <h2>関連記事</h2>
+    <ul>
+<li><a href="ideco-nisa-chigai.html">iDeCoとNISA、何が違う？併用すべき人・しない方がいい人</a></li>
+<li><a href="nisa-waku-rule.html">新NISAの年間360万円・生涯1,800万円、非課税枠はどう積み上がる？</a></li>
+<li><a href="shokugyobetsu-hajimekata.html">会社員・公務員・自営業・専業主婦、職業別iDeCoのはじめ方</a></li>
+<li><a href="setsuzei-keisan.html">iDeCo・NISAの節税効果はどう計算する？仕組みをやさしく解説</a></li>
+    </ul>
+  </nav>
+
+  <div class="cta-box">
+    <p>ご自身の場合の節税額・資産額を試算してみませんか？</p>
+    <a class="cta-btn" href="../index.html">シミュレーターを使ってみる</a>
+  </div>
+
+  <footer class="site-footer">
+    いくら積み立て帳｜<a href="../privacy-policy.html">プライバシーポリシー</a><br>
+    入力内容が外部に送信されることはありません。
+  </footer>
+</div>
+</body>
+</html>

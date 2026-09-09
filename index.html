@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iDeCo・NISA積立シミュレーター｜職業別の上限額と節税額を試算</title>
+<meta name="description" content="職業を選んで積立額と利回りを入力するだけで、iDeCoの節税額とNISAの非課税メリット、2027年1月の制度改正後の上限額との比較まで試算できる無料シミュレーターです。">
+
+<meta property="og:title" content="iDeCo・NISA積立シミュレーター｜職業別の上限額と節税額を試算">
+<meta property="og:description" content="職業を選んで積立額と利回りを入力するだけで、iDeCoの節税額とNISAの非課税メリットを試算できます。2027年1月の制度改正後の上限額も比較表示。">
+<meta property="og:url" content="https://garoro1654-sketch.github.io/ideco-nisa-simulator/">
+<meta property="og:site_name" content="いくら積み立て帳">
+<meta property="og:type" content="website">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='%231F3A5F'/%3E%3Ctext x='32' y='42' font-size='28' text-anchor='middle' fill='%23FFFFFF' font-family='-apple-system,sans-serif' font-weight='700'%3E積%3C/text%3E%3C/svg%3E">
+
+<style>
+  :root{
+    --paper:#F1F3F6;
+    --card:#FFFFFF;
+    --ink:#12151C;
+    --ink-soft:#545B66;
+    --ink-faint:#8A93A1;
+    --accent:#1F3A5F;
+    --accent-soft:#E9EEF5;
+    --brass:#0F7B5C;
+    --line:#DBE0E7;
+    --line-soft:#E7EAEF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Segoe UI", sans-serif;
+    line-height:1.7;
+    padding-bottom:90px;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px;}
+
+  header.site{padding:36px 20px 20px;text-align:left;}
+  header.site h1{
+    font-size:22px;
+    margin:0 0 8px;
+    letter-spacing:0.02em;
+  }
+  header.site p{
+    color:var(--ink-soft);
+    font-size:14.5px;
+    margin:0;
+    max-width:58ch;
+  }
+
+  .ad-slot{
+    border:1px dashed var(--line);
+    color:var(--ink-faint);
+    text-align:center;
+    font-size:12.5px;
+    padding:14px;
+    margin:22px 0;
+    border-radius:2px;
+  }
+
+  .steps-nav{
+    display:flex;
+    gap:0;
+    margin:28px 0 8px;
+    border-bottom:1px solid var(--line);
+  }
+  .steps-nav .step-tab{
+    flex:1;
+    text-align:center;
+    padding:10px 6px 12px;
+    font-size:13px;
+    color:var(--ink-faint);
+    border-bottom:2px solid transparent;
+    position:relative;
+  }
+  .steps-nav .step-tab .num{
+    display:inline-block;
+    width:18px;height:18px;
+    line-height:18px;
+    border-radius:50%;
+    background:var(--line-soft);
+    color:var(--ink-soft);
+    font-size:11px;
+    margin-right:6px;
+  }
+  .steps-nav .step-tab.active{
+    color:var(--accent);
+    border-bottom-color:var(--accent);
+  }
+  .steps-nav .step-tab.active .num{
+    background:var(--accent);
+    color:#fff;
+  }
+  .steps-nav .step-tab.done .num{
+    background:var(--brass);
+    color:#fff;
+  }
+
+  section.step{
+    background:var(--card);
+    border:1px solid var(--line-soft);
+    border-radius:10px;
+    padding:26px 24px;
+    margin:18px 0;
+    box-shadow:0 1px 2px rgba(18,21,28,0.04);
+  }
+  section.step.hidden{display:none;}
+  section.step h2{
+    font-size:16px;
+    margin:0 0 4px;
+  }
+  section.step .lead{
+    color:var(--ink-soft);
+    font-size:13.5px;
+    margin:0 0 20px;
+  }
+
+  .step-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-top:24px;
+    padding-top:18px;
+    border-top:1px solid var(--line-soft);
+  }
+  .step-actions button{
+    font-family:inherit;
+    font-size:13.5px;
+    font-weight:600;
+    padding:10px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    border:1px solid var(--line);
+    background:var(--card);
+    color:var(--ink-soft);
+  }
+  .step-actions button.primary{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#fff;
+  }
+  .step-actions button.primary:hover{background:#16304f;}
+  .step-actions button:hover{border-color:var(--ink-faint);}
+
+  .steps-nav .step-tab{cursor:default;}
+  .steps-nav .step-tab.enabled{cursor:pointer;}
+
+  /* STEP1: profile tiles */
+  .tiles{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+  }
+  .tile{
+    border:1px solid var(--line);
+    background:var(--paper);
+    border-radius:8px;
+    padding:16px 10px 14px;
+    text-align:center;
+    cursor:pointer;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .tile:hover{border-color:var(--accent);}
+  .tile.selected{
+    border-color:var(--accent);
+    background:var(--accent-soft);
+  }
+  .stamp{
+    width:44px;height:44px;
+    margin:0 auto 10px;
+    border-radius:10px;
+    background:var(--line-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--ink-soft);
+    font-size:17px;
+    font-weight:700;
+    transition:background .15s ease, color .15s ease;
+  }
+  .tile.selected .stamp{
+    background:var(--accent);
+    color:#fff;
+  }
+  .tile .tile-label{
+    font-size:12.5px;
+    color:var(--ink);
+    font-weight:600;
+    display:block;
+  }
+  .tile .tile-sub{
+    font-size:11px;
+    color:var(--ink-faint);
+    display:block;
+    margin-top:2px;
+  }
+
+  .limit-note{
+    margin-top:16px;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    border-top:1px dotted var(--line);
+    padding-top:14px;
+  }
+  .limit-note b{color:var(--brass);}
+
+  /* STEP2: inputs */
+  .field{margin-bottom:22px;}
+  .field label{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin-bottom:8px;
+  }
+  .field label .val{
+    font-family:SFMono-Regular, Consolas, "Courier New", monospace;
+    font-variant-numeric:tabular-nums;
+    color:var(--ink);
+    font-size:15px;
+    font-weight:600;
+  }
+  input[type="range"]{
+    width:100%;
+    accent-color:var(--accent);
+  }
+  select{
+    width:100%;
+    padding:9px 10px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--paper);
+    color:var(--ink);
+    font-size:14px;
+    font-family:inherit;
+  }
+  .field .range-scale{
+    display:flex;
+    justify-content:space-between;
+    font-size:11px;
+    color:var(--ink-faint);
+    margin-top:4px;
+  }
+
+  /* result receipt */
+  .receipt{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:20px 20px 18px;
+  }
+  .receipt .row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    font-size:13.5px;
+    padding:6px 0;
+    border-bottom:1px dotted var(--line-soft);
+  }
+  .receipt .row .amt{
+    font-family:SFMono-Regular, Consolas, "Courier New", monospace;
+    font-variant-numeric:tabular-nums;
+  }
+  .receipt .row.total{
+    border-top:2px solid var(--ink);
+    border-bottom:none;
+    margin-top:6px;
+    padding-top:12px;
+    font-size:15px;
+    font-weight:700;
+  }
+  .receipt .row.total .amt{
+    color:var(--brass);
+    font-size:19px;
+  }
+  .receipt .row.saving .amt{color:var(--accent);font-weight:700;}
+
+  .compare{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:18px;
+  }
+  .compare .col{
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px 14px 12px;
+  }
+  .compare .col.future{border-color:var(--brass);background:#EAF6F1;}
+  .compare .col h3{
+    font-size:12px;
+    color:var(--ink-soft);
+    margin:0 0 8px;
+    font-weight:600;
+  }
+  .compare .col .amt{
+    font-family:SFMono-Regular, Consolas, "Courier New", monospace;
+    font-variant-numeric:tabular-nums;
+    font-size:20px;
+    font-weight:700;
+  }
+  .compare .col.future .amt{color:var(--brass);}
+  .compare .col .diff{font-size:11.5px;color:var(--ink-faint);margin-top:4px;}
+
+  .chart-block{margin-top:24px;}
+  .chart-block h3{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin:0 0 10px;
+    font-weight:600;
+  }
+  .chart-legend{
+    display:flex;
+    gap:18px;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    margin-top:8px;
+  }
+  .chart-legend span{display:flex;align-items:center;gap:6px;}
+  .chart-legend .dot{width:9px;height:9px;border-radius:2px;display:inline-block;}
+
+  .articles-block{margin:32px 0;}
+  .articles-block h2{font-size:15px;margin:0 0 12px;}
+  .articles-block ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;}
+  .articles-block a{
+    display:block;
+    padding:14px 16px;
+    background:var(--card);
+    border:1px solid var(--line-soft);
+    border-radius:8px;
+    text-decoration:none;
+    color:var(--ink);
+    font-size:13.5px;
+  }
+  .articles-block a:hover{border-color:var(--accent);}
+  .articles-block a .art-desc{
+    display:block;
+    font-size:12px;
+    color:var(--ink-faint);
+    margin-top:4px;
+    font-weight:400;
+  }
+
+  footer.site-footer{
+    margin-top:36px;
+    padding-top:18px;
+    border-top:1px solid var(--line-soft);
+    font-size:11.5px;
+    color:var(--ink-faint);
+    text-align:center;
+    line-height:1.9;
+  }
+  footer.site-footer a{color:var(--ink-soft);}
+
+  .disclaimer{
+    font-size:12px;
+    color:var(--ink-faint);
+    background:var(--accent-soft);
+    border-radius:8px;
+    padding:14px 16px;
+    margin-top:20px;
+  }
+  .disclaimer p{margin:0 0 6px;}
+  .disclaimer p:last-child{margin-bottom:0;}
+
+  /* mobile sticky total */
+  .sticky-total{
+    display:none;
+  }
+
+  @media (max-width:780px){
+    .tiles{grid-template-columns:repeat(2,1fr);}
+    section.step{padding:20px 16px;}
+    .compare{grid-template-columns:1fr;}
+    .sticky-total{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      bottom:0;left:0;right:0;
+      background:var(--card);
+      border-top:1px solid var(--line);
+      padding:12px 18px;
+      z-index:10;
+    }
+    .sticky-total .label{font-size:12px;color:var(--ink-soft);}
+    .sticky-total .amt{
+      font-family:SFMono-Regular, Consolas, "Courier New", monospace;
+      font-size:18px;font-weight:700;color:var(--brass);
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="site">
+    <h1>いくら積み立て帳</h1>
+    <p>職業と積立条件を選ぶだけで、iDeCoの節税額とNISAの非課税メリット、2027年1月の制度改正後の上限額との違いを試算します。</p>
+  </header>
+
+  <div class="ad-slot">広告スペース（ここに広告タグを設置）</div>
+
+  <div class="steps-nav">
+    <div class="step-tab active enabled" id="tab1"><span class="num">1</span>職業を選ぶ</div>
+    <div class="step-tab" id="tab2"><span class="num">2</span>積立条件</div>
+    <div class="step-tab" id="tab3"><span class="num">3</span>試算結果</div>
+  </div>
+
+  <!-- STEP 1 -->
+  <section class="step" id="step1">
+    <h2>あなたに近いものを選んでください</h2>
+    <p class="lead">職業によってiDeCoの掛金の上限額が変わります。</p>
+
+    <div class="tiles" id="tiles"></div>
+
+    <div class="limit-note" id="limitNote"></div>
+
+    <div class="step-actions">
+      <button class="primary" id="toStep2">積立条件の入力へ進む</button>
+    </div>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="step hidden" id="step2">
+    <h2>積立条件を入力してください</h2>
+    <p class="lead">スライダーを動かすと、次の画面の試算結果に反映されます。</p>
+
+    <div class="field">
+      <label>iDeCoの毎月の掛金 <span class="val" id="idecoAmountVal">—</span></label>
+      <input type="range" id="idecoAmount" step="1000">
+      <div class="range-scale"><span>5,000円</span><span id="idecoMaxLabel">上限</span></div>
+    </div>
+
+    <div class="field">
+      <label>NISAの毎月の積立額（任意） <span class="val" id="nisaAmountVal">—</span></label>
+      <input type="range" id="nisaAmount" min="0" max="300000" step="1000" value="30000">
+      <div class="range-scale"><span>0円</span><span>300,000円</span></div>
+    </div>
+
+    <div class="field">
+      <label>積立期間 <span class="val" id="yearsVal">20年</span></label>
+      <input type="range" id="years" min="1" max="40" step="1" value="20">
+      <div class="range-scale"><span>1年</span><span>40年</span></div>
+    </div>
+
+    <div class="field">
+      <label>想定利回り（年率）</label>
+      <select id="rate">
+        <option value="0.01">1.0%（保守的に見積もる場合）</option>
+        <option value="0.03" selected>3.0%（デフォルト）</option>
+        <option value="0.0462">4.62%（GPIF・年金積立金の過去実績平均）</option>
+        <option value="0.05">5.0%</option>
+        <option value="0.07">7.0%（強気の想定）</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>適用される所得税率の目安</label>
+      <select id="taxRate">
+        <option value="0.05">5%（課税所得 195万円以下）</option>
+        <option value="0.10" selected>10%（課税所得 195万円超〜330万円）</option>
+        <option value="0.20">20%（課税所得 330万円超〜695万円）</option>
+        <option value="0.23">23%（課税所得 695万円超〜900万円）</option>
+        <option value="0.33">33%（課税所得 900万円超〜1,800万円）</option>
+        <option value="0.40">40%（課税所得 1,800万円超〜4,000万円）</option>
+        <option value="0.45">45%（課税所得 4,000万円超）</option>
+      </select>
+    </div>
+
+    <div class="step-actions">
+      <button id="toStep1From2">戻る</button>
+      <button class="primary" id="toStep3">試算結果を見る</button>
+    </div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="step hidden" id="step3">
+    <h2>試算結果の明細</h2>
+    <p class="lead">住民税は一律10%として概算しています。数値は入力条件を変えるとすぐに更新されます。</p>
+
+    <div class="receipt">
+      <div class="row"><span>iDeCo 掛金累計</span><span class="amt" id="r_idecoTotal">¥0</span></div>
+      <div class="row"><span>NISA 積立累計</span><span class="amt" id="r_nisaTotal">¥0</span></div>
+      <div class="row"><span>運用益（概算・税引前）</span><span class="amt" id="r_gain">¥0</span></div>
+      <div class="row total"><span>資産評価額（概算）</span><span class="amt" id="r_fv">¥0</span></div>
+    </div>
+
+    <div class="receipt" style="margin-top:14px;">
+      <div class="row saving"><span>iDeCoの節税額（所得税分・累計）</span><span class="amt" id="r_taxsaveIncome">¥0</span></div>
+      <div class="row saving"><span>iDeCoの節税額（住民税分・累計）</span><span class="amt" id="r_taxsaveResident">¥0</span></div>
+      <div class="row total"><span>iDeCoの節税額 合計</span><span class="amt" id="r_taxsave">¥0</span></div>
+      <div class="row saving" style="border-top:1px dotted var(--line-soft);margin-top:8px;padding-top:12px;"><span>NISAの非課税メリット（運用益20.315%相当）</span><span class="amt" id="r_nisasave">¥0</span></div>
+    </div>
+
+    <div class="chart-block">
+      <h3>資産評価額の推移（元本と運用益の内訳）</h3>
+      <div id="chartHost"></div>
+      <div class="chart-legend">
+        <span><i class="dot" style="background:var(--ink-faint);"></i>元本累計</span>
+        <span><i class="dot" style="background:var(--brass);"></i>運用益（概算）</span>
+      </div>
+    </div>
+
+    <div class="compare">
+      <div class="col current">
+        <h3>今のあなたの上限（2026年9月時点）</h3>
+        <div class="amt" id="cmpCurrent">—</div>
+      </div>
+      <div class="col future">
+        <h3>2027年1月以降の上限（予定）</h3>
+        <div class="amt" id="cmpFuture">—</div>
+        <div class="diff" id="cmpDiff"></div>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <p>本シミュレーターの結果は、入力条件と一定の前提（想定利回り等）に基づく概算であり、将来の運用成果を保証するものではありません。投資信託等の運用商品は元本が保証されているものではなく、市況により損失が生じる可能性があります。</p>
+      <p>2027年1月以降の上限額は、2025年6月成立の年金制度改正法および関連政令に基づく予定であり、正式な適用は2027年1月引落分（2026年12月拠出分）からとなります。今後変更される可能性があります。</p>
+      <p>税制は将来変更される可能性があります。最新情報は国税庁・厚生労働省・金融庁・iDeCo公式サイト等の公式情報をご確認ください。具体的な商品選びや個別の税務判断については、金融機関・税理士・ファイナンシャルプランナー等の専門家にご相談ください。</p>
+    </div>
+
+    <div class="step-actions">
+      <button id="toStep2From3">条件を変更する</button>
+    </div>
+  </section>
+
+  <div class="ad-slot">広告スペース（ここに広告タグを設置）</div>
+
+  <div class="articles-block">
+    <h2>あわせて読みたい解説記事</h2>
+    <ul>
+      <li><a href="articles/ideco-nisa-chigai.html">iDeCoとNISA、何が違う？併用すべき人・しない方がいい人<span class="art-desc">2つの制度の性質の違いと、優先順位の考え方を整理</span></a></li>
+      <li><a href="articles/ideco-2027-kaisei.html">【2027年1月改正】iDeCoの掛金上限はどう変わる？職業別に解説<span class="art-desc">改正後の予定額を、職業別の表で確認</span></a></li>
+      <li><a href="articles/nisa-waku-rule.html">新NISAの年間360万円・生涯1,800万円、非課税枠はどう積み上がる？<span class="art-desc">年間投資枠と非課税保有限度額のルールを解説</span></a></li>
+      <li><a href="articles/shokugyobetsu-hajimekata.html">会社員・公務員・自営業・専業主婦、職業別iDeCoのはじめ方<span class="art-desc">区分ごとの手続きの要点を整理</span></a></li>
+      <li><a href="articles/setsuzei-keisan.html">iDeCo・NISAの節税効果はどう計算する？仕組みをやさしく解説<span class="art-desc">シミュレーターの計算式のもとになる仕組みを解説</span></a></li>
+    </ul>
+  </div>
+
+  <footer class="site-footer">
+    いくら積み立て帳｜<a href="privacy-policy.html">プライバシーポリシー</a><br>
+    入力内容が外部に送信されることはありません。
+  </footer>
+</div>
+
+<div class="sticky-total">
+  <span class="label">資産評価額（概算）</span>
+  <span class="amt" id="stickyFv">¥0</span>
+</div>
+
+<script>
+  // 職業プロフィール定義（出典：厚生労働省・iDeCo公式サイト等。プロジェクトナレッジ 5-1/5-2参照）
+  const PROFILES = [
+    {
+      id: "self",
+      kanji: "自",
+      label: "自営業等",
+      sub: "フリーランス含む",
+      currentLimit: 68000,
+      futureLimit: 75000,
+      futureLabel: "第1号被保険者"
+    },
+    {
+      id: "employee_none",
+      kanji: "会",
+      label: "会社員",
+      sub: "企業年金なし",
+      currentLimit: 23000,
+      futureLimit: 62000,
+      futureLabel: "第2号被保険者（統一予定）"
+    },
+    {
+      id: "employee_pension",
+      kanji: "公",
+      label: "会社員・公務員",
+      sub: "企業年金あり／公務員",
+      currentLimit: 20000,
+      futureLimit: 62000,
+      futureLabel: "第2号被保険者（統一予定・他制度分は差引の見込み）"
+    },
+    {
+      id: "dependent",
+      kanji: "主",
+      label: "専業主婦(夫)",
+      sub: "第3号被保険者",
+      currentLimit: 23000,
+      futureLimit: 23000,
+      futureLabel: "変更なしの見込み"
+    }
+  ];
+
+  let selectedProfile = PROFILES[0];
+
+  const tilesEl = document.getElementById("tiles");
+  PROFILES.forEach(p => {
+    const div = document.createElement("div");
+    div.className = "tile" + (p.id === selectedProfile.id ? " selected" : "");
+    div.dataset.id = p.id;
+    div.innerHTML = `
+      <span class="stamp">${p.kanji}</span>
+      <span class="tile-label">${p.label}</span>
+      <span class="tile-sub">${p.sub}</span>
+    `;
+    div.addEventListener("click", () => selectProfile(p.id));
+    tilesEl.appendChild(div);
+  });
+
+  function selectProfile(id) {
+    selectedProfile = PROFILES.find(p => p.id === id);
+    document.querySelectorAll(".tile").forEach(t => {
+      t.classList.toggle("selected", t.dataset.id === id);
+    });
+    const idecoAmount = document.getElementById("idecoAmount");
+    idecoAmount.max = selectedProfile.currentLimit;
+    if (Number(idecoAmount.value) > selectedProfile.currentLimit || !idecoAmount.value) {
+      idecoAmount.value = selectedProfile.currentLimit;
+    }
+    document.getElementById("idecoMaxLabel").textContent =
+      selectedProfile.currentLimit.toLocaleString() + "円（月額上限）";
+    document.getElementById("limitNote").innerHTML =
+      `<b>${selectedProfile.label}</b>の場合、iDeCoの月額上限は現在 <b>${yen(selectedProfile.currentLimit)}</b> です。` +
+      `2027年1月以降は<b>${yen(selectedProfile.futureLimit)}</b>（${selectedProfile.futureLabel}）に引き上げられる予定です。`;
+    recalc();
+  }
+
+  function yen(n) {
+    return "¥" + Math.round(n).toLocaleString();
+  }
+
+  // ---- ウィザードのステップ制御 ----
+  let maxStepReached = 1;
+
+  function goToStep(n) {
+    [1, 2, 3].forEach(i => {
+      document.getElementById("step" + i).classList.toggle("hidden", i !== n);
+      const tab = document.getElementById("tab" + i);
+      tab.classList.toggle("active", i === n);
+    });
+    if (n > maxStepReached) maxStepReached = n;
+    document.querySelectorAll(".steps-nav .step-tab").forEach((tab, idx) => {
+      const stepNum = idx + 1;
+      tab.classList.toggle("enabled", stepNum <= maxStepReached);
+      tab.classList.toggle("done", stepNum < n);
+    });
+    document.querySelector(".sticky-total").style.display = (n === 1) ? "none" : "flex";
+    window.scrollTo({ top: document.querySelector(".steps-nav").offsetTop - 10, behavior: "smooth" });
+    if (n === 3) drawChart();
+  }
+
+  document.getElementById("toStep2").addEventListener("click", () => goToStep(2));
+  document.getElementById("toStep1From2").addEventListener("click", () => goToStep(1));
+  document.getElementById("toStep3").addEventListener("click", () => goToStep(3));
+  document.getElementById("toStep2From3").addEventListener("click", () => goToStep(2));
+
+  [1, 2, 3].forEach(n => {
+    document.getElementById("tab" + n).addEventListener("click", () => {
+      if (n <= maxStepReached) goToStep(n);
+    });
+  });
+
+  const idecoAmount = document.getElementById("idecoAmount");
+  const nisaAmount = document.getElementById("nisaAmount");
+  const years = document.getElementById("years");
+  const rateSel = document.getElementById("rate");
+  const taxSel = document.getElementById("taxRate");
+
+  [idecoAmount, nisaAmount, years, rateSel, taxSel].forEach(el => {
+    el.addEventListener("input", recalc);
+  });
+
+  function futureValueOfMonthlyContribution(monthly, annualRate, yearsN) {
+    const months = yearsN * 12;
+    const r = annualRate / 12;
+    if (r === 0) return monthly * months;
+    return monthly * ((Math.pow(1 + r, months) - 1) / r);
+  }
+
+  function recalc() {
+    document.getElementById("idecoAmountVal").textContent = yen(idecoAmount.value) + "/月";
+    document.getElementById("nisaAmountVal").textContent = yen(nisaAmount.value) + "/月";
+    document.getElementById("yearsVal").textContent = years.value + "年";
+
+    const idecoMonthly = Number(idecoAmount.value);
+    const nisaMonthly = Number(nisaAmount.value);
+    const yrs = Number(years.value);
+    const rate = Number(rateSel.value);
+    const taxRate = Number(taxSel.value);
+
+    const idecoTotal = idecoMonthly * 12 * yrs;
+    const nisaTotal = nisaMonthly * 12 * yrs;
+
+    const idecoFv = futureValueOfMonthlyContribution(idecoMonthly, rate, yrs);
+    const nisaFv = futureValueOfMonthlyContribution(nisaMonthly, rate, yrs);
+
+    const totalPrincipal = idecoTotal + nisaTotal;
+    const totalFv = idecoFv + nisaFv;
+    const gain = Math.max(totalFv - totalPrincipal, 0);
+
+    const idecoGain = Math.max(idecoFv - idecoTotal, 0);
+    const nisaGain = Math.max(nisaFv - nisaTotal, 0);
+
+    const taxSaveIncomeAnnual = idecoMonthly * 12 * taxRate;
+    const taxSaveResidentAnnual = idecoMonthly * 12 * 0.10;
+    const taxSaveIncomeTotal = taxSaveIncomeAnnual * yrs;
+    const taxSaveResidentTotal = taxSaveResidentAnnual * yrs;
+    const taxSaveTotal = taxSaveIncomeTotal + taxSaveResidentTotal;
+
+    const nisaTaxBenefit = nisaGain * 0.20315;
+
+    document.getElementById("r_idecoTotal").textContent = yen(idecoTotal);
+    document.getElementById("r_nisaTotal").textContent = yen(nisaTotal);
+    document.getElementById("r_gain").textContent = yen(gain);
+    document.getElementById("r_fv").textContent = yen(totalFv);
+    document.getElementById("r_taxsaveIncome").textContent = yen(taxSaveIncomeTotal);
+    document.getElementById("r_taxsaveResident").textContent = yen(taxSaveResidentTotal);
+    document.getElementById("r_taxsave").textContent = yen(taxSaveTotal);
+    document.getElementById("r_nisasave").textContent = yen(nisaTaxBenefit);
+
+    document.getElementById("stickyFv").textContent = yen(totalFv);
+
+    // 現行 vs 2027年以降 比較（iDeCo単体・今の掛金設定のまま上限だけ入れ替えた場合の節税総額目安）
+    const currentAnnualSave = selectedProfile.currentLimit * 12 * (taxRate + 0.10);
+    const futureAnnualSave = selectedProfile.futureLimit * 12 * (taxRate + 0.10);
+    document.getElementById("cmpCurrent").textContent = yen(currentAnnualSave) + "/年";
+    document.getElementById("cmpFuture").textContent = yen(futureAnnualSave) + "/年";
+    const diff = futureAnnualSave - currentAnnualSave;
+    document.getElementById("cmpDiff").textContent =
+      diff > 0 ? `上限まで拠出した場合、年間の節税額が${yen(diff)}増える見込み` : "上限額の変更なし";
+
+    if (!document.getElementById("step3").classList.contains("hidden")) {
+      drawChart();
+    }
+  }
+
+  // ---- 推移グラフ（元本 vs 運用益、年ごとの積み上げ） ----
+  function drawChart() {
+    const idecoMonthly = Number(idecoAmount.value);
+    const nisaMonthly = Number(nisaAmount.value);
+    const yrs = Number(years.value);
+    const rate = Number(rateSel.value);
+
+    const points = [];
+    for (let y = 0; y <= yrs; y++) {
+      const principal = (idecoMonthly + nisaMonthly) * 12 * y;
+      const fv = futureValueOfMonthlyContribution(idecoMonthly, rate, y) +
+                 futureValueOfMonthlyContribution(nisaMonthly, rate, y);
+      points.push({ year: y, principal, fv });
+    }
+
+    const w = 640, h = 220, padL = 44, padR = 10, padT = 12, padB = 26;
+    const maxV = Math.max(...points.map(p => p.fv), 1);
+
+    const xScale = (y) => padL + (w - padL - padR) * (y / Math.max(yrs, 1));
+    const yScale = (v) => h - padB - (h - padT - padB) * (v / maxV);
+
+    const principalPath = points.map((p, i) =>
+      (i === 0 ? "M" : "L") + xScale(p.year).toFixed(1) + "," + yScale(p.principal).toFixed(1)
+    ).join(" ");
+
+    const fvPath = points.map((p, i) =>
+      (i === 0 ? "M" : "L") + xScale(p.year).toFixed(1) + "," + yScale(p.fv).toFixed(1)
+    ).join(" ");
+
+    const fvAreaPath = fvPath +
+      ` L${xScale(yrs).toFixed(1)},${(h - padB).toFixed(1)} L${xScale(0).toFixed(1)},${(h - padB).toFixed(1)} Z`;
+
+    // 軸ラベル（5年刻み、最終年は必ず表示）
+    const labelYears = [];
+    for (let y = 0; y <= yrs; y += Math.max(Math.round(yrs / 4 / 5) * 5, 5)) labelYears.push(y);
+    if (labelYears[labelYears.length - 1] !== yrs) labelYears.push(yrs);
+
+    const yAxisTicks = [0, 0.5, 1].map(f => {
+      const v = maxV * f;
+      return `<text x="${padL - 8}" y="${yScale(v).toFixed(1)}" font-size="10" fill="var(--ink-faint)" text-anchor="end" dy="3">${Math.round(v / 10000)}万</text>
+              <line x1="${padL}" y1="${yScale(v).toFixed(1)}" x2="${w - padR}" y2="${yScale(v).toFixed(1)}" stroke="var(--line-soft)" stroke-width="1"/>`;
+    }).join("");
+
+    const xAxisLabels = labelYears.map(y =>
+      `<text x="${xScale(y).toFixed(1)}" y="${h - 8}" font-size="10" fill="var(--ink-faint)" text-anchor="middle">${y}年</text>`
+    ).join("");
+
+    const svg = `
+      <svg viewBox="0 0 ${w} ${h}" width="100%" style="max-width:${w}px;display:block;">
+        ${yAxisTicks}
+        <path d="${fvAreaPath}" fill="var(--brass)" opacity="0.12"/>
+        <path d="${fvPath}" fill="none" stroke="var(--brass)" stroke-width="2"/>
+        <path d="${principalPath}" fill="none" stroke="var(--ink-faint)" stroke-width="1.5" stroke-dasharray="4 3"/>
+        ${xAxisLabels}
+      </svg>
+    `;
+    document.getElementById("chartHost").innerHTML = svg;
+  }
+
+  // ---- 初期化（すべての関数・定数の定義が終わった後に実行） ----
+  selectProfile(selectedProfile.id);
+  goToStep(1);
+  recalc();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iDeCoとNISA、何が違う？併用すべき人・しない方がいい人｜いくら積み立て帳</title>
+<meta name="description" content="iDeCoとNISAの根本的な違いを整理し、併用に向いているケース・iDeCoの利用に慎重になった方がよいケースをやさしく解説します。">
+
+<meta property="og:title" content="iDeCoとNISA、何が違う？併用すべき人・しない方がいい人">
+<meta property="og:description" content="iDeCoとNISAの根本的な違いを整理し、併用に向いているケース・iDeCoの利用に慎重になった方がよいケースをやさしく解説します。">
+<meta property="og:url" content="https://garoro1654-sketch.github.io/ideco-nisa-simulator/articles/ideco-nisa-chigai.html">
+<meta property="og:site_name" content="いくら積み立て帳">
+<meta property="og:type" content="article">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='%231F3A5F'/%3E%3Ctext x='32' y='42' font-size='28' text-anchor='middle' fill='%23FFFFFF' font-family='-apple-system,sans-serif' font-weight='700'%3E積%3C/text%3E%3C/svg%3E">
+
+<style>
+  :root{
+    --paper:#F1F3F6;
+    --card:#FFFFFF;
+    --ink:#12151C;
+    --ink-soft:#545B66;
+    --ink-faint:#8A93A1;
+    --accent:#1F3A5F;
+    --accent-soft:#E9EEF5;
+    --brass:#0F7B5C;
+    --line:#DBE0E7;
+    --line-soft:#E7EAEF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Segoe UI", sans-serif;
+    line-height:1.8;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 20px 60px;}
+
+  header.art-header{padding:28px 0 8px;}
+  .back-link{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+    padding-bottom:1px;
+  }
+  .back-link:hover{color:var(--accent);border-color:var(--accent);}
+  header.art-header h1{
+    font-size:23px;
+    line-height:1.5;
+    margin:16px 0 6px;
+    letter-spacing:0.01em;
+  }
+  .meta-line{font-size:12px;color:var(--ink-faint);margin:0 0 6px;}
+
+  .ad-slot{
+    border:1px dashed var(--line);
+    color:var(--ink-faint);
+    text-align:center;
+    font-size:12.5px;
+    padding:14px;
+    margin:22px 0;
+    border-radius:8px;
+  }
+
+  article.prose{font-size:15.5px;color:var(--ink);}
+  article.prose h2{
+    font-size:17px;
+    margin:32px 0 12px;
+    padding-top:2px;
+    color:var(--accent);
+  }
+  article.prose h3{
+    font-size:15px;
+    margin:22px 0 8px;
+    color:var(--ink);
+  }
+  article.prose p{margin:0 0 16px;}
+  article.prose ul, article.prose ol{margin:0 0 16px;padding-left:22px;}
+  article.prose li{margin-bottom:6px;}
+  article.prose strong{color:var(--ink);}
+  article.prose a{color:var(--accent);}
+
+  table.data{
+    width:100%;
+    border-collapse:collapse;
+    margin:16px 0 20px;
+    font-size:13.5px;
+  }
+  table.data th, table.data td{
+    border:1px solid var(--line);
+    padding:9px 10px;
+    text-align:left;
+  }
+  table.data th{background:var(--accent-soft);font-weight:600;color:var(--ink);}
+  table.data td.num, table.data th.num{
+    font-family:SFMono-Regular, Consolas, "Courier New", monospace;
+    font-variant-numeric:tabular-nums;
+    text-align:right;
+  }
+
+  .calc-box{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px 16px;
+    margin:0 0 18px;
+    font-size:14px;
+  }
+  .calc-box .formula{
+    font-family:SFMono-Regular, Consolas, "Courier New", monospace;
+    font-variant-numeric:tabular-nums;
+    color:var(--accent);
+    font-weight:700;
+    display:block;
+    margin:6px 0;
+  }
+
+  .disclaimer{
+    font-size:12px;
+    color:var(--ink-faint);
+    background:var(--accent-soft);
+    border-radius:8px;
+    padding:14px 16px;
+    margin-top:20px;
+  }
+  .disclaimer p{margin:0 0 6px;}
+  .disclaimer p:last-child{margin-bottom:0;}
+  .source-line{font-size:11.5px;color:var(--ink-faint);margin-top:10px;}
+
+  nav.related{margin-top:32px;}
+  nav.related h2{font-size:14px;color:var(--ink-soft);margin:0 0 10px;font-weight:600;}
+  nav.related ul{list-style:none;margin:0;padding:0;}
+  nav.related li{margin-bottom:8px;}
+  nav.related a{
+    display:block;
+    font-size:13.5px;
+    color:var(--ink);
+    text-decoration:none;
+    padding:10px 14px;
+    background:var(--card);
+    border:1px solid var(--line-soft);
+    border-radius:8px;
+  }
+  nav.related a:hover{border-color:var(--accent);}
+
+  .cta-box{
+    margin-top:24px;
+    padding:22px 20px;
+    background:var(--accent);
+    border-radius:10px;
+    text-align:center;
+  }
+  .cta-box p{color:#fff;font-size:14px;margin:0 0 14px;}
+  .cta-box a.cta-btn{
+    display:inline-block;
+    background:#fff;
+    color:var(--accent);
+    font-weight:700;
+    font-size:14px;
+    padding:11px 26px;
+    border-radius:8px;
+    text-decoration:none;
+  }
+
+  footer.site-footer{
+    margin-top:36px;
+    padding-top:18px;
+    border-top:1px solid var(--line-soft);
+    font-size:11.5px;
+    color:var(--ink-faint);
+    text-align:center;
+    line-height:1.9;
+  }
+  footer.site-footer a{color:var(--ink-soft);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="art-header">
+    <a class="back-link" href="../index.html">← いくら積み立て帳 トップ（シミュレーター）</a>
+    <h1>iDeCoとNISA、何が違う？併用すべき人・しない方がいい人</h1>
+  </header>
+
+  <div class="ad-slot">広告スペース（ここに広告タグを設置）</div>
+
+  <article class="prose">
+
+<p>「資産形成を始めるなら、iDeCoとNISA、どちらがいいのか」——このシミュレーターにたどり着いた方の多くが、最初にぶつかる疑問だと思います。結論から言えば、両者は競合する制度ではなく、性質の異なる2つの器です。まずはこの違いを整理してから、自分に合った使い方を考えてみましょう。</p>
+
+<h2>iDeCoとNISAの根本的な違い</h2>
+<p>一番の違いは、「掛金を出した時点」にもメリットがあるかどうかです。</p>
+<p>iDeCoは、掛金の全額が所得控除の対象になります。つまり、掛金を積み立てるだけで、その年の所得税と住民税が軽減されます。一方のNISAには、この「掛金時点の控除」はありません。NISAのメリットは、運用して得た利益（値上がり益や分配金）に対して、本来かかるはずの約20%の税金が非課税になる、という一点に集約されます。</p>
+<p>裏を返せば、iDeCoは「入り口」で得をする制度、NISAは「出口（運用の成果）」で得をする制度、という整理ができます。</p>
+<p>もう一つの大きな違いは、お金を引き出せる時期です。iDeCoは老後資金づくりに特化した制度のため、原則として60歳になるまで引き出すことができません。一方のNISAには、そうした引き出し制限がなく、必要なときに売却して現金化できます。</p>
+
+<h2>併用に向いていると考えられるケース</h2>
+<p>こうした性質の違いから、一般的には次のような方が両制度の併用を検討しやすいと言われています。</p>
+<ul>
+<li><strong>当面使う予定のない資金の余裕がある方</strong>：iDeCoは60歳まで引き出せないため、生活防衛資金や数年以内に使う予定のあるお金を回すのは避けたいところです。逆に言えば、そうした資金の心配がない方であれば、iDeCoの所得控除メリットを積極的に活用しやすくなります。</li>
+<li><strong>一定の課税所得がある会社員・公務員・自営業の方</strong>：iDeCoの所得控除は、税率が高い方ほど1年あたりの節税額が大きくなる仕組みです。課税所得がある程度ある方ほど、恩恵を実感しやすい制度と言えます。</li>
+<li><strong>老後資金と、それ以外の目的（住宅・教育・旅行など）の両方に備えたい方</strong>：老後資金はiDeCoで、それ以外の目的にはいつでも引き出せるNISAで、と役割を分けて使うことができます。</li>
+</ul>
+
+<h2>iDeCoの利用に慎重になった方がよいと考えられるケース</h2>
+<p>一方で、次のような状況にある方は、iDeCoへの拠出を急ぐ前に一度立ち止まって考えることをおすすめします。</p>
+<ul>
+<li><strong>手元の貯蓄がまだ少ない方</strong>：急な出費や収入減少に備える生活防衛資金が十分でない場合、60歳まで引き出せないiDeCoに資金を固定してしまうと、いざというときに困る可能性があります。</li>
+<li><strong>近い将来、大きな出費（住宅購入の頭金・結婚・出産など）を控えている方</strong>：その資金までiDeCoに回してしまうと、必要なタイミングで使えません。まずはNISAや預貯金で備え、iDeCoは余裕資金の範囲で検討するのが無難です。</li>
+<li><strong>転職や独立の可能性が高く、掛金を柔軟に見直したい方</strong>：iDeCoは掛金額の変更に回数の制限があるため、収入が不安定になりそうな方は、まずNISAから始める選択肢もあります。</li>
+</ul>
+
+<h2>まとめ：優先順位に迷ったら</h2>
+<p>一般的な優先順位の考え方としては、①生活防衛資金の確保 → ②NISAでの積立 → ③余裕があればiDeCoも活用、という順番で検討する方が多いようです。ただし、これはあくまで一般的な考え方であり、収入や家族構成、勤務先の企業年金制度の有無によって最適な答えは変わります。</p>
+<p>このサイトのシミュレーターでは、職業を選ぶだけでiDeCoの上限額と概算の節税額を試算できます。まずは自分の場合の数字を見てみることから始めてみてください。</p>
+
+  </article>
+
+  <div class="disclaimer">
+    <p>本記事は一般的な制度の説明であり、特定の商品や投資判断を推奨するものではありません。iDeCo・NISAともに、投資信託等の運用商品は元本が保証されているものではなく、市況により損失が生じる可能性があります。ご自身の資金計画については、金融機関・税理士・ファイナンシャルプランナー等の専門家にご相談ください。</p>
+    <p class="source-line">出典：iDeCo公式サイト、金融庁 新NISA制度ページ、国税庁の各種公表資料を参考に作成。</p>
+  </div>
+
+  <div class="ad-slot">広告スペース（ここに広告タグを設置）</div>
+
+  <nav class="related">
+    <h2>関連記事</h2>
+    <ul>
+<li><a href="ideco-2027-kaisei.html">【2027年1月改正】iDeCoの掛金上限はどう変わる？職業別に解説</a></li>
+<li><a href="nisa-waku-rule.html">新NISAの年間360万円・生涯1,800万円、非課税枠はどう積み上がる？</a></li>
+<li><a href="shokugyobetsu-hajimekata.html">会社員・公務員・自営業・専業主婦、職業別iDeCoのはじめ方</a></li>
+<li><a href="setsuzei-keisan.html">iDeCo・NISAの節税効果はどう計算する？仕組みをやさしく解説</a></li>
+    </ul>
+  </nav>
+
+  <div class="cta-box">
+    <p>ご自身の場合の節税額・資産額を試算してみませんか？</p>
+    <a class="cta-btn" href="../index.html">シミュレーターを使ってみる</a>
+  </div>
+
+  <footer class="site-footer">
+    いくら積み立て帳｜<a href="../privacy-policy.html">プライバシーポリシー</a><br>
+    入力内容が外部に送信されることはありません。
+  </footer>
+</div>
+</body>
+</html>
