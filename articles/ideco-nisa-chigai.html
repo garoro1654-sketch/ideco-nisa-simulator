@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>iDeCoとNISA、何が違う？併用すべき人・しない方がいい人｜いくら積み立て帳</title>
-<meta name="description" content="iDeCoとNISAの根本的な違いを整理し、併用に向いているケース・iDeCoの利用に慎重になった方がよいケースをやさしく解説します。">
+<meta name="description" content="iDeCoとNISAの違いを、税制・引き出し・上限額・手数料の比較表と簡単な数字の例で整理。併用に向いているケースと、iDeCoの利用に慎重になった方がよいケースをやさしく解説します。">
 
 <meta property="og:title" content="iDeCoとNISA、何が違う？併用すべき人・しない方がいい人">
-<meta property="og:description" content="iDeCoとNISAの根本的な違いを整理し、併用に向いているケース・iDeCoの利用に慎重になった方がよいケースをやさしく解説します。">
+<meta property="og:description" content="iDeCoとNISAの違いを、税制・引き出し・上限額・手数料の比較表と簡単な数字の例で整理。併用に向いているケースと、iDeCoの利用に慎重になった方がよいケースをやさしく解説します。">
 <link rel="canonical" href="https://kurashi-sapo.com/ideco-nisa-simulator/articles/ideco-nisa-chigai.html">
 <meta property="og:url" content="https://kurashi-sapo.com/ideco-nisa-simulator/articles/ideco-nisa-chigai.html">
 <meta property="og:site_name" content="いくら積み立て帳">
@@ -15,6 +15,7 @@
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='%231F3A5F'/%3E%3Ctext x='32' y='42' font-size='28' text-anchor='middle' fill='%23FFFFFF' font-family='-apple-system,sans-serif' font-weight='700'%3E積%3C/text%3E%3C/svg%3E">
 
+<meta name="google-site-verification" content="q5HrNozMAgW_-tkq-ryqjWP2e7V27TXD897LgVPdLkw" />
 <style>
   :root{
     --paper:#F1F3F6;
@@ -177,7 +178,18 @@
     line-height:1.9;
   }
   footer.site-footer a{color:var(--ink-soft);}
+
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:16px 0 20px;}
+  .table-wrap table.data{margin:0;min-width:460px;}
+  table.data td, table.data th{vertical-align:top;line-height:1.6;}
+  nav.toc{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px 10px;margin:14px 0 6px;font-size:13.5px;}
+  nav.toc p{margin:0 0 6px;font-weight:600;color:var(--ink-soft);font-size:12.5px;}
+  nav.toc ol{margin:0;padding-left:20px;}
+  nav.toc li{margin-bottom:4px;}
+  nav.toc a{color:var(--accent);text-decoration:none;}
+  article.prose h2{scroll-margin-top:12px;}
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "iDeCoとNISA、何が違う？併用すべき人・しない方がいい人", "description": "iDeCoとNISAの違いを、税制・引き出し・上限額・手数料の比較表と簡単な数字の例で整理。併用に向いているケースと、iDeCoの利用に慎重になった方がよいケースをやさしく解説します。", "datePublished": "2026-09-09", "dateModified": "2026-10-06", "inLanguage": "ja", "mainEntityOfPage": "https://kurashi-sapo.com/ideco-nisa-simulator/articles/ideco-nisa-chigai.html", "author": {"@type": "Organization", "name": "暮らしサポ運営者"}, "publisher": {"@type": "Organization", "name": "暮らしサポ"}}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1057798834587731" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -185,49 +197,65 @@
   <header class="art-header">
     <a class="back-link" href="../index.html">← いくら積み立て帳 トップ（シミュレーター）</a>
     <h1>iDeCoとNISA、何が違う？併用すべき人・しない方がいい人</h1>
+    <p class="meta-line">公開日：2026年9月9日｜最終更新日：2026年10月6日｜制度・数字の確認日：2026年10月6日</p>
   </header>
+
+  <nav class="toc" aria-label="目次"><p>この記事の内容</p><ol><li><a href="#s1">iDeCoとNISAの根本的な違い</a></li><li><a href="#s2">比較表で見る違い</a></li><li><a href="#s3">数字で見る「入り口で得をする」とは</a></li><li><a href="#s4">併用に向いていると考えられるケース</a></li><li><a href="#s5">iDeCoの利用に慎重になった方がよいと考えられるケース</a></li><li><a href="#s6">まとめ：優先順位に迷ったら</a></li></ol></nav>
 
   <article class="prose">
 
-<p>「資産形成を始めるなら、iDeCoとNISA、どちらがいいのか」——このシミュレーターにたどり着いた方の多くが、最初にぶつかる疑問だと思います。結論から言えば、両者は競合する制度ではなく、性質の異なる2つの器です。まずはこの違いを整理してから、自分に合った使い方を考えてみましょう。</p>
-
-<h2>iDeCoとNISAの根本的な違い</h2>
+<p>「資産形成を始めるなら、iDeCoとNISA、どちらがいいのか」——このシミュレーターにたどり着いた方の多くが、最初に迷うところだと思います。結論から言えば、両者は競合する制度ではなく、性質の異なる2つの器です。この記事では、違いを整理したうえで、どんな場合にどう使い分けられるかを考えます。</p>
+<h2 id="s1">iDeCoとNISAの根本的な違い</h2>
 <p>一番の違いは、「掛金を出した時点」にもメリットがあるかどうかです。</p>
-<p>iDeCoは、掛金の全額が所得控除の対象になります。つまり、掛金を積み立てるだけで、その年の所得税と住民税が軽減されます。一方のNISAには、この「掛金時点の控除」はありません。NISAのメリットは、運用して得た利益（値上がり益や分配金）に対して、本来かかるはずの約20%の税金が非課税になる、という一点に集約されます。</p>
+<p>iDeCoは、掛金の全額が所得控除の対象になります。つまり、掛金を積み立てるだけで、その年の所得税と住民税が軽くなります。一方のNISAには、この「掛金時点の控除」はありません。NISAのメリットは、運用で得た利益（値上がり益や分配金）に対して、本来かかるはずの約20%の税金が非課税になる、という点に集約されます。</p>
 <p>裏を返せば、iDeCoは「入り口」で得をする制度、NISAは「出口（運用の成果）」で得をする制度、という整理ができます。</p>
-<p>もう一つの大きな違いは、お金を引き出せる時期です。iDeCoは老後資金づくりに特化した制度のため、原則として60歳になるまで引き出すことができません。一方のNISAには、そうした引き出し制限がなく、必要なときに売却して現金化できます。</p>
-
-<h2>併用に向いていると考えられるケース</h2>
+<p>もう一つの大きな違いは、お金を引き出せる時期です。iDeCoは老後資金づくりに特化した制度のため、原則として60歳になるまで引き出せません。一方のNISAには引き出しの制限がなく、必要なときに売却して現金化できます。</p>
+<h2 id="s2">比較表で見る違い</h2>
+<div class="table-wrap"><table class="data">
+<tr><th>項目</th><th>iDeCo</th><th>新NISA</th></tr>
+<tr><td>主な目的</td><td>老後資金づくり</td><td>資産形成全般</td></tr>
+<tr><td>掛金を出したとき</td><td>全額が所得控除（税金が軽くなる）</td><td>控除はない</td></tr>
+<tr><td>運用で得た利益</td><td>非課税</td><td>非課税</td></tr>
+<tr><td>受け取るとき</td><td>原則課税（ただし退職所得控除・公的年金等控除がある）</td><td>課税されない</td></tr>
+<tr><td>引き出し</td><td>原則60歳まで不可</td><td>いつでも売却できる</td></tr>
+<tr><td>入れられる金額</td><td>職業ごとに月額の上限（現行は2万〜6.8万円、2026年12月から最大7.5万円）</td><td>年間360万円・生涯1,800万円</td></tr>
+<tr><td>加入できる人</td><td>国民年金の被保険者など（会社員・公務員は65歳未満、自営業などは60歳未満、任意加入は65歳未満）。2026年12月から、一部の60歳以上の方も含めて70歳未満まで拡大</td><td>18歳以上の方（2027年1月から、0〜17歳もつみたて投資枠を利用できる予定）</td></tr>
+<tr><td>手数料</td><td>加入時と毎月かかる（詳しくは<a href="ideco-tesuryo.html">手数料の記事</a>）</td><td>口座の管理手数料は無料の金融機関が多い（投資信託の運用コストは別。金融機関で確認）</td></tr>
+</table></div>
+<p>どちらも、運用する投資信託などの値段が下がれば、元本を割り込むことがあります。税制上の優遇は、損失を補ってくれる仕組みではありません。</p>
+<h2 id="s3">数字で見る「入り口で得をする」とは</h2>
+<p>たとえば、所得税率10%・住民税率10%（合計20%）の方が、月1万円（年12万円）をiDeCoに積み立てたとします。年間の節税額の目安は、12万円 × 20% ＝ 2万4,000円です。これを20年続けると、掛金を出した時点の節税だけで合計約48万円になります。運用の成績とは別に、この分が手元に残る計算です。</p>
+<p>NISAには、この仕組みはありません。そのかわり、運用で利益が出たときに、課税されるはずだった約20.315%が非課税になります。たとえば利益が50万円なら、通常の課税口座では約10万1,575円の税金がかかるところが、NISAでは不要です。ただし、利益が出なければこのメリットは生じません。</p>
+<h2 id="s4">併用に向いていると考えられるケース</h2>
 <p>こうした性質の違いから、一般的には次のような方が両制度の併用を検討しやすいと言われています。</p>
 <ul>
-<li><strong>当面使う予定のない資金の余裕がある方</strong>：iDeCoは60歳まで引き出せないため、生活防衛資金や数年以内に使う予定のあるお金を回すのは避けたいところです。逆に言えば、そうした資金の心配がない方であれば、iDeCoの所得控除メリットを積極的に活用しやすくなります。</li>
-<li><strong>一定の課税所得がある会社員・公務員・自営業の方</strong>：iDeCoの所得控除は、税率が高い方ほど1年あたりの節税額が大きくなる仕組みです。課税所得がある程度ある方ほど、恩恵を実感しやすい制度と言えます。</li>
-<li><strong>老後資金と、それ以外の目的（住宅・教育・旅行など）の両方に備えたい方</strong>：老後資金はiDeCoで、それ以外の目的にはいつでも引き出せるNISAで、と役割を分けて使うことができます。</li>
+<li><strong>当面使う予定のない資金に余裕がある方</strong>：iDeCoは60歳まで引き出せないため、生活の予備資金や数年以内に使う予定のあるお金を回すのは避けたいところです。逆に言えば、そうした心配がない方であれば、iDeCoの所得控除を活用しやすくなります。</li>
+<li><strong>一定の課税所得がある会社員・公務員・自営業の方</strong>：iDeCoの所得控除は、税率が高い方ほど1年あたりの節税額が大きくなります。</li>
+<li><strong>老後資金と、それ以外の目的（住宅・教育・旅行など）の両方に備えたい方</strong>：老後資金はiDeCoで、それ以外の目的にはいつでも引き出せるNISAで、と役割を分けられます。</li>
 </ul>
-
-<h2>iDeCoの利用に慎重になった方がよいと考えられるケース</h2>
-<p>一方で、次のような状況にある方は、iDeCoへの拠出を急ぐ前に一度立ち止まって考えることをおすすめします。</p>
+<h2 id="s5">iDeCoの利用に慎重になった方がよいと考えられるケース</h2>
+<p>一方で、次のような状況の方は、iDeCoへの拠出を急ぐ前に一度立ち止まって考えておきたいところです。</p>
 <ul>
-<li><strong>手元の貯蓄がまだ少ない方</strong>：急な出費や収入減少に備える生活防衛資金が十分でない場合、60歳まで引き出せないiDeCoに資金を固定してしまうと、いざというときに困る可能性があります。</li>
-<li><strong>近い将来、大きな出費（住宅購入の頭金・結婚・出産など）を控えている方</strong>：その資金までiDeCoに回してしまうと、必要なタイミングで使えません。まずはNISAや預貯金で備え、iDeCoは余裕資金の範囲で検討するのが無難です。</li>
-<li><strong>転職や独立の可能性が高く、掛金を柔軟に見直したい方</strong>：iDeCoは掛金額の変更に回数の制限があるため、収入が不安定になりそうな方は、まずNISAから始める選択肢もあります。</li>
+<li><strong>手元の貯蓄がまだ少ない方</strong>：急な出費や収入の減少に備える資金が十分でないまま、60歳まで引き出せないiDeCoに資金を固定すると、いざというときに困る可能性があります。</li>
+<li><strong>近い将来、大きな出費（住宅の頭金・結婚・出産など）を控えている方</strong>：その資金までiDeCoに回してしまうと、必要なタイミングで使えません。まずはNISAや預貯金で備え、iDeCoは余裕資金の範囲で検討する、という考え方もあります。</li>
+<li><strong>収入が不安定で、掛金を柔軟に見直したい方</strong>：iDeCoの掛金額の変更は、原則として年1回（12月分〜翌年11月分の間）に限られます。掛金の拠出を一時的に止めることはできますが、止めている間も口座の管理手数料はかかります。</li>
+<li><strong>課税所得がほとんどない方</strong>：所得控除は、所得税・住民税がかかっている方でなければ効果が出ません。</li>
 </ul>
-
-<h2>まとめ：優先順位に迷ったら</h2>
-<p>一般的な優先順位の考え方としては、①生活防衛資金の確保 → ②NISAでの積立 → ③余裕があればiDeCoも活用、という順番で検討する方が多いようです。ただし、これはあくまで一般的な考え方であり、収入や家族構成、勤務先の企業年金制度の有無によって最適な答えは変わります。</p>
-<p>このサイトのシミュレーターでは、職業を選ぶだけでiDeCoの上限額と概算の節税額を試算できます。まずは自分の場合の数字を見てみることから始めてみてください。</p>
+<h2 id="s6">まとめ：優先順位に迷ったら</h2>
+<p>考え方の一例として、①生活の予備資金の確保 → ②NISAでの積み立て → ③余裕があればiDeCoも検討、という順番で整理する方もいます。ただし、これはあくまで一例で、収入や家族構成、勤務先の企業年金の有無によって最適な答えは変わります。</p>
+<p>2026年12月からはiDeCoの掛金上限も大きく変わります（<a href="ideco-2027-kaisei.html">改正の解説はこちら</a>）。このサイトのシミュレーターでは、職業を選ぶだけで上限額と概算の節税額を試算できます。まずは、ご自身の場合の数字を見てみることから始めてみてください。</p>
 
   </article>
 
   <div class="disclaimer">
-    <p>本記事は一般的な制度の説明であり、特定の商品や投資判断を推奨するものではありません。iDeCo・NISAともに、投資信託等の運用商品は元本が保証されているものではなく、市況により損失が生じる可能性があります。ご自身の資金計画については、金融機関・税理士・ファイナンシャルプランナー等の専門家にご相談ください。</p>
-    <p class="source-line">出典：iDeCo公式サイト、金融庁 新NISA制度ページ、国税庁の各種公表資料を参考に作成。</p>
+    <p>本記事は制度の仕組みを一般的に説明するものであり、特定の金融商品・金融機関・投資方法を推奨するものではありません。iDeCoやNISAで運用する商品は元本が保証されておらず、将来の運用成果を保証するものでもありません。税金の取り扱いは個々の状況によって異なります。制度の詳細や最新の情報は公式サイトでご確認のうえ、具体的な判断は金融機関や税理士・ファイナンシャルプランナー等の専門家にご相談ください。</p>
+    <p class="source-line">出典：<a href="https://www.ideco-koushiki.jp/" target="_blank" rel="noopener">iDeCo公式サイト（国民年金基金連合会）</a>、<a href="https://www.fsa.go.jp/policy/nisa2/know/" target="_blank" rel="noopener">金融庁 NISA特設ウェブサイト「NISAを知る」</a>、<a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1135.htm" target="_blank" rel="noopener">国税庁 タックスアンサー No.1135 小規模企業共済等掛金控除</a>（2026年10月6日確認）。</p>
   </div>
 
   <nav class="related">
     <h2>関連記事</h2>
     <ul>
-<li><a href="ideco-2027-kaisei.html">【2027年1月改正】iDeCoの掛金上限はどう変わる？職業別に解説</a></li>
+<li><a href="ideco-2027-kaisei.html">【2026年12月施行】iDeCoの掛金上限・加入年齢はどう変わる？職業別に整理</a></li>
 <li><a href="nisa-waku-rule.html">新NISAの年間360万円・生涯1,800万円、非課税枠はどう積み上がる？</a></li>
 <li><a href="shokugyobetsu-hajimekata.html">会社員・公務員・自営業・専業主婦、職業別iDeCoのはじめ方</a></li>
 <li><a href="setsuzei-keisan.html">iDeCo・NISAの節税効果はどう計算する？仕組みをやさしく解説</a></li>

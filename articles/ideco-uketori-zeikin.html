@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iDeCoの受け取り方と税金｜一時金・年金・併用と「10年ルール」｜いくら積み立て帳</title>
+<meta name="description" content="iDeCoを受け取るときの3つの方法（一時金・年金・併用）と、それぞれにかかる税金の仕組みを整理。退職所得控除の計算、公的年金等控除、退職金との受け取り間隔の「10年ルール」もやさしく解説します。">
+
+<meta property="og:title" content="iDeCoの受け取り方と税金｜一時金・年金・併用と「10年ルール」">
+<meta property="og:description" content="iDeCoを受け取るときの3つの方法（一時金・年金・併用）と、それぞれにかかる税金の仕組みを整理。退職所得控除の計算、公的年金等控除、退職金との受け取り間隔の「10年ルール」もやさしく解説します。">
+<link rel="canonical" href="https://kurashi-sapo.com/ideco-nisa-simulator/articles/ideco-uketori-zeikin.html">
+<meta property="og:url" content="https://kurashi-sapo.com/ideco-nisa-simulator/articles/ideco-uketori-zeikin.html">
+<meta property="og:site_name" content="いくら積み立て帳">
+<meta property="og:type" content="article">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='%231F3A5F'/%3E%3Ctext x='32' y='42' font-size='28' text-anchor='middle' fill='%23FFFFFF' font-family='-apple-system,sans-serif' font-weight='700'%3E積%3C/text%3E%3C/svg%3E">
+
+<meta name="google-site-verification" content="q5HrNozMAgW_-tkq-ryqjWP2e7V27TXD897LgVPdLkw" />
+<style>
+  :root{
+    --paper:#F1F3F6;
+    --card:#FFFFFF;
+    --ink:#12151C;
+    --ink-soft:#545B66;
+    --ink-faint:#8A93A1;
+    --accent:#1F3A5F;
+    --accent-soft:#E9EEF5;
+    --brass:#0F7B5C;
+    --line:#DBE0E7;
+    --line-soft:#E7EAEF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Segoe UI", sans-serif;
+    line-height:1.8;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 20px 60px;}
+
+  header.art-header{padding:28px 0 8px;}
+  .back-link{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+    padding-bottom:1px;
+  }
+  .back-link:hover{color:var(--accent);border-color:var(--accent);}
+  header.art-header h1{
+    font-size:23px;
+    line-height:1.5;
+    margin:16px 0 6px;
+    letter-spacing:0.01em;
+  }
+  .meta-line{font-size:12px;color:var(--ink-faint);margin:0 0 6px;}
+
+
+  .ad-container{margin:22px 0;}
+  .ad-slot{
+    border:1px dashed var(--line);
+    color:var(--ink-faint);
+    text-align:center;
+    font-size:12.5px;
+    padding:14px;
+    margin:22px 0;
+    border-radius:8px;
+  }
+
+  article.prose{font-size:15.5px;color:var(--ink);}
+  article.prose h2{
+    font-size:17px;
+    margin:32px 0 12px;
+    padding-top:2px;
+    color:var(--accent);
+  }
+  article.prose h3{
+    font-size:15px;
+    margin:22px 0 8px;
+    color:var(--ink);
+  }
+  article.prose p{margin:0 0 16px;}
+  article.prose ul, article.prose ol{margin:0 0 16px;padding-left:22px;}
+  article.prose li{margin-bottom:6px;}
+  article.prose strong{color:var(--ink);}
+  article.prose a{color:var(--accent);}
+
+  table.data{
+    width:100%;
+    border-collapse:collapse;
+    margin:16px 0 20px;
+    font-size:13.5px;
+  }
+  table.data th, table.data td{
+    border:1px solid var(--line);
+    padding:9px 10px;
+    text-align:left;
+  }
+  table.data th{background:var(--accent-soft);font-weight:600;color:var(--ink);}
+  table.data td.num, table.data th.num{
+    font-family:SFMono-Regular, Consolas, "Courier New", monospace;
+    font-variant-numeric:tabular-nums;
+    text-align:right;
+  }
+
+  .calc-box{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px 16px;
+    margin:0 0 18px;
+    font-size:14px;
+  }
+  .calc-box .formula{
+    font-family:SFMono-Regular, Consolas, "Courier New", monospace;
+    font-variant-numeric:tabular-nums;
+    color:var(--accent);
+    font-weight:700;
+    display:block;
+    margin:6px 0;
+  }
+
+  .disclaimer{
+    font-size:12px;
+    color:var(--ink-faint);
+    background:var(--accent-soft);
+    border-radius:8px;
+    padding:14px 16px;
+    margin-top:20px;
+  }
+  .disclaimer p{margin:0 0 6px;}
+  .disclaimer p:last-child{margin-bottom:0;}
+  .source-line{font-size:11.5px;color:var(--ink-faint);margin-top:10px;}
+
+  nav.related{margin-top:32px;}
+  nav.related h2{font-size:14px;color:var(--ink-soft);margin:0 0 10px;font-weight:600;}
+  nav.related ul{list-style:none;margin:0;padding:0;}
+  nav.related li{margin-bottom:8px;}
+  nav.related a{
+    display:block;
+    font-size:13.5px;
+    color:var(--ink);
+    text-decoration:none;
+    padding:10px 14px;
+    background:var(--card);
+    border:1px solid var(--line-soft);
+    border-radius:8px;
+  }
+  nav.related a:hover{border-color:var(--accent);}
+
+  .cta-box{
+    margin-top:24px;
+    padding:22px 20px;
+    background:var(--accent);
+    border-radius:10px;
+    text-align:center;
+  }
+  .cta-box p{color:#fff;font-size:14px;margin:0 0 14px;}
+  .cta-box a.cta-btn{
+    display:inline-block;
+    background:#fff;
+    color:var(--accent);
+    font-weight:700;
+    font-size:14px;
+    padding:11px 26px;
+    border-radius:8px;
+    text-decoration:none;
+  }
+
+  footer.site-footer{
+    margin-top:36px;
+    padding-top:18px;
+    border-top:1px solid var(--line-soft);
+    font-size:11.5px;
+    color:var(--ink-faint);
+    text-align:center;
+    line-height:1.9;
+  }
+  footer.site-footer a{color:var(--ink-soft);}
+
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:16px 0 20px;}
+  .table-wrap table.data{margin:0;min-width:460px;}
+  table.data td, table.data th{vertical-align:top;line-height:1.6;}
+  nav.toc{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px 10px;margin:14px 0 6px;font-size:13.5px;}
+  nav.toc p{margin:0 0 6px;font-weight:600;color:var(--ink-soft);font-size:12.5px;}
+  nav.toc ol{margin:0;padding-left:20px;}
+  nav.toc li{margin-bottom:4px;}
+  nav.toc a{color:var(--accent);text-decoration:none;}
+  article.prose h2{scroll-margin-top:12px;}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "iDeCoの受け取り方と税金｜一時金・年金・併用と「10年ルール」", "description": "iDeCoを受け取るときの3つの方法（一時金・年金・併用）と、それぞれにかかる税金の仕組みを整理。退職所得控除の計算、公的年金等控除、退職金との受け取り間隔の「10年ルール」もやさしく解説します。", "datePublished": "2026-10-06", "dateModified": "2026-10-06", "inLanguage": "ja", "mainEntityOfPage": "https://kurashi-sapo.com/ideco-nisa-simulator/articles/ideco-uketori-zeikin.html", "author": {"@type": "Organization", "name": "暮らしサポ運営者"}, "publisher": {"@type": "Organization", "name": "暮らしサポ"}}</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1057798834587731" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="wrap">
+  <header class="art-header">
+    <a class="back-link" href="../index.html">← いくら積み立て帳 トップ（シミュレーター）</a>
+    <h1>iDeCoの受け取り方と税金｜一時金・年金・併用と「10年ルール」</h1>
+    <p class="meta-line">公開日：2026年10月6日｜最終更新日：2026年10月6日｜制度・数字の確認日：2026年10月6日</p>
+  </header>
+
+  <nav class="toc" aria-label="目次"><p>この記事の内容</p><ol><li><a href="#s1">いつから受け取れるのか</a></li><li><a href="#s2">受け取り方は3種類</a></li><li><a href="#s3">一時金で受け取る場合：退職所得として扱われる</a></li><li><a href="#s4">年金で受け取る場合：雑所得として扱われる</a></li><li><a href="#s5">退職金との関係：「10年ルール」とは</a></li><li><a href="#s6">受け取り方を考えるときの観点</a></li><li><a href="#s7">掛金を出すときの節税との関係</a></li></ol></nav>
+
+  <article class="prose">
+
+<p>iDeCoは、掛金を出すときと運用している間に税金の優遇がありますが、受け取るときには、原則として税金がかかります。ただし、受け取り方によって大きな控除が使えるため、実際にいくら課税されるかは、受け取り方と金額によって変わります。この記事では、受け取りに関する基本的なルールと税金の仕組みを整理します。</p>
+<h2 id="s1">いつから受け取れるのか</h2>
+<p>老齢給付金として受け取れるのは、60歳から75歳までの間です。ただし、60歳から受け取れるのは、通算の加入期間が10年以上ある場合です。加入期間が短い場合は、受け取り開始の年齢が後ろにずれます。</p>
+<div class="table-wrap"><table class="data">
+<tr><th>通算加入者等期間</th><th>受け取り開始できる年齢</th></tr>
+<tr><td>10年以上</td><td>60歳</td></tr>
+<tr><td>8年以上10年未満</td><td>61歳</td></tr>
+<tr><td>6年以上8年未満</td><td>62歳</td></tr>
+<tr><td>4年以上6年未満</td><td>63歳</td></tr>
+<tr><td>2年以上4年未満</td><td>64歳</td></tr>
+<tr><td>1か月以上2年未満</td><td>65歳</td></tr>
+</table></div>
+<p>50代から始める方は、60歳の時点で加入期間が10年に届かないことがあります。受け取りを待つ間も運用は続き、口座の管理手数料がかかる点にも注意が必要です。なお、2026年12月以降は70歳未満まで掛金を拠出できる場合があり、加入期間を延ばせる余地が広がります（<a href="ideco-2027-kaisei.html">改正の解説</a>）。</p>
+<h2 id="s2">受け取り方は3種類</h2>
+<ul>
+<li><strong>一時金</strong>：全額を一度に受け取る。</li>
+<li><strong>年金</strong>：5年から20年などの期間にわたって、分割で受け取る。</li>
+<li><strong>一時金と年金の併用</strong>：一部を一時金で、残りを年金で受け取る。</li>
+</ul>
+<p>受け取り方によって、税金の計算方法が異なります。</p>
+<h2 id="s3">一時金で受け取る場合：退職所得として扱われる</h2>
+<p>一時金で受け取ると、税法上は「退職所得」として扱われ、「退職所得控除」が使えます。iDeCoでは、勤続年数の代わりに、掛金を拠出した期間（加入年数）で控除額を計算します。</p>
+<div class="table-wrap"><table class="data">
+<tr><th>加入年数</th><th>退職所得控除額</th></tr>
+<tr><td>20年以下</td><td>40万円 × 加入年数（最低80万円）</td></tr>
+<tr><td>20年超</td><td>800万円 ＋ 70万円 ×（加入年数 − 20年）</td></tr>
+</table></div>
+<p>加入年数は、掛金を拠出していた期間（加入者期間）で数え、1年未満の端数は1年に切り上げます。運用指図者として運用だけを続けていた期間は含まれません。課税される金額（退職所得）は、次の式で求めます。</p>
+<p><strong>退職所得 ＝（受け取る一時金 − 退職所得控除額）× 1/2</strong></p>
+<p>たとえば、次のようになります。</p>
+<ul>
+<li>加入20年、一時金が1,000万円の場合：控除額は800万円。（1,000万円 − 800万円）× 1/2 ＝ 100万円が課税の対象です。</li>
+<li>加入10年、一時金が500万円の場合：控除額は400万円。（500万円 − 400万円）× 1/2 ＝ 50万円が課税の対象です。</li>
+<li>加入20年、一時金が800万円の場合：控除額と同額なので、課税の対象は0円です。</li>
+</ul>
+<p>この課税の対象（退職所得）に、所得税・住民税の税率をかけて、税額が決まります。退職所得は、ほかの所得とは分けて計算する分離課税で、所得税の税率は「<a href="setsuzei-keisan.html">所得税の速算表</a>」と同じ区分を使います。上の例を、復興特別所得税などを含めない簡易計算で試算すると、次のようになります。</p>
+<div class="table-wrap"><table class="data">
+<tr><th>ケース</th><th>退職所得</th><th>所得税</th><th>住民税（10%）</th><th>合計</th></tr>
+<tr><td>加入20年・一時金1,000万円</td><td>100万円</td><td>5万円（5%）</td><td>10万円</td><td>約15万円</td></tr>
+<tr><td>加入20年・一時金1,500万円</td><td>350万円</td><td>272,500円（350万円×20%−427,500円）</td><td>35万円</td><td>約62.3万円</td></tr>
+</table></div>
+<p>「退職所得の受給に関する申告書」を金融機関に提出していれば、受け取り時に所得税等が源泉徴収されて課税が完結し、原則として確定申告は不要です。提出していない場合は、支払額の20.42%が源泉徴収され、確定申告で精算します（国税庁）。</p>
+<h2 id="s4">年金で受け取る場合：雑所得として扱われる</h2>
+<p>年金形式で受け取ると、「公的年金等」の雑所得として扱われ、「公的年金等控除」が使えます。国民年金や厚生年金など、ほかの公的年金も受け取っている場合は、合算して計算されます。控除の最低額は、公的年金等の収入が65歳未満なら130万円以下で60万円、65歳以上なら330万円以下で110万円です（公的年金等以外の合計所得金額が1,000万円以下の場合。年齢はその年の12月31日時点）。</p>
+<p>年金形式では、受け取りの期間中も運用が続き、口座の管理手数料がかかります。また、毎回の振込で、事務委託先金融機関に440円の手数料がかかります。</p>
+<h2 id="s5">退職金との関係：「10年ルール」とは</h2>
+<p>会社の退職金も、iDeCoの一時金も、同じ「退職所得」として、同じ退職所得控除の仕組みで計算されます。そのため、近い時期に両方を一時金で受け取ると、控除が重ならないよう調整され、税負担が増えることがあります。</p>
+<ul>
+<li><strong>iDeCoを先に受け取り、そのあとに退職金を受け取る場合：</strong>退職金を受け取る年の前年以前9年内（受け取る年を含めて実質10年）に、iDeCoなどの老齢一時金を受け取っていると、退職所得控除が調整されます。以前は前年以前4年内（実質5年）でした。この見直しは、2026年1月1日以後に支払いを受けた老齢一時金と、同日以後に支払いを受ける退職手当等に適用されます（通称「10年ルール」）。</li>
+<li><strong>退職金を先に受け取り、そのあとにiDeCoを受け取る場合：</strong>iDeCoの一時金を受け取る年の前年以前19年内に退職金を受け取っていると、調整の対象になります（通称「19年ルール」）。こちらは変更されていません。</li>
+</ul>
+<p>たとえば、60歳でiDeCoを一時金で受け取り、65歳で退職金を受け取る場合、間隔は5年です。以前の4年内ルールでは調整の対象外でしたが、新しいルールでは対象になります。なお、退職金どうしを続けて受け取る場合は、前年以前4年内が調整の対象です。</p>
+<p>実際の計算は複雑で、勤続年数や加入年数、受け取る金額によって結果が変わります。受け取りの時期に迷う場合は、税務署や税理士など専門家にご相談ください。</p>
+<h2 id="s6">受け取り方を考えるときの観点</h2>
+<p>一時金と年金、どちらが得かは、人によって異なります。判断の材料になるのは、たとえば次の点です。</p>
+<ul>
+<li>会社の退職金があるか、あるとしていつ受け取るか。</li>
+<li>iDeCoの残高と、加入年数から決まる退職所得控除額の差。</li>
+<li>公的年金など、ほかの年金収入の額。</li>
+<li>受け取る年の、そのほかの所得。</li>
+<li>受け取り方によって、国民健康保険料や介護保険料などの負担に影響が出る場合があること。</li>
+</ul>
+<p>どれか1つの方法が、すべての人に有利というわけではありません。なお、税制は改正されることがあります。実際に受け取る時点の制度は、国税庁の情報などで確認してください。</p>
+<h2 id="s7">掛金を出すときの節税との関係</h2>
+<p>iDeCoは、掛金を出すときの所得控除（<a href="setsuzei-keisan.html">仕組みはこちら</a>）と、受け取るときの控除の両方が、税制上の優遇になっています。受け取るときに課税される場合でも、掛金を出したときの節税分や、運用益が非課税だった分は、すでに受けています。全体を通して見ることが大切です。このサイトのシミュレーターは、掛金を出す時点の節税額と、運用による資産額の目安を試算するものです。受け取り時の税金は含まれていません。</p>
+
+  </article>
+
+  <div class="disclaimer">
+    <p>本記事は制度の仕組みを一般的に説明するものであり、特定の金融商品・金融機関・投資方法を推奨するものではありません。iDeCoやNISAで運用する商品は元本が保証されておらず、将来の運用成果を保証するものでもありません。税金の取り扱いは個々の状況によって異なります。制度の詳細や最新の情報は公式サイトでご確認のうえ、具体的な判断は金融機関や税理士・ファイナンシャルプランナー等の専門家にご相談ください。</p>
+    <p class="source-line">出典：<a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1420.htm" target="_blank" rel="noopener">国税庁 タックスアンサー No.1420 退職金を受け取ったとき(退職所得)</a>、<a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1600.htm" target="_blank" rel="noopener">国税庁 タックスアンサー No.1600 公的年金等の課税関係</a>、<a href="https://www.nta.go.jp/publication/pamph/gensen/aramashi2026/pdf/01.pdf" target="_blank" rel="noopener">国税庁「源泉所得税の改正のあらまし（令和8年4月）」</a>、<a href="https://www.mof.go.jp/tax_policy/tax_reform/outline/fy2025/07taikou_01.htm" target="_blank" rel="noopener">財務省「令和7年度税制改正の大綱」</a>、<a href="https://www.ideco-koushiki.jp/" target="_blank" rel="noopener">iDeCo公式サイト（国民年金基金連合会）</a>（2026年10月6日確認）。</p>
+  </div>
+
+  <nav class="related">
+    <h2>関連記事</h2>
+    <ul>
+<li><a href="setsuzei-keisan.html">iDeCo・NISAの節税効果はどう計算する？仕組みをやさしく解説</a></li>
+<li><a href="ideco-tesuryo.html">iDeCoの手数料はいくらかかる？加入時・毎月・受け取り時を整理</a></li>
+<li><a href="ideco-2027-kaisei.html">【2026年12月施行】iDeCoの掛金上限・加入年齢はどう変わる？職業別に整理</a></li>
+<li><a href="ideco-nisa-chigai.html">iDeCoとNISA、何が違う？併用すべき人・しない方がいい人</a></li>
+    </ul>
+  </nav>
+
+  <div class="cta-box">
+    <p>ご自身の場合の節税額・資産額を試算してみませんか？</p>
+    <a class="cta-btn" href="../index.html">シミュレーターを使ってみる</a>
+  </div>
+
+  <footer class="site-footer">
+    いくら積み立て帳｜<a href="../privacy-policy.html">プライバシーポリシー</a>｜<a href="/about.html">運営者情報</a>｜<a href="/">おひっこし計算帯</a><br>
+    入力内容が外部に送信されることはありません。
+  </footer>
+</div>
+</body>
+</html>

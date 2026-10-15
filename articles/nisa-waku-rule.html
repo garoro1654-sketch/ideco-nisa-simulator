@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>新NISAの年間360万円・生涯1,800万円、非課税枠はどう積み上がる？｜いくら積み立て帳</title>
-<meta name="description" content="新NISAの年間投資枠と非課税保有限度額、枠の復活の仕組みを、投資判断ではなく制度のルールとして整理して解説します。">
+<meta name="description" content="新NISAの「年間投資枠360万円」と「非課税保有限度額1,800万円」の関係、つみたて・成長の内訳、売却したときの枠の復活ルール、旧NISAとの関係をまとめて整理します。">
 
 <meta property="og:title" content="新NISAの年間360万円・生涯1,800万円、非課税枠はどう積み上がる？">
-<meta property="og:description" content="新NISAの年間投資枠と非課税保有限度額、枠の復活の仕組みを、投資判断ではなく制度のルールとして整理して解説します。">
+<meta property="og:description" content="新NISAの「年間投資枠360万円」と「非課税保有限度額1,800万円」の関係、つみたて・成長の内訳、売却したときの枠の復活ルール、旧NISAとの関係をまとめて整理します。">
 <link rel="canonical" href="https://kurashi-sapo.com/ideco-nisa-simulator/articles/nisa-waku-rule.html">
 <meta property="og:url" content="https://kurashi-sapo.com/ideco-nisa-simulator/articles/nisa-waku-rule.html">
 <meta property="og:site_name" content="いくら積み立て帳">
@@ -15,6 +15,7 @@
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='%231F3A5F'/%3E%3Ctext x='32' y='42' font-size='28' text-anchor='middle' fill='%23FFFFFF' font-family='-apple-system,sans-serif' font-weight='700'%3E積%3C/text%3E%3C/svg%3E">
 
+<meta name="google-site-verification" content="q5HrNozMAgW_-tkq-ryqjWP2e7V27TXD897LgVPdLkw" />
 <style>
   :root{
     --paper:#F1F3F6;
@@ -177,7 +178,18 @@
     line-height:1.9;
   }
   footer.site-footer a{color:var(--ink-soft);}
+
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:16px 0 20px;}
+  .table-wrap table.data{margin:0;min-width:460px;}
+  table.data td, table.data th{vertical-align:top;line-height:1.6;}
+  nav.toc{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px 10px;margin:14px 0 6px;font-size:13.5px;}
+  nav.toc p{margin:0 0 6px;font-weight:600;color:var(--ink-soft);font-size:12.5px;}
+  nav.toc ol{margin:0;padding-left:20px;}
+  nav.toc li{margin-bottom:4px;}
+  nav.toc a{color:var(--accent);text-decoration:none;}
+  article.prose h2{scroll-margin-top:12px;}
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "新NISAの年間360万円・生涯1,800万円、非課税枠はどう積み上がる？", "description": "新NISAの「年間投資枠360万円」と「非課税保有限度額1,800万円」の関係、つみたて・成長の内訳、売却したときの枠の復活ルール、旧NISAとの関係をまとめて整理します。", "datePublished": "2026-09-09", "dateModified": "2026-10-06", "inLanguage": "ja", "mainEntityOfPage": "https://kurashi-sapo.com/ideco-nisa-simulator/articles/nisa-waku-rule.html", "author": {"@type": "Organization", "name": "暮らしサポ運営者"}, "publisher": {"@type": "Organization", "name": "暮らしサポ"}}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1057798834587731" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -185,45 +197,69 @@
   <header class="art-header">
     <a class="back-link" href="../index.html">← いくら積み立て帳 トップ（シミュレーター）</a>
     <h1>新NISAの年間360万円・生涯1,800万円、非課税枠はどう積み上がる？</h1>
+    <p class="meta-line">公開日：2026年9月9日｜最終更新日：2026年10月6日｜制度・数字の確認日：2026年10月6日</p>
   </header>
+
+  <nav class="toc" aria-label="目次"><p>この記事の内容</p><ol><li><a href="#s1">前提：期限のない制度で、非課税の期間も無期限</a></li><li><a href="#s2">「年間の枠」と「生涯の枠」、2つの上限がある</a></li><li><a href="#s3">具体的な数字で、枠の積み上がりを見てみる</a></li><li><a href="#s4">売却すると、枠は翌年以降に復活する</a></li><li><a href="#s5">旧NISAとの関係</a></li><li><a href="#s6">枠のルール以外で知っておきたいこと</a></li><li><a href="#s7">2027年1月からの変更予定：0〜17歳もつみたて投資枠を利用できるように</a></li><li><a href="#s8">まとめ：制度のルールを知ったうえで、無理のない金額から</a></li></ol></nav>
 
   <article class="prose">
 
-<p>新NISAについて調べると、「年間360万円」「生涯1,800万円」という数字がよく出てきます。この2つの数字がどう関係しているのか、この記事では投資判断ではなく、あくまで<strong>制度としての枠のルール</strong>を整理します。</p>
-
-<h2>「年間の枠」と「生涯の枠」、2つの上限がある</h2>
-<p>新NISAには、性質の異なる2種類の上限額があります。</p>
+<p>新NISAについて調べると、「年間360万円」「生涯1,800万円」という数字がよく出てきます。この2つの数字がどう関係しているのか、この記事では投資判断ではなく、制度としての枠のルールを整理します。</p>
+<h2 id="s1">前提：期限のない制度で、非課税の期間も無期限</h2>
+<p>新NISAは2024年1月に始まった制度で、旧NISAと違い、口座を開設できる期間にも、非課税で保有できる期間にも期限がありません。利用する年の1月1日時点で18歳以上の方が利用できます。NISA口座は、1人につき1つの金融機関でしか開設できず、金融機関の変更は年単位で行えます。</p>
+<h2 id="s2">「年間の枠」と「生涯の枠」、2つの上限がある</h2>
+<p>新NISAには、性質の異なる2種類の上限があります。</p>
 <p><strong>① 年間投資枠（1年間に使える上限）</strong></p>
-<p>1年間に投資できる金額の上限は、合計で360万円です。内訳は次の2つに分かれています。</p>
+<p>1年間に投資できる金額の上限は、合計で360万円です。内訳は次のとおりです。</p>
 <ul>
 <li>つみたて投資枠：年間120万円まで</li>
 <li>成長投資枠：年間240万円まで</li>
 </ul>
+<p>2つの枠は同じ年に併用でき、それぞれ上限まで投資した場合の合計が360万円です。</p>
 <p><strong>② 非課税保有限度額（生涯を通じての上限）</strong></p>
-<p>上記の年間枠を使って買い付けた商品を、非課税のまま保有し続けられる金額の上限が、合計で1,800万円です。そのうち、成長投資枠で保有できるのは1,200万円までという内訳になっています。</p>
+<p>買い付けた商品を非課税のまま保有できる金額の上限は、合計で1,800万円です。このうち、成長投資枠で使えるのは1,200万円までです。</p>
 <p>つまり、「毎年最大360万円まで投資でき、それを生涯で合計1,800万円分まで非課税のまま持ち続けられる」というのが、この制度の骨格です。</p>
-
-<h2>売却すると、枠は翌年以降に復活する</h2>
-<p>新NISAのもう一つの特徴が、保有していた商品を売却すると、その分の非課税保有限度額が翌年以降に復活する、という仕組みです。ただし注意したいのは、復活するのはあくまで「取得したときの金額（簿価）」分であり、値上がりした分も含めて丸ごと復活するわけではないという点です。また、復活した枠が使えるようになるのは売却した年の翌年からで、同じ年のうちに再利用することはできません。</p>
-
-<h2>まとめ：制度のルールを知ったうえで、無理のない金額から</h2>
-<p>新NISAの枠のルールは、「年間いくらまで投資できるか」と「生涯でいくらまで非課税で持てるか」という2つの視点で整理すると理解しやすくなります。数字の大きさに惑わされず、ご自身の家計に無理のない金額から始めることが大切です。</p>
-<p>iDeCoとの役割分担に迷う方は、まず「iDeCoとNISA、何が違う？併用すべき人・しない方がいい人」もあわせてご覧ください。</p>
+<h2 id="s3">具体的な数字で、枠の積み上がりを見てみる</h2>
+<p>1,800万円の枠をすべて埋めるまでに、どのくらいかかるのかを、積み立てる金額ごとに計算してみます。</p>
+<div class="table-wrap"><table class="data">
+<tr><th>投資の仕方</th><th>年間の投資額</th><th>1,800万円に達するまで</th></tr>
+<tr><td>毎月5万円を積み立てる</td><td>60万円</td><td>30年</td></tr>
+<tr><td>毎月10万円を積み立てる</td><td>120万円（つみたて投資枠の上限）</td><td>15年</td></tr>
+<tr><td>つみたて投資枠と成長投資枠を上限まで使う</td><td>360万円</td><td>5年</td></tr>
+</table></div>
+<p>成長投資枠だけで考えると、年240万円ずつ使った場合に、1,200万円の上限へ5年で達します。ここから先は、つみたて投資枠側でしか枠を使えません。なお、これは「枠」の計算であり、運用による値上がりや値下がりは含んでいません。</p>
+<h2 id="s4">売却すると、枠は翌年以降に復活する</h2>
+<p>新NISAのもう一つの特徴が、保有している商品を売却すると、その分の非課税保有限度額が翌年以降に復活する、という仕組みです。</p>
+<p>復活するのは、買ったときの金額（簿価）の分だけです。たとえば、300万円で買った商品が500万円に値上がりして売却した場合、復活する枠は300万円分です。値上がりした200万円分は復活しません。また、枠が使えるようになるのは売却した年の翌年1月からで、同じ年のうちに再利用することはできません。</p>
+<p>年間投資枠も、買い付けた金額で数えます。年の途中で売却しても、その年の年間投資枠は戻りません。</p>
+<h2 id="s5">旧NISAとの関係</h2>
+<p>旧NISA（一般NISA・つみたてNISA）で購入した商品は、新NISAの1,800万円の枠には含まれず、別枠で扱われます。旧NISAの非課税期間が終わるまでは、そのまま非課税で保有できます。</p>
+<h2 id="s6">枠のルール以外で知っておきたいこと</h2>
+<ul>
+<li>NISA口座で損失が出ても、ほかの口座の利益と相殺（損益通算）することや、翌年以降に繰り越すことはできません。</li>
+<li>非課税の対象は、売却益や分配金・配当金などの運用で得た利益です。</li>
+<li>投資する商品の種類は、つみたて投資枠と成長投資枠で異なります（<a href="nisa-tsumitate-seicho.html">違いを整理した記事はこちら</a>）。</li>
+<li>金融機関の変更は年単位で行え、手続きには期限があります。</li>
+</ul>
+<h2 id="s7">2027年1月からの変更予定：0〜17歳もつみたて投資枠を利用できるように</h2>
+<p>2026年度の税制改正で、2027年1月から、0〜17歳もNISA口座を開設し、つみたて投資枠を利用できるようになる予定です。年間投資枠は60万円、非課税保有限度額は600万円で、18歳になると、18歳以上のつみたて投資枠（1,800万円の枠の中）に移る仕組みと報じられています。成長投資枠は、引き続き18歳以上が対象です。この記事のここまでの説明は、2026年10月時点の、18歳以上の制度です。最新の内容は、金融庁の案内で確認してください。</p>
+<h2 id="s8">まとめ：制度のルールを知ったうえで、無理のない金額から</h2>
+<p>新NISAの枠のルールは、「年間いくらまで投資できるか」と「生涯でいくらまで非課税で持てるか」という2つの視点で整理すると理解しやすくなります。数字の大きさに惑わされず、ご自身の家計に無理のない金額から始めることが大切です。iDeCoとの役割分担に迷う方は、「<a href="ideco-nisa-chigai.html">iDeCoとNISA、何が違う？</a>」もあわせてご覧ください。</p>
 
   </article>
 
   <div class="disclaimer">
-    <p>本記事は新NISA制度の仕組みを一般的に説明するものであり、特定の投資商品や投資方法を推奨するものではありません。投資信託等の運用商品は元本が保証されているものではなく、市況により損失が生じる可能性があります。制度の詳細や最新情報は金融庁の公式サイトでご確認のうえ、具体的な資金計画については金融機関やファイナンシャルプランナー等の専門家にご相談ください。</p>
-    <p class="source-line">出典：金融庁 新NISA制度ページを参考に作成。</p>
+    <p>本記事は制度の仕組みを一般的に説明するものであり、特定の金融商品・金融機関・投資方法を推奨するものではありません。iDeCoやNISAで運用する商品は元本が保証されておらず、将来の運用成果を保証するものでもありません。税金の取り扱いは個々の状況によって異なります。制度の詳細や最新の情報は公式サイトでご確認のうえ、具体的な判断は金融機関や税理士・ファイナンシャルプランナー等の専門家にご相談ください。</p>
+    <p class="source-line">出典：<a href="https://www.fsa.go.jp/policy/nisa2/know/" target="_blank" rel="noopener">金融庁 NISA特設ウェブサイト「NISAを知る」</a>（2026年10月6日確認）。2027年からの変更予定は、令和8年度税制改正に関する報道・金融機関の案内を参照しています。</p>
   </div>
 
   <nav class="related">
     <h2>関連記事</h2>
     <ul>
+<li><a href="nisa-tsumitate-seicho.html">新NISAの「つみたて投資枠」と「成長投資枠」、何が違う？</a></li>
 <li><a href="ideco-nisa-chigai.html">iDeCoとNISA、何が違う？併用すべき人・しない方がいい人</a></li>
-<li><a href="ideco-2027-kaisei.html">【2027年1月改正】iDeCoの掛金上限はどう変わる？職業別に解説</a></li>
-<li><a href="shokugyobetsu-hajimekata.html">会社員・公務員・自営業・専業主婦、職業別iDeCoのはじめ方</a></li>
 <li><a href="setsuzei-keisan.html">iDeCo・NISAの節税効果はどう計算する？仕組みをやさしく解説</a></li>
+<li><a href="ideco-2027-kaisei.html">【2026年12月施行】iDeCoの掛金上限・加入年齢はどう変わる？職業別に整理</a></li>
     </ul>
   </nav>
 

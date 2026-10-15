@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新NISAの「つみたて投資枠」と「成長投資枠」、何が違う？｜いくら積み立て帳</title>
+<meta name="description" content="新NISAのつみたて投資枠と成長投資枠の違いを、年間上限・買い方・対象商品・保有できる上限額の比較表で整理。併用のしかたと、選ぶときの観点も解説します。">
+
+<meta property="og:title" content="新NISAの「つみたて投資枠」と「成長投資枠」、何が違う？">
+<meta property="og:description" content="新NISAのつみたて投資枠と成長投資枠の違いを、年間上限・買い方・対象商品・保有できる上限額の比較表で整理。併用のしかたと、選ぶときの観点も解説します。">
+<link rel="canonical" href="https://kurashi-sapo.com/ideco-nisa-simulator/articles/nisa-tsumitate-seicho.html">
+<meta property="og:url" content="https://kurashi-sapo.com/ideco-nisa-simulator/articles/nisa-tsumitate-seicho.html">
+<meta property="og:site_name" content="いくら積み立て帳">
+<meta property="og:type" content="article">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='%231F3A5F'/%3E%3Ctext x='32' y='42' font-size='28' text-anchor='middle' fill='%23FFFFFF' font-family='-apple-system,sans-serif' font-weight='700'%3E積%3C/text%3E%3C/svg%3E">
+
+<meta name="google-site-verification" content="q5HrNozMAgW_-tkq-ryqjWP2e7V27TXD897LgVPdLkw" />
+<style>
+  :root{
+    --paper:#F1F3F6;
+    --card:#FFFFFF;
+    --ink:#12151C;
+    --ink-soft:#545B66;
+    --ink-faint:#8A93A1;
+    --accent:#1F3A5F;
+    --accent-soft:#E9EEF5;
+    --brass:#0F7B5C;
+    --line:#DBE0E7;
+    --line-soft:#E7EAEF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Segoe UI", sans-serif;
+    line-height:1.8;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 20px 60px;}
+
+  header.art-header{padding:28px 0 8px;}
+  .back-link{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+    padding-bottom:1px;
+  }
+  .back-link:hover{color:var(--accent);border-color:var(--accent);}
+  header.art-header h1{
+    font-size:23px;
+    line-height:1.5;
+    margin:16px 0 6px;
+    letter-spacing:0.01em;
+  }
+  .meta-line{font-size:12px;color:var(--ink-faint);margin:0 0 6px;}
+
+
+  .ad-container{margin:22px 0;}
+  .ad-slot{
+    border:1px dashed var(--line);
+    color:var(--ink-faint);
+    text-align:center;
+    font-size:12.5px;
+    padding:14px;
+    margin:22px 0;
+    border-radius:8px;
+  }
+
+  article.prose{font-size:15.5px;color:var(--ink);}
+  article.prose h2{
+    font-size:17px;
+    margin:32px 0 12px;
+    padding-top:2px;
+    color:var(--accent);
+  }
+  article.prose h3{
+    font-size:15px;
+    margin:22px 0 8px;
+    color:var(--ink);
+  }
+  article.prose p{margin:0 0 16px;}
+  article.prose ul, article.prose ol{margin:0 0 16px;padding-left:22px;}
+  article.prose li{margin-bottom:6px;}
+  article.prose strong{color:var(--ink);}
+  article.prose a{color:var(--accent);}
+
+  table.data{
+    width:100%;
+    border-collapse:collapse;
+    margin:16px 0 20px;
+    font-size:13.5px;
+  }
+  table.data th, table.data td{
+    border:1px solid var(--line);
+    padding:9px 10px;
+    text-align:left;
+  }
+  table.data th{background:var(--accent-soft);font-weight:600;color:var(--ink);}
+  table.data td.num, table.data th.num{
+    font-family:SFMono-Regular, Consolas, "Courier New", monospace;
+    font-variant-numeric:tabular-nums;
+    text-align:right;
+  }
+
+  .calc-box{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px 16px;
+    margin:0 0 18px;
+    font-size:14px;
+  }
+  .calc-box .formula{
+    font-family:SFMono-Regular, Consolas, "Courier New", monospace;
+    font-variant-numeric:tabular-nums;
+    color:var(--accent);
+    font-weight:700;
+    display:block;
+    margin:6px 0;
+  }
+
+  .disclaimer{
+    font-size:12px;
+    color:var(--ink-faint);
+    background:var(--accent-soft);
+    border-radius:8px;
+    padding:14px 16px;
+    margin-top:20px;
+  }
+  .disclaimer p{margin:0 0 6px;}
+  .disclaimer p:last-child{margin-bottom:0;}
+  .source-line{font-size:11.5px;color:var(--ink-faint);margin-top:10px;}
+
+  nav.related{margin-top:32px;}
+  nav.related h2{font-size:14px;color:var(--ink-soft);margin:0 0 10px;font-weight:600;}
+  nav.related ul{list-style:none;margin:0;padding:0;}
+  nav.related li{margin-bottom:8px;}
+  nav.related a{
+    display:block;
+    font-size:13.5px;
+    color:var(--ink);
+    text-decoration:none;
+    padding:10px 14px;
+    background:var(--card);
+    border:1px solid var(--line-soft);
+    border-radius:8px;
+  }
+  nav.related a:hover{border-color:var(--accent);}
+
+  .cta-box{
+    margin-top:24px;
+    padding:22px 20px;
+    background:var(--accent);
+    border-radius:10px;
+    text-align:center;
+  }
+  .cta-box p{color:#fff;font-size:14px;margin:0 0 14px;}
+  .cta-box a.cta-btn{
+    display:inline-block;
+    background:#fff;
+    color:var(--accent);
+    font-weight:700;
+    font-size:14px;
+    padding:11px 26px;
+    border-radius:8px;
+    text-decoration:none;
+  }
+
+  footer.site-footer{
+    margin-top:36px;
+    padding-top:18px;
+    border-top:1px solid var(--line-soft);
+    font-size:11.5px;
+    color:var(--ink-faint);
+    text-align:center;
+    line-height:1.9;
+  }
+  footer.site-footer a{color:var(--ink-soft);}
+
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:16px 0 20px;}
+  .table-wrap table.data{margin:0;min-width:460px;}
+  table.data td, table.data th{vertical-align:top;line-height:1.6;}
+  nav.toc{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px 10px;margin:14px 0 6px;font-size:13.5px;}
+  nav.toc p{margin:0 0 6px;font-weight:600;color:var(--ink-soft);font-size:12.5px;}
+  nav.toc ol{margin:0;padding-left:20px;}
+  nav.toc li{margin-bottom:4px;}
+  nav.toc a{color:var(--accent);text-decoration:none;}
+  article.prose h2{scroll-margin-top:12px;}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "新NISAの「つみたて投資枠」と「成長投資枠」、何が違う？", "description": "新NISAのつみたて投資枠と成長投資枠の違いを、年間上限・買い方・対象商品・保有できる上限額の比較表で整理。併用のしかたと、選ぶときの観点も解説します。", "datePublished": "2026-10-06", "dateModified": "2026-10-06", "inLanguage": "ja", "mainEntityOfPage": "https://kurashi-sapo.com/ideco-nisa-simulator/articles/nisa-tsumitate-seicho.html", "author": {"@type": "Organization", "name": "暮らしサポ運営者"}, "publisher": {"@type": "Organization", "name": "暮らしサポ"}}</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1057798834587731" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="wrap">
+  <header class="art-header">
+    <a class="back-link" href="../index.html">← いくら積み立て帳 トップ（シミュレーター）</a>
+    <h1>新NISAの「つみたて投資枠」と「成長投資枠」、何が違う？</h1>
+    <p class="meta-line">公開日：2026年10月6日｜最終更新日：2026年10月6日｜制度・数字の確認日：2026年10月6日</p>
+  </header>
+
+  <nav class="toc" aria-label="目次"><p>この記事の内容</p><ol><li><a href="#s1">2つの枠の違い（比較表）</a></li><li><a href="#s2">つみたて投資枠の特徴</a></li><li><a href="#s3">成長投資枠の特徴</a></li><li><a href="#s4">どちらを使うか、考えるときの観点</a></li><li><a href="#s5">2027年から変わる予定のこと</a></li><li><a href="#s6">注意しておきたいこと</a></li><li><a href="#s7">まとめ</a></li></ol></nav>
+
+  <article class="prose">
+
+<p>新NISAには、「つみたて投資枠」と「成長投資枠」という2つの枠があります。名前は聞いたことがあっても、実際に何が違うのか、どちらを使えばいいのかが分かりにくいと感じる方は多いと思います。この記事では、特定の商品をすすめることはせず、2つの枠の制度上の違いを整理します。</p>
+<h2 id="s1">2つの枠の違い（比較表）</h2>
+<div class="table-wrap"><table class="data">
+<tr><th>項目</th><th>つみたて投資枠</th><th>成長投資枠</th></tr>
+<tr><td>年間の上限</td><td>120万円</td><td>240万円</td></tr>
+<tr><td>買い方</td><td>積み立て（定期的な買い付け）</td><td>一括での購入も、積み立ても可能</td></tr>
+<tr><td>投資できる商品</td><td>金融庁が定める基準を満たした投資信託</td><td>上場株式、投資信託など（一部の商品は対象外）</td></tr>
+<tr><td>生涯の保有上限</td><td>1,800万円の枠の範囲内</td><td>1,200万円まで（1,800万円の内数）</td></tr>
+</table></div>
+<p>2つの枠は、同じ年に併用できます。両方を上限まで使うと、年間の合計は360万円になります。生涯の非課税保有限度額は、2つの枠を合わせて1,800万円です。詳しくは「<a href="nisa-waku-rule.html">新NISAの年間360万円・生涯1,800万円</a>」をご覧ください。</p>
+<h2 id="s2">つみたて投資枠の特徴</h2>
+<p>つみたて投資枠で買えるのは、長期の積み立てや分散投資に向くよう、金融庁が定めた基準を満たした投資信託です。基準には、販売手数料がかからないこと、信託報酬が一定の水準以下であること、信託期間が無期限か20年以上であること、毎月分配型でないことなどが含まれます。対象の商品は、金融庁のウェブサイトで一覧が公表されています。</p>
+<p>買い方は積み立てが基本です。毎月、あるいは毎週などの決まったタイミングで、一定の金額を自動で買い付けていく形になります。まとまった金額を一度に投資することはできません。</p>
+<h2 id="s3">成長投資枠の特徴</h2>
+<p>成長投資枠は、対象になる商品の幅が広い枠です。投資信託のほか、上場株式なども買えます。一括での購入と積み立ての、どちらも選べます。</p>
+<p>ただし、何でも買えるわけではありません。金融庁によると、整理銘柄・監理銘柄に指定されている株式のほか、信託期間が20年未満の投資信託、毎月分配型の投資信託、デリバティブ取引を用いた一定の投資信託などは、対象から除かれています。</p>
+<p>年間の上限は240万円と大きい反面、生涯の保有上限は1,200万円までです。成長投資枠だけで1,800万円まで使うことはできません。</p>
+<h2 id="s4">どちらを使うか、考えるときの観点</h2>
+<p>どちらが良いかは、人によって違います。次のような観点が、判断の材料になります。</p>
+<ul>
+<li><strong>どんな買い方をしたいか。</strong>毎月決まった額を自動で積み立てたい場合は、つみたて投資枠で対応できます。まとまった資金を一度に投資したい場合や、株式を直接買いたい場合は、成長投資枠でないとできません。</li>
+<li><strong>毎月どのくらい投資に回せるか。</strong>毎月10万円までの積み立てなら、年間120万円のつみたて投資枠の中におさまります。それを超える金額を投資する場合に、成長投資枠が候補になります。</li>
+<li><strong>どのくらいの値動きを許容できるか。</strong>どちらの枠でも、値下がりして元本を割り込むことはあります。枠の種類で、リスクの大きさが決まるわけではありません。実際のリスクは、選んだ商品によって決まります。</li>
+</ul>
+<p>また、2つの枠は併用できるので、「どちらか一方」と考える必要はありません。たとえば、毎月の積み立てはつみたて投資枠、ボーナス時などにまとまった額を使うときは成長投資枠、という使い分けも制度上は可能です。</p>
+<h2 id="s5">2027年から変わる予定のこと</h2>
+<p>2026年度の税制改正で、2027年（令和9年）から、つみたて投資枠の対象年齢が0〜17歳まで広がる（年間60万円・非課税保有限度額600万円）ほか、つみたて投資枠で買える商品の範囲も広がる予定とされています。たとえば、債券を中心とした投資信託が対象に加わる、という報道や金融機関の案内があります。成長投資枠は、引き続き18歳以上が対象です。実際の施行内容は、金融庁の案内で確認してください。</p>
+<h2 id="s6">注意しておきたいこと</h2>
+<ul>
+<li>どちらの枠も、投資した元本が保証されるものではありません。</li>
+<li>NISA口座の損失は、ほかの口座の利益と相殺できません。</li>
+<li>商品ごとに、運用コスト（信託報酬など）や値動きの特徴が異なります。購入前に、商品の説明資料（目論見書など）を確認してください。</li>
+<li>NISAは、掛金時の所得控除がある制度ではありません。老後資金づくりに向く、所得控除のある制度との違いは「<a href="ideco-nisa-chigai.html">iDeCoとNISA、何が違う？</a>」で整理しています。</li>
+</ul>
+<h2 id="s7">まとめ</h2>
+<p>つみたて投資枠は「積み立てで、基準を満たした投資信託を買う枠」、成長投資枠は「一括購入や株式なども選べる、自由度の高い枠」と整理できます。年間の上限や生涯の上限が違うため、ご自身の投資できる金額と買い方に合わせて、どの枠をどの程度使うかを考えてみてください。このサイトのシミュレーターでは、積み立て額と期間を入力して、NISAの非課税メリットの目安を試算できます。</p>
+
+  </article>
+
+  <div class="disclaimer">
+    <p>本記事は制度の仕組みを一般的に説明するものであり、特定の金融商品・金融機関・投資方法を推奨するものではありません。iDeCoやNISAで運用する商品は元本が保証されておらず、将来の運用成果を保証するものでもありません。税金の取り扱いは個々の状況によって異なります。制度の詳細や最新の情報は公式サイトでご確認のうえ、具体的な判断は金融機関や税理士・ファイナンシャルプランナー等の専門家にご相談ください。</p>
+    <p class="source-line">出典：<a href="https://www.fsa.go.jp/policy/nisa2/know/" target="_blank" rel="noopener">金融庁 NISA特設ウェブサイト「NISAを知る」</a>（2026年10月6日確認）。2027年からの変更予定は、令和8年度税制改正に関する報道・金融機関の案内を参照しています。</p>
+  </div>
+
+  <nav class="related">
+    <h2>関連記事</h2>
+    <ul>
+<li><a href="nisa-waku-rule.html">新NISAの年間360万円・生涯1,800万円、非課税枠はどう積み上がる？</a></li>
+<li><a href="ideco-nisa-chigai.html">iDeCoとNISA、何が違う？併用すべき人・しない方がいい人</a></li>
+<li><a href="setsuzei-keisan.html">iDeCo・NISAの節税効果はどう計算する？仕組みをやさしく解説</a></li>
+<li><a href="ideco-tesuryo.html">iDeCoの手数料はいくらかかる？加入時・毎月・受け取り時を整理</a></li>
+    </ul>
+  </nav>
+
+  <div class="cta-box">
+    <p>ご自身の場合の節税額・資産額を試算してみませんか？</p>
+    <a class="cta-btn" href="../index.html">シミュレーターを使ってみる</a>
+  </div>
+
+  <footer class="site-footer">
+    いくら積み立て帳｜<a href="../privacy-policy.html">プライバシーポリシー</a>｜<a href="/about.html">運営者情報</a>｜<a href="/">おひっこし計算帯</a><br>
+    入力内容が外部に送信されることはありません。
+  </footer>
+</div>
+</body>
+</html>

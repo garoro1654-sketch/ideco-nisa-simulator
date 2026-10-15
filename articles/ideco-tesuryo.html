@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iDeCoの手数料はいくらかかる？加入時・毎月・受け取り時を整理｜いくら積み立て帳</title>
+<meta name="description" content="iDeCoにかかる手数料（加入時2,829円、毎月の手数料、受け取り時の手数料）を一覧で整理。2027年1月から変わる加入者手数料の改定内容と、節税額との比較も数字で解説します。">
+
+<meta property="og:title" content="iDeCoの手数料はいくらかかる？加入時・毎月・受け取り時を整理">
+<meta property="og:description" content="iDeCoにかかる手数料（加入時2,829円、毎月の手数料、受け取り時の手数料）を一覧で整理。2027年1月から変わる加入者手数料の改定内容と、節税額との比較も数字で解説します。">
+<link rel="canonical" href="https://kurashi-sapo.com/ideco-nisa-simulator/articles/ideco-tesuryo.html">
+<meta property="og:url" content="https://kurashi-sapo.com/ideco-nisa-simulator/articles/ideco-tesuryo.html">
+<meta property="og:site_name" content="いくら積み立て帳">
+<meta property="og:type" content="article">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='%231F3A5F'/%3E%3Ctext x='32' y='42' font-size='28' text-anchor='middle' fill='%23FFFFFF' font-family='-apple-system,sans-serif' font-weight='700'%3E積%3C/text%3E%3C/svg%3E">
+
+<meta name="google-site-verification" content="q5HrNozMAgW_-tkq-ryqjWP2e7V27TXD897LgVPdLkw" />
+<style>
+  :root{
+    --paper:#F1F3F6;
+    --card:#FFFFFF;
+    --ink:#12151C;
+    --ink-soft:#545B66;
+    --ink-faint:#8A93A1;
+    --accent:#1F3A5F;
+    --accent-soft:#E9EEF5;
+    --brass:#0F7B5C;
+    --line:#DBE0E7;
+    --line-soft:#E7EAEF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Segoe UI", sans-serif;
+    line-height:1.8;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 20px 60px;}
+
+  header.art-header{padding:28px 0 8px;}
+  .back-link{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+    padding-bottom:1px;
+  }
+  .back-link:hover{color:var(--accent);border-color:var(--accent);}
+  header.art-header h1{
+    font-size:23px;
+    line-height:1.5;
+    margin:16px 0 6px;
+    letter-spacing:0.01em;
+  }
+  .meta-line{font-size:12px;color:var(--ink-faint);margin:0 0 6px;}
+
+
+  .ad-container{margin:22px 0;}
+  .ad-slot{
+    border:1px dashed var(--line);
+    color:var(--ink-faint);
+    text-align:center;
+    font-size:12.5px;
+    padding:14px;
+    margin:22px 0;
+    border-radius:8px;
+  }
+
+  article.prose{font-size:15.5px;color:var(--ink);}
+  article.prose h2{
+    font-size:17px;
+    margin:32px 0 12px;
+    padding-top:2px;
+    color:var(--accent);
+  }
+  article.prose h3{
+    font-size:15px;
+    margin:22px 0 8px;
+    color:var(--ink);
+  }
+  article.prose p{margin:0 0 16px;}
+  article.prose ul, article.prose ol{margin:0 0 16px;padding-left:22px;}
+  article.prose li{margin-bottom:6px;}
+  article.prose strong{color:var(--ink);}
+  article.prose a{color:var(--accent);}
+
+  table.data{
+    width:100%;
+    border-collapse:collapse;
+    margin:16px 0 20px;
+    font-size:13.5px;
+  }
+  table.data th, table.data td{
+    border:1px solid var(--line);
+    padding:9px 10px;
+    text-align:left;
+  }
+  table.data th{background:var(--accent-soft);font-weight:600;color:var(--ink);}
+  table.data td.num, table.data th.num{
+    font-family:SFMono-Regular, Consolas, "Courier New", monospace;
+    font-variant-numeric:tabular-nums;
+    text-align:right;
+  }
+
+  .calc-box{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px 16px;
+    margin:0 0 18px;
+    font-size:14px;
+  }
+  .calc-box .formula{
+    font-family:SFMono-Regular, Consolas, "Courier New", monospace;
+    font-variant-numeric:tabular-nums;
+    color:var(--accent);
+    font-weight:700;
+    display:block;
+    margin:6px 0;
+  }
+
+  .disclaimer{
+    font-size:12px;
+    color:var(--ink-faint);
+    background:var(--accent-soft);
+    border-radius:8px;
+    padding:14px 16px;
+    margin-top:20px;
+  }
+  .disclaimer p{margin:0 0 6px;}
+  .disclaimer p:last-child{margin-bottom:0;}
+  .source-line{font-size:11.5px;color:var(--ink-faint);margin-top:10px;}
+
+  nav.related{margin-top:32px;}
+  nav.related h2{font-size:14px;color:var(--ink-soft);margin:0 0 10px;font-weight:600;}
+  nav.related ul{list-style:none;margin:0;padding:0;}
+  nav.related li{margin-bottom:8px;}
+  nav.related a{
+    display:block;
+    font-size:13.5px;
+    color:var(--ink);
+    text-decoration:none;
+    padding:10px 14px;
+    background:var(--card);
+    border:1px solid var(--line-soft);
+    border-radius:8px;
+  }
+  nav.related a:hover{border-color:var(--accent);}
+
+  .cta-box{
+    margin-top:24px;
+    padding:22px 20px;
+    background:var(--accent);
+    border-radius:10px;
+    text-align:center;
+  }
+  .cta-box p{color:#fff;font-size:14px;margin:0 0 14px;}
+  .cta-box a.cta-btn{
+    display:inline-block;
+    background:#fff;
+    color:var(--accent);
+    font-weight:700;
+    font-size:14px;
+    padding:11px 26px;
+    border-radius:8px;
+    text-decoration:none;
+  }
+
+  footer.site-footer{
+    margin-top:36px;
+    padding-top:18px;
+    border-top:1px solid var(--line-soft);
+    font-size:11.5px;
+    color:var(--ink-faint);
+    text-align:center;
+    line-height:1.9;
+  }
+  footer.site-footer a{color:var(--ink-soft);}
+
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:16px 0 20px;}
+  .table-wrap table.data{margin:0;min-width:460px;}
+  table.data td, table.data th{vertical-align:top;line-height:1.6;}
+  nav.toc{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px 10px;margin:14px 0 6px;font-size:13.5px;}
+  nav.toc p{margin:0 0 6px;font-weight:600;color:var(--ink-soft);font-size:12.5px;}
+  nav.toc ol{margin:0;padding-left:20px;}
+  nav.toc li{margin-bottom:4px;}
+  nav.toc a{color:var(--accent);text-decoration:none;}
+  article.prose h2{scroll-margin-top:12px;}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "iDeCoの手数料はいくらかかる？加入時・毎月・受け取り時を整理", "description": "iDeCoにかかる手数料（加入時2,829円、毎月の手数料、受け取り時の手数料）を一覧で整理。2027年1月から変わる加入者手数料の改定内容と、節税額との比較も数字で解説します。", "datePublished": "2026-10-06", "dateModified": "2026-10-06", "inLanguage": "ja", "mainEntityOfPage": "https://kurashi-sapo.com/ideco-nisa-simulator/articles/ideco-tesuryo.html", "author": {"@type": "Organization", "name": "暮らしサポ運営者"}, "publisher": {"@type": "Organization", "name": "暮らしサポ"}}</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1057798834587731" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="wrap">
+  <header class="art-header">
+    <a class="back-link" href="../index.html">← いくら積み立て帳 トップ（シミュレーター）</a>
+    <h1>iDeCoの手数料はいくらかかる？加入時・毎月・受け取り時を整理</h1>
+    <p class="meta-line">公開日：2026年10月6日｜最終更新日：2026年10月6日｜制度・数字の確認日：2026年10月6日</p>
+  </header>
+
+  <nav class="toc" aria-label="目次"><p>この記事の内容</p><ol><li><a href="#s1">手数料がかかる場面と金額</a></li><li><a href="#s2">2027年1月から、毎月の手数料が変わる</a></li><li><a href="#s3">毎月の手数料は、年間・20年間でいくらか</a></li><li><a href="#s4">節税額と手数料を比べてみる</a></li><li><a href="#s5">金融機関を選ぶときに確認したいこと</a></li><li><a href="#s6">手数料を理由に、iDeCoを避けるべきか</a></li></ol></nav>
+
+  <article class="prose">
+
+<p>iDeCoは税金の優遇が大きい制度ですが、利用するには手数料がかかります。この記事では、どんな手数料がいつ、いくらかかるのかを整理します。あわせて、2027年1月から変わる手数料の改定についても説明します。金額は2026年10月6日時点のもので、金融機関ごとに異なる部分もあります。</p>
+<h2 id="s1">手数料がかかる場面と金額</h2>
+<div class="table-wrap"><table class="data">
+<tr><th>場面</th><th>支払先</th><th>金額（税込）</th></tr>
+<tr><td>加入するとき（1回だけ）</td><td>国民年金基金連合会</td><td>2,829円</td></tr>
+<tr><td>掛金を拠出している間</td><td>国民年金基金連合会</td><td>掛金を拠出するたびに105円（毎月拠出なら月105円）<br/>2027年1月26日の引き落とし分から、月額120円</td></tr>
+<tr><td>運用している間（毎月）</td><td>事務委託先金融機関（信託銀行）</td><td>月66円</td></tr>
+<tr><td>掛金を拠出している間（毎月）</td><td>運営管理機関（口座を開く金融機関）</td><td>金融機関により異なる（0円のところもある）</td></tr>
+<tr><td>受け取るとき</td><td>事務委託先金融機関</td><td>給付1回につき440円（振込のたび）</td></tr>
+</table></div>
+<p>加入者の手数料は、毎回の掛金から差し引かれます。掛金を拠出せず運用だけを続ける「運用指図者」になった場合は、国民年金基金連合会の手数料はかからず、事務委託先金融機関の月66円と、運営管理機関の手数料（金融機関による）がかかります。</p>
+<p>このほかに、運用する投資信託などの商品ごとに、運用コスト（信託報酬など）がかかります。これは手数料とは別に、保有している間、資産から差し引かれるコストです。</p>
+<p>国民年金基金連合会と事務委託先金融機関の手数料は、どの金融機関を選んでも同じ金額です。金融機関によって差が出るのは、運営管理機関に支払う手数料の部分です。</p>
+<h2 id="s2">2027年1月から、毎月の手数料が変わる</h2>
+<p>国民年金基金連合会に支払う加入者手数料が、2027年1月26日の口座引き落とし分（2026年12月分）の掛金から、次のように改定されます。</p>
+<ul>
+<li>現在：掛金を拠出するたびに105円</li>
+<li>改定後：月額120円</li>
+</ul>
+<p>もう一つ変わるのが、年単位拠出（掛金を年に1回や数回にまとめて払う方法）の扱いです。これまでは、拠出の回数分だけ手数料がかかっていたため、手数料を抑える目的で使う方もいました。改定後は、拠出する月数に応じて、120円×月数がかかる形になります。手数料を理由に年単位拠出を選んでいた方は、見直しの対象です。たとえば12か月分を年1回でまとめて拠出している場合、1回に1,440円（120円×12か月）の手数料がかかる計算です。</p>
+<p>この改定について、加入者側で必要な手続きはありません。</p>
+<h2 id="s3">毎月の手数料は、年間・20年間でいくらか</h2>
+<p>運営管理手数料が0円の金融機関を選び、毎月掛金を拠出するケースで計算してみます。</p>
+<div class="table-wrap"><table class="data">
+<tr><th></th><th>毎月の合計</th><th>年間</th></tr>
+<tr><td>現在（国基連105円＋信託銀行66円）</td><td>171円</td><td>2,052円</td></tr>
+<tr><td>2027年1月以降（国基連120円＋信託銀行66円）</td><td>186円</td><td>2,232円</td></tr>
+</table></div>
+<p>改定後のケースで、20年間毎月拠出し続けると、加入時の2,829円を含めて、手数料の合計は約47,000円です（2,829円＋2,232円×20年＝47,469円）。運営管理手数料が有料の金融機関では、これにさらに上乗せされます。</p>
+<h2 id="s4">節税額と手数料を比べてみる</h2>
+<p>手数料が気になるときは、節税額と並べてみると判断しやすくなります。節税額の目安は「年間の掛金×（所得税率＋住民税率10%）」です（<a href="setsuzei-keisan.html">計算の仕組みはこちら</a>）。2027年1月以降の年間の手数料2,232円と比較してみます。</p>
+<div class="table-wrap"><table class="data">
+<tr><th>月額の掛金</th><th>合計税率15%の場合の年間節税額</th><th>合計税率20%の場合の年間節税額</th></tr>
+<tr><td>5,000円</td><td>9,000円</td><td>12,000円</td></tr>
+<tr><td>10,000円</td><td>18,000円</td><td>24,000円</td></tr>
+<tr><td>23,000円</td><td>41,400円</td><td>55,200円</td></tr>
+</table></div>
+<p>月5,000円・合計税率15%の場合、手数料2,232円は節税額9,000円の約4分の1にあたります。一方、月23,000円・合計税率20%の場合は、節税額55,200円に対して手数料は4%ほどです。掛金が少ないほど、手数料の負担の割合は大きくなります。</p>
+<p>ただし、これは掛金を出したときの節税だけを見た比較です。運用益が非課税になるメリットや、運用の成績は含んでいません。また、運用成績が悪ければ、元本を割り込むこともあります。</p>
+<h2 id="s5">金融機関を選ぶときに確認したいこと</h2>
+<ul>
+<li><strong>運営管理手数料の条件。</strong>無料のところと、有料のところがあります。残高や掛金の条件によって無料になるケースもあるため、条件を確認します。</li>
+<li><strong>取り扱っている運用商品。</strong>商品の種類や数、運用コスト（信託報酬）の水準を確認します。手数料が低くても、希望する運用ができなければ意味がありません。</li>
+<li><strong>手続きのしやすさ。</strong>インターネットで申し込めるか、書類のやり取りが必要かなどです。</li>
+<li><strong>金融機関の変更方法。</strong>あとから別の金融機関へ変更することも可能ですが、手続きと時間が必要になります。</li>
+</ul>
+<h2 id="s6">手数料を理由に、iDeCoを避けるべきか</h2>
+<p>一概には言えません。掛金が少なく、税率も低い場合は、手数料の割合が大きくなります。逆に、課税所得があり、ある程度の掛金を長く続けられる場合は、節税額が手数料を上回ることが多くなります。ご自身の掛金額と税率で、節税額と手数料を並べて確かめてみてください。このサイトのシミュレーターでは、掛金に応じた節税額の目安を確認できます。</p>
+<p>手数料の金額は、制度の見直しで変わることがあります。最新の金額は、iDeCo公式サイトと、利用する金融機関のページで確認してください。</p>
+
+  </article>
+
+  <div class="disclaimer">
+    <p>本記事は制度の仕組みを一般的に説明するものであり、特定の金融商品・金融機関・投資方法を推奨するものではありません。iDeCoやNISAで運用する商品は元本が保証されておらず、将来の運用成果を保証するものでもありません。税金の取り扱いは個々の状況によって異なります。制度の詳細や最新の情報は公式サイトでご確認のうえ、具体的な判断は金融機関や税理士・ファイナンシャルプランナー等の専門家にご相談ください。</p>
+    <p class="source-line">出典：<a href="https://www.ideco-koushiki.jp/" target="_blank" rel="noopener">iDeCo公式サイト（国民年金基金連合会）</a>（国民年金基金連合会「iDeCo加入者に係る手数料を見直します」、2026年4月30日公表）、各運営管理機関の手数料のご案内（2026年10月6日確認）。</p>
+  </div>
+
+  <nav class="related">
+    <h2>関連記事</h2>
+    <ul>
+<li><a href="setsuzei-keisan.html">iDeCo・NISAの節税効果はどう計算する？仕組みをやさしく解説</a></li>
+<li><a href="ideco-2027-kaisei.html">【2026年12月施行】iDeCoの掛金上限・加入年齢はどう変わる？職業別に整理</a></li>
+<li><a href="ideco-uketori-zeikin.html">iDeCoの受け取り方と税金｜一時金・年金・併用と「10年ルール」</a></li>
+<li><a href="shokugyobetsu-hajimekata.html">会社員・公務員・自営業・専業主婦、職業別iDeCoのはじめ方</a></li>
+    </ul>
+  </nav>
+
+  <div class="cta-box">
+    <p>ご自身の場合の節税額・資産額を試算してみませんか？</p>
+    <a class="cta-btn" href="../index.html">シミュレーターを使ってみる</a>
+  </div>
+
+  <footer class="site-footer">
+    いくら積み立て帳｜<a href="../privacy-policy.html">プライバシーポリシー</a>｜<a href="/about.html">運営者情報</a>｜<a href="/">おひっこし計算帯</a><br>
+    入力内容が外部に送信されることはありません。
+  </footer>
+</div>
+</body>
+</html>

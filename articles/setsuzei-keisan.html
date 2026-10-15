@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>iDeCo・NISAの節税効果はどう計算する？仕組みをやさしく解説｜いくら積み立て帳</title>
-<meta name="description" content="シミュレーターの節税額・非課税メリット額がどんな計算式にもとづいているのか、iDeCoの所得控除とNISAの非課税の仕組みをやさしく解説します。">
+<meta name="description" content="iDeCoの節税額（所得控除）とNISAの非課税メリットの計算式を、税率の早見表と具体例つきで解説。シミュレーターの数字がどう出ているのかも説明します。">
 
 <meta property="og:title" content="iDeCo・NISAの節税効果はどう計算する？仕組みをやさしく解説">
-<meta property="og:description" content="シミュレーターの節税額・非課税メリット額がどんな計算式にもとづいているのか、iDeCoの所得控除とNISAの非課税の仕組みをやさしく解説します。">
+<meta property="og:description" content="iDeCoの節税額（所得控除）とNISAの非課税メリットの計算式を、税率の早見表と具体例つきで解説。シミュレーターの数字がどう出ているのかも説明します。">
 <link rel="canonical" href="https://kurashi-sapo.com/ideco-nisa-simulator/articles/setsuzei-keisan.html">
 <meta property="og:url" content="https://kurashi-sapo.com/ideco-nisa-simulator/articles/setsuzei-keisan.html">
 <meta property="og:site_name" content="いくら積み立て帳">
@@ -15,6 +15,7 @@
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='%231F3A5F'/%3E%3Ctext x='32' y='42' font-size='28' text-anchor='middle' fill='%23FFFFFF' font-family='-apple-system,sans-serif' font-weight='700'%3E積%3C/text%3E%3C/svg%3E">
 
+<meta name="google-site-verification" content="q5HrNozMAgW_-tkq-ryqjWP2e7V27TXD897LgVPdLkw" />
 <style>
   :root{
     --paper:#F1F3F6;
@@ -177,7 +178,18 @@
     line-height:1.9;
   }
   footer.site-footer a{color:var(--ink-soft);}
+
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:16px 0 20px;}
+  .table-wrap table.data{margin:0;min-width:460px;}
+  table.data td, table.data th{vertical-align:top;line-height:1.6;}
+  nav.toc{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px 10px;margin:14px 0 6px;font-size:13.5px;}
+  nav.toc p{margin:0 0 6px;font-weight:600;color:var(--ink-soft);font-size:12.5px;}
+  nav.toc ol{margin:0;padding-left:20px;}
+  nav.toc li{margin-bottom:4px;}
+  nav.toc a{color:var(--accent);text-decoration:none;}
+  article.prose h2{scroll-margin-top:12px;}
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "iDeCo・NISAの節税効果はどう計算する？仕組みをやさしく解説", "description": "iDeCoの節税額（所得控除）とNISAの非課税メリットの計算式を、税率の早見表と具体例つきで解説。シミュレーターの数字がどう出ているのかも説明します。", "datePublished": "2026-09-09", "dateModified": "2026-10-06", "inLanguage": "ja", "mainEntityOfPage": "https://kurashi-sapo.com/ideco-nisa-simulator/articles/setsuzei-keisan.html", "author": {"@type": "Organization", "name": "暮らしサポ運営者"}, "publisher": {"@type": "Organization", "name": "暮らしサポ"}}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1057798834587731" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -185,55 +197,76 @@
   <header class="art-header">
     <a class="back-link" href="../index.html">← いくら積み立て帳 トップ（シミュレーター）</a>
     <h1>iDeCo・NISAの節税効果はどう計算する？仕組みをやさしく解説</h1>
+    <p class="meta-line">公開日：2026年9月9日｜最終更新日：2026年10月6日｜制度・数字の確認日：2026年10月6日</p>
   </header>
+
+  <nav class="toc" aria-label="目次"><p>この記事の内容</p><ol><li><a href="#s1">2つの節税は、生まれるタイミングが違う</a></li><li><a href="#s2">iDeCoの節税効果：所得控除の仕組み</a></li><li><a href="#s3">早見表：掛金と税率で節税額はこう変わる</a></li><li><a href="#s4">節税額は、いつどうやって戻ってくるのか</a></li><li><a href="#s5">課税所得がない場合は、所得控除の効果が出ない</a></li><li><a href="#s6">NISAの非課税メリット：運用益にかかる税金がゼロになる</a></li><li><a href="#s7">受け取るときの税金についての注意点</a></li><li><a href="#s8">手数料も含めて考える</a></li><li><a href="#s9">まとめ</a></li></ol></nav>
 
   <article class="prose">
 
-<p>このサイトのシミュレーターでは、iDeCoの「節税額」やNISAの「非課税メリット額」を試算できます。この記事では、その数字がどういう計算の仕組みにもとづいているのかを説明します。あくまで仕組みの解説であり、実際の税額はご自身の状況によって変わる点にご留意ください。</p>
-
-<h2>iDeCoの節税効果：所得控除の仕組み</h2>
+<p>このサイトのシミュレーターでは、iDeCoの「節税額」やNISAの「非課税メリット額」を試算できます。この記事では、その数字がどういう計算にもとづいているのかを説明します。あくまで仕組みの解説で、実際の税額はご自身の状況によって変わります。</p>
+<h2 id="s1">2つの節税は、生まれるタイミングが違う</h2>
+<p>iDeCoの節税は「掛金を出すとき」、NISAの非課税は「運用で利益が出たとき」に生まれます。計算のもとになる考え方がまったく違うので、分けて見ていきます。</p>
+<h2 id="s2">iDeCoの節税効果：所得控除の仕組み</h2>
 <p>iDeCoの掛金は、全額が「小規模企業共済等掛金控除」という所得控除の対象になります。所得控除とは、税金を計算するもとになる所得（課税所得）そのものを減らす仕組みです。課税所得が減れば、その分だけ所得税と住民税の負担も軽くなります。</p>
-<div class="calc-box">
-節税額は、大まかに次の式で計算できます。
-<span class="formula">年間の節税額 ＝ 年間の掛金 ×（所得税率 ＋ 住民税率10%）</span>
-</div>
-<p>住民税率は所得にかかわらずおおむね一律10%ですが、所得税率は課税所得の金額に応じて5%〜45%の間で段階的に上がっていきます（超過累進課税）。そのため、同じ掛金額でも、課税所得が多い方ほど1年あたりの節税額は大きくなります。</p>
-<p>たとえば、所得税率10%の方が月23,000円（年間276,000円）を拠出した場合、節税額の目安は次のようになります。</p>
-<ul>
-<li>所得税分：276,000円 × 10% ＝ 27,600円</li>
-<li>住民税分：276,000円 × 10% ＝ 27,600円</li>
-<li>年間の節税額の目安：合計 55,200円</li>
-</ul>
-<p>これはあくまで一例であり、実際の所得税率は課税所得の金額によって決まります。ご自身の所得税率が分からない場合は、源泉徴収票や確定申告書に記載されている課税所得の金額をもとに確認できます。</p>
-
-<h2>NISAの非課税メリット：運用益にかかる税金がゼロになる仕組み</h2>
-<p>通常、投資信託や株式を売却して利益が出たり、分配金・配当金を受け取ったりすると、その利益に対して約20.315%（所得税・復興特別所得税・住民税の合計）の税金がかかります。NISA口座で得た利益には、この税金がかかりません。</p>
-<div class="calc-box">
-非課税メリット額は、次の式で計算できます。
-<span class="formula">非課税メリット額 ＝ 運用で得られた利益 × 20.315%</span>
-</div>
-<p>たとえば、NISA口座での運用によって50万円の利益が出た場合、通常の課税口座であれば約101,575円の税金がかかるところ、NISA口座であればこの税金がまるごと不要になる、という計算です。</p>
-
-<h2>受け取るときの税金についての注意点</h2>
-<p>iDeCoは、掛金を拠出する時点・運用している間は税制上優遇されていますが、60歳以降に実際に受け取る際には、原則として税金がかかります。受け取り方（一時金として受け取るか、年金として分割で受け取るか、その組み合わせか）によって、退職所得控除や公的年金等控除といった別の控除の仕組みが適用され、計算が複雑になります。この点については本記事では詳しく扱わず、別の機会に改めて解説する予定です。受け取り方によって税負担が変わるということだけ、ここでは押さえておいてください。</p>
-
-<h2>まとめ</h2>
-<p>iDeCoの節税効果は「掛金を出す時点」の所得控除、NISAの非課税メリットは「運用の利益が出た時点」の非課税、というように、効果が生まれるタイミングが異なります。このサイトのシミュレーターは、この記事で説明した計算式にもとづいて試算しています。ご自身の掛金額や税率を入力して、実際の数字を確認してみてください。</p>
+<p>節税額は、大まかに次の式で求められます。</p>
+<p><strong>年間の節税額 ＝ 年間の掛金 ×（所得税率 ＋ 住民税率10%）</strong></p>
+<p>住民税の所得割は、おおむね一律10%です。一方、所得税率は課税所得に応じて5%〜45%の7段階で上がっていきます（超過累進課税）。</p>
+<div class="table-wrap"><table class="data">
+<tr><th>課税所得</th><th>所得税率</th></tr>
+<tr><td>195万円未満</td><td>5%</td></tr>
+<tr><td>195万円以上330万円未満</td><td>10%</td></tr>
+<tr><td>330万円以上695万円未満</td><td>20%</td></tr>
+<tr><td>695万円以上900万円未満</td><td>23%</td></tr>
+<tr><td>900万円以上1,800万円未満</td><td>33%</td></tr>
+<tr><td>1,800万円以上4,000万円未満</td><td>40%</td></tr>
+<tr><td>4,000万円以上</td><td>45%</td></tr>
+</table></div>
+<p>ここでいう課税所得は、給与の金額そのものではなく、給与所得控除や各種の所得控除を差し引いたあとの金額です。源泉徴収票の「所得控除の額の合計額」や、確定申告書の課税所得の欄で確認できます。</p>
+<h2 id="s3">早見表：掛金と税率で節税額はこう変わる</h2>
+<div class="table-wrap"><table class="data">
+<tr><th>月額の掛金（年間）</th><th>合計税率15%<br/>（所得税5%）</th><th>合計税率20%<br/>（所得税10%）</th><th>合計税率30%<br/>（所得税20%）</th><th>合計税率33%<br/>（所得税23%）</th></tr>
+<tr><td>5,000円（6万円）</td><td>9,000円</td><td>12,000円</td><td>18,000円</td><td>19,800円</td></tr>
+<tr><td>23,000円（27.6万円）</td><td>41,400円</td><td>55,200円</td><td>82,800円</td><td>91,080円</td></tr>
+<tr><td>62,000円（74.4万円）</td><td>111,600円</td><td>148,800円</td><td>223,200円</td><td>245,520円</td></tr>
+</table></div>
+<p>この表と、このサイトのシミュレーターは、復興特別所得税（所得税額の2.1%）を含めない簡易計算です。2026年までは所得税額に2.1%の復興特別所得税が上乗せされるため、実際の節税額は、これよりわずかに大きくなります。2027年（令和9年）以後は、復興特別所得税の税率が1.1%に引き下げられ、新たに防衛特別所得税（所得税額の1%）が加わりますが、合計の2.1%は変わらないと、国税庁が案内しています。また、所得控除は課税所得を超えて使うことはできないため、課税所得が小さい方は、掛金の全額分の効果が出ない場合があります。</p>
+<h2 id="s4">節税額は、いつどうやって戻ってくるのか</h2>
+<p>所得税は、年末調整や確定申告で控除を申告することで、納めすぎた分が戻る、または納める額が減ります。住民税は、翌年度の税額が軽くなる形で反映されます。</p>
+<p>控除を受けるには、掛金を払い込んだ証明書が必要です。例年、秋ごろに国民年金基金連合会から送られてくるので、年末調整や確定申告の時期まで保管しておきます。申告しないと、せっかくの所得控除が使われません。なお、国税庁によると、令和8年分以後の確定申告書を令和9年1月1日以後に提出するときは、証明書の添付に代えて、一定の事項を記載した明細書を添付することもできます。</p>
+<h2 id="s5">課税所得がない場合は、所得控除の効果が出ない</h2>
+<p>所得税・住民税がかかっていない方（たとえば、専業主婦・主夫の方や、所得が控除の範囲に収まっている方）は、掛金を積み立てても、所得控除による節税はありません。iDeCoの運用益が非課税になるメリットは残りますが、所得控除を目当てに始める場合は、この点に注意が必要です。</p>
+<h2 id="s6">NISAの非課税メリット：運用益にかかる税金がゼロになる</h2>
+<p>通常、投資信託や株式を売却して利益が出たり、分配金・配当金を受け取ったりすると、その利益に約20.315%の税金がかかります。内訳は、所得税15%、復興特別所得税0.315%、住民税5%です。NISA口座で得た利益には、この税金がかかりません。</p>
+<p><strong>非課税メリット額 ＝ 運用で得られた利益 × 20.315%</strong></p>
+<div class="table-wrap"><table class="data">
+<tr><th>運用で得た利益</th><th>通常の課税口座の税金</th><th>NISAなら</th></tr>
+<tr><td>10万円</td><td>20,315円</td><td>0円</td></tr>
+<tr><td>50万円</td><td>101,575円</td><td>0円</td></tr>
+<tr><td>100万円</td><td>203,150円</td><td>0円</td></tr>
+</table></div>
+<p>注意したいのは、運用で損失が出た場合は、このメリットが生じないという点です。さらに、NISA口座での損失は、ほかの口座の利益と相殺（損益通算）できません。枠の仕組みについては「<a href="nisa-waku-rule.html">新NISAの年間360万円・生涯1,800万円</a>」で説明しています。</p>
+<h2 id="s7">受け取るときの税金についての注意点</h2>
+<p>iDeCoは、掛金を拠出するときと運用している間は税制上優遇されていますが、60歳以降に受け取るときには、原則として課税されます。受け取り方（一時金か、年金か、その組み合わせか）によって、退職所得控除や公的年金等控除が適用され、税負担が変わります。詳しくは「<a href="ideco-uketori-zeikin.html">iDeCoの受け取り方と税金</a>」で解説しています。</p>
+<h2 id="s8">手数料も含めて考える</h2>
+<p>iDeCoには、加入時や毎月の手数料がかかります。たとえば、毎月5,000円の掛金で合計税率15%なら、年間の節税額は9,000円ですが、手数料は年に2,000円を超えます。節税額と手数料の関係は「<a href="ideco-tesuryo.html">iDeCoの手数料</a>」の記事で、数字を使って整理しています。</p>
+<h2 id="s9">まとめ</h2>
+<p>iDeCoの節税効果は「掛金を出す時点」の所得控除、NISAの非課税メリットは「運用の利益が出た時点」の非課税、というように、効果が生まれるタイミングが異なります。このサイトのシミュレーターは、ここで説明した計算式にもとづく概算です。ご自身の掛金額や税率を入力して、実際の数字を確認してみてください。</p>
 
   </article>
 
   <div class="disclaimer">
-    <p>本記事の計算式は制度の仕組みを一般的に説明するためのものであり、実際の税額は所得の状況や控除の適用状況によって異なります。本記事およびシミュレーターの試算結果は概算であり、正確な税額を保証するものではありません。具体的な税務判断については、税理士等の専門家にご相談ください。</p>
-    <p class="source-line">出典：国税庁の公表資料、金融庁 新NISA制度ページを参考に作成。</p>
+    <p>本記事は制度の仕組みを一般的に説明するものであり、特定の金融商品・金融機関・投資方法を推奨するものではありません。iDeCoやNISAで運用する商品は元本が保証されておらず、将来の運用成果を保証するものでもありません。税金の取り扱いは個々の状況によって異なります。制度の詳細や最新の情報は公式サイトでご確認のうえ、具体的な判断は金融機関や税理士・ファイナンシャルプランナー等の専門家にご相談ください。</p>
+    <p class="source-line">出典：<a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1135.htm" target="_blank" rel="noopener">国税庁 タックスアンサー No.1135 小規模企業共済等掛金控除</a>、<a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm" target="_blank" rel="noopener">国税庁 タックスアンサー No.2260 所得税の税率</a>、<a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1420.htm" target="_blank" rel="noopener">国税庁 タックスアンサー No.1420 退職金を受け取ったとき(退職所得)</a>、<a href="https://www.ideco-koushiki.jp/" target="_blank" rel="noopener">iDeCo公式サイト（国民年金基金連合会）</a>、<a href="https://www.fsa.go.jp/policy/nisa2/know/" target="_blank" rel="noopener">金融庁 NISA特設ウェブサイト「NISAを知る」</a>（2026年10月6日確認）。</p>
   </div>
 
   <nav class="related">
     <h2>関連記事</h2>
     <ul>
-<li><a href="ideco-nisa-chigai.html">iDeCoとNISA、何が違う？併用すべき人・しない方がいい人</a></li>
-<li><a href="ideco-2027-kaisei.html">【2027年1月改正】iDeCoの掛金上限はどう変わる？職業別に解説</a></li>
+<li><a href="ideco-tesuryo.html">iDeCoの手数料はいくらかかる？加入時・毎月・受け取り時を整理</a></li>
+<li><a href="ideco-uketori-zeikin.html">iDeCoの受け取り方と税金｜一時金・年金・併用と「10年ルール」</a></li>
+<li><a href="ideco-2027-kaisei.html">【2026年12月施行】iDeCoの掛金上限・加入年齢はどう変わる？職業別に整理</a></li>
 <li><a href="nisa-waku-rule.html">新NISAの年間360万円・生涯1,800万円、非課税枠はどう積み上がる？</a></li>
-<li><a href="shokugyobetsu-hajimekata.html">会社員・公務員・自営業・専業主婦、職業別iDeCoのはじめ方</a></li>
     </ul>
   </nav>
 
