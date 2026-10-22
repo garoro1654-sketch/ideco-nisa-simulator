@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>iDeCo・NISA積立シミュレーター｜職業別の上限額と節税額を試算</title>
-<meta name="description" content="職業を選んで積立額と利回りを入力するだけで、iDeCoの節税額とNISAの非課税メリット、2027年1月の制度改正後の上限額との比較まで試算できる無料シミュレーターです。">
+<meta name="description" content="職業を選んで積立額と利回りを入力するだけで、iDeCoの節税額とNISAの非課税メリット、2026年12月施行の制度改正の前と後の上限額の比較まで試算できる無料シミュレーターです。">
 <meta name="google-site-verification" content="q5HrNozMAgW_-tkq-ryqjWP2e7V27TXD897LgVPdLkw" />
 
 <meta property="og:title" content="iDeCo・NISA積立シミュレーター｜職業別の上限額と節税額を試算">
-<meta property="og:description" content="職業を選んで積立額と利回りを入力するだけで、iDeCoの節税額とNISAの非課税メリットを試算できます。2027年1月の制度改正後の上限額も比較表示。">
+<meta property="og:description" content="職業を選んで積立額と利回りを入力するだけで、iDeCoの節税額とNISAの非課税メリットを試算できます。2026年12月施行の制度改正の前後の上限額も比較表示。">
 <link rel="canonical" href="https://kurashi-sapo.com/ideco-nisa-simulator/">
 <meta property="og:url" content="https://kurashi-sapo.com/ideco-nisa-simulator/">
 <meta property="og:site_name" content="いくら積み立て帳">
@@ -371,10 +371,25 @@
   .disclaimer p{margin:0 0 6px;}
   .disclaimer p:last-child{margin-bottom:0;}
 
+  /* 追加：上限の切り替え・他制度掛金の入力 */
+  .phase{margin-top:18px;padding-top:14px;border-top:1px dotted var(--line);}
+  .phase .phase-title{font-size:12.5px;color:var(--ink-soft);margin:0 0 8px;font-weight:600;}
+  .phase .phase-opts{display:flex;flex-wrap:wrap;gap:8px 18px;}
+  .phase label{font-size:13px;color:var(--ink);display:flex;align-items:center;gap:6px;cursor:pointer;}
+  .phase label.off{color:var(--ink-faint);cursor:not-allowed;}
+  .other-field{margin-top:18px;padding-top:14px;border-top:1px dotted var(--line);}
+  .other-field label{font-size:12.5px;color:var(--ink-soft);display:block;margin-bottom:8px;}
+  .yen-input{display:flex;align-items:center;gap:8px;}
+  .yen-input input{width:150px;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);font-size:15px;font-family:SFMono-Regular, Consolas, "Courier New", monospace;}
+  .yen-input span{font-size:13px;color:var(--ink-soft);}
+  .field-note{font-size:11.5px;color:var(--ink-faint);margin-top:6px;line-height:1.7;}
+  .field-note.warn{color:#8A4B00;background:#FFF6E5;border-radius:6px;padding:8px 10px;}
+
   /* mobile sticky total */
   .sticky-total{
     display:none;
   }
+  .sticky-total.hide-sticky{display:none !important;}
 
   @media (max-width:780px){
     .tiles{grid-template-columns:repeat(2,1fr);}
@@ -405,7 +420,7 @@
 <div class="wrap">
   <header class="site">
     <h1>いくら積み立て帳</h1>
-    <p>職業と積立条件を選ぶだけで、iDeCoの節税額とNISAの非課税メリット、2027年1月の制度改正後の上限額との違いを試算します。</p>
+    <p>職業と積立条件を選ぶだけで、iDeCoの節税額とNISAの非課税メリット、2026年12月1日施行の制度改正の前後での上限額の違いを試算します。</p>
   </header>
 
   <div class="steps-nav">
@@ -417,9 +432,23 @@
   <!-- STEP 1 -->
   <section class="step" id="step1">
     <h2>あなたに近いものを選んでください</h2>
-    <p class="lead">職業によってiDeCoの掛金の上限額が変わります。</p>
+    <p class="lead">職業（国民年金の加入区分）と、勤務先の企業年金の有無によって、iDeCoの掛金の上限額が変わります。</p>
 
     <div class="tiles" id="tiles"></div>
+
+    <div class="other-field" id="otherField" hidden>
+      <label for="otherAmount" id="otherLabel"></label>
+      <div class="yen-input"><input type="number" id="otherAmount" min="0" max="75000" step="100" inputmode="numeric"><span>円／月</span></div>
+      <div class="field-note" id="otherNote"></div>
+    </div>
+
+    <div class="phase" id="phaseBox">
+      <p class="phase-title">試算に使う上限</p>
+      <div class="phase-opts">
+        <label id="phaseAfterLabel"><input type="radio" name="phase" value="after" checked>改正後（2026年12月分の掛金から）</label>
+        <label id="phaseBeforeLabel"><input type="radio" name="phase" value="before">改正前（2026年11月分の掛金まで）</label>
+      </div>
+    </div>
 
     <div class="limit-note" id="limitNote"></div>
 
@@ -435,8 +464,9 @@
 
     <div class="field">
       <label>iDeCoの毎月の掛金 <span class="val" id="idecoAmountVal">—</span></label>
-      <input type="range" id="idecoAmount" step="1000">
+      <input type="range" id="idecoAmount" min="5000" max="23000" step="1000" value="23000">
       <div class="range-scale"><span>5,000円</span><span id="idecoMaxLabel">上限</span></div>
+      <div class="field-note warn" id="idecoDisabledNote" hidden></div>
     </div>
 
     <div class="field">
@@ -484,7 +514,7 @@
   <!-- STEP 3 -->
   <section class="step hidden" id="step3">
     <h2>試算結果の明細</h2>
-    <p class="lead">住民税は一律10%として概算しています。数値は入力条件を変えるとすぐに更新されます。</p>
+    <p class="lead">住民税は一律10%として概算しています。復興特別所得税などの上乗せ（所得税額の2.1%相当）は含めていません。数値は入力条件を変えるとすぐに更新されます。</p>
 
     <div class="receipt">
       <div class="row"><span>iDeCo 掛金累計</span><span class="amt" id="r_idecoTotal">¥0</span></div>
@@ -511,19 +541,22 @@
 
     <div class="compare">
       <div class="col current">
-        <h3>今のあなたの上限（2026年9月時点）</h3>
+        <h3>改正前の上限まで拠出した場合（2026年11月分まで）</h3>
         <div class="amt" id="cmpCurrent">—</div>
+        <div class="diff" id="cmpCurrentLimit"></div>
       </div>
       <div class="col future">
-        <h3>2027年1月以降の上限（予定）</h3>
+        <h3>改正後の上限まで拠出した場合（2026年12月分から）</h3>
         <div class="amt" id="cmpFuture">—</div>
+        <div class="diff" id="cmpFutureLimit"></div>
         <div class="diff" id="cmpDiff"></div>
       </div>
     </div>
 
     <div class="disclaimer">
       <p>本シミュレーターの結果は、入力条件と一定の前提（想定利回り等）に基づく概算であり、将来の運用成果を保証するものではありません。投資信託等の運用商品は元本が保証されているものではなく、市況により損失が生じる可能性があります。</p>
-      <p>2027年1月以降の上限額は、2025年6月成立の年金制度改正法および関連政令に基づく予定であり、正式な適用は2027年1月引落分（2026年12月拠出分）からとなります。今後変更される可能性があります。</p>
+      <p>改正後の上限額と、70歳未満への加入年齢の拡大は、2026年12月1日に施行されます（厚生労働省の公表資料にもとづきます）。新しい上限は2026年12月分の掛金から使え、口座からの実際の引き落としは2027年1月26日分からです。企業年金等がある方の上限は、勤務先の制度や利用する運営管理機関によって扱いが異なる場合があるため、正確な金額は勤務先と運営管理機関でご確認ください。</p>
+      <p>節税額は、所得税率と住民税率10%の合計を掛金にかける簡易計算です。課税所得がない方や、所得控除の合計が課税所得を上回る方は、掛金の全額分の節税にはなりません。</p>
       <p>税制は将来変更される可能性があります。最新情報は国税庁・厚生労働省・金融庁・iDeCo公式サイト等の公式情報をご確認ください。具体的な商品選びや個別の税務判断については、金融機関・税理士・ファイナンシャルプランナー等の専門家にご相談ください。</p>
     </div>
 
@@ -558,47 +591,59 @@
 </div>
 
 <script>
-  // 職業プロフィール定義（出典：厚生労働省・iDeCo公式サイト等。プロジェクトナレッジ 5-1/5-2参照）
+  // 職業プロフィール定義
+  // 出典：厚生労働省「2025年の制度改正」ほか、iDeCo公式サイト・各運営管理機関の案内（2026年10月確認）
+  // limit(phase, other)：phase は "before"（2026年11月分まで）／"after"（2026年12月分から）、other は他制度の掛金（月額）
+  const MIN_IDECO = 5000;
+  const DEFAULT_IDECO = 23000;
   const PROFILES = [
     {
-      id: "self",
-      kanji: "自",
-      label: "自営業等",
-      sub: "フリーランス含む",
-      currentLimit: 68000,
-      futureLimit: 75000,
-      futureLabel: "第1号被保険者"
+      id: "self", kanji: "自", label: "自営業等", sub: "第1号・フリーランス含む",
+      otherLabel: "国民年金基金の掛金・付加保険料（加入している場合のみ）",
+      otherDefault: 0,
+      otherNote: "国民年金基金の掛金や付加保険料は、iDeCoの上限と合算して考えます。加入していなければ0円のままで構いません。",
+      limit: (ph, o) => (ph === "before" ? 68000 : 75000) - o
     },
     {
-      id: "employee_none",
-      kanji: "会",
-      label: "会社員",
-      sub: "企業年金なし",
-      currentLimit: 23000,
-      futureLimit: 62000,
-      futureLabel: "第2号被保険者（統一予定）"
+      id: "employee_none", kanji: "会", label: "会社員", sub: "企業年金なし",
+      limit: (ph) => (ph === "before" ? 23000 : 62000)
     },
     {
-      id: "employee_pension",
-      kanji: "公",
-      label: "会社員・公務員",
-      sub: "企業年金あり／公務員",
-      currentLimit: 20000,
-      futureLimit: 62000,
-      futureLabel: "第2号被保険者（統一予定・他制度分は差引の見込み）"
+      id: "employee_pension", kanji: "企", label: "会社員", sub: "企業型DC・DBなどあり",
+      otherLabel: "勤務先の企業型DCの事業主掛金、またはDBなどの「他制度掛金相当額」",
+      otherDefault: 30000,
+      otherNote: "目安として30,000円を入れています。実際の金額に変えてください。DBなどの他制度掛金相当額は、勤務先の案内でご確認ください。iDeCoの上限は、改正前は「合計55,000円まで」かつ「iDeCo単体で20,000円まで」、改正後は「合計62,000円まで」です。",
+      limit: (ph, o) => ph === "before" ? Math.min(20000, 55000 - o) : 62000 - o
     },
     {
-      id: "dependent",
-      kanji: "主",
-      label: "専業主婦(夫)",
-      sub: "第3号被保険者",
-      currentLimit: 23000,
-      futureLimit: 23000,
-      futureLabel: "変更なしの見込み"
+      id: "civil", kanji: "公", label: "公務員", sub: "共済組合",
+      extra: "共済掛金は「他制度掛金相当額」として月8,000円で扱われるため、改正後の上限は62,000円−8,000円です。私立学校教職員共済の方は扱いが異なるため、利用先の案内でご確認ください。",
+      limit: (ph) => ph === "before" ? 20000 : 54000
+    },
+    {
+      id: "dependent", kanji: "主", label: "専業主婦(夫)", sub: "第3号",
+      extra: "第3号は、改正後も上限は変わりません。ご自身に所得税・住民税がかかっていない場合、掛金による所得控除の節税は生じません。",
+      limit: () => 23000
+    },
+    {
+      id: "opt60", kanji: "任", label: "60歳以降", sub: "第4号・国民年金に任意加入",
+      otherLabel: "国民年金基金の掛金・付加保険料（加入している場合のみ）",
+      otherDefault: 0,
+      otherNote: "国民年金基金の掛金や付加保険料は、iDeCoの上限と合算して考えます。加入していなければ0円のままで構いません。",
+      limit: (ph, o) => (ph === "before" ? 68000 : 75000) - o
+    },
+    {
+      id: "new5", kanji: "新", label: "60歳以降", sub: "第5号・2026年12月新設",
+      otherLabel: "企業年金等の掛金（ある場合のみ）",
+      otherDefault: 0,
+      otherNote: "企業年金等がある方は、その掛金と合算して上限を計算します。ない場合は0円のままで構いません。",
+      extra: "第5号は、60歳以上70歳未満で国民年金の被保険者ではない方のための区分で、2026年12月に新設されます。改正前の制度では、この区分での拠出はできません。加入の条件は「2026年12月施行の改正」の記事で説明しています。",
+      limit: (ph, o) => ph === "before" ? 0 : 62000 - o
     }
   ];
 
   let selectedProfile = PROFILES[0];
+  let phase = "after";
 
   const tilesEl = document.getElementById("tiles");
   PROFILES.forEach(p => {
@@ -614,23 +659,86 @@
     tilesEl.appendChild(div);
   });
 
+  const otherField = document.getElementById("otherField");
+  const otherInput = document.getElementById("otherAmount");
+
+  function otherValue() {
+    if (!selectedProfile.otherLabel) return 0;
+    const v = Number(otherInput.value);
+    return (isFinite(v) && v > 0) ? Math.min(v, 75000) : 0;
+  }
+
+  // 実際に使える上限：1,000円単位に切り下げ、最低額（5,000円）に満たなければ拠出不可（0円）
+  function limitFor(profile, ph) {
+    const raw = profile.limit(ph, otherValue());
+    const floored = Math.floor(raw / 1000) * 1000;
+    return floored >= MIN_IDECO ? floored : 0;
+  }
+
   function selectProfile(id) {
     selectedProfile = PROFILES.find(p => p.id === id);
     document.querySelectorAll(".tile").forEach(t => {
       t.classList.toggle("selected", t.dataset.id === id);
     });
-    const idecoAmount = document.getElementById("idecoAmount");
-    idecoAmount.max = selectedProfile.currentLimit;
-    if (Number(idecoAmount.value) > selectedProfile.currentLimit || !idecoAmount.value) {
-      idecoAmount.value = selectedProfile.currentLimit;
+    if (selectedProfile.otherLabel) {
+      otherField.hidden = false;
+      document.getElementById("otherLabel").textContent = selectedProfile.otherLabel;
+      document.getElementById("otherNote").textContent = selectedProfile.otherNote;
+      otherInput.value = selectedProfile.otherDefault;
+    } else {
+      otherField.hidden = true;
     }
-    document.getElementById("idecoMaxLabel").textContent =
-      selectedProfile.currentLimit.toLocaleString() + "円（月額上限）";
-    document.getElementById("limitNote").innerHTML =
-      `<b>${selectedProfile.label}</b>の場合、iDeCoの月額上限は現在 <b>${yen(selectedProfile.currentLimit)}</b> です。` +
-      `2027年1月以降は<b>${yen(selectedProfile.futureLimit)}</b>（${selectedProfile.futureLabel}）に引き上げられる予定です。`;
+    // 改正前に拠出できない区分（第5号）は、改正後に固定する
+    const beforeLabel = document.getElementById("phaseBeforeLabel");
+    const beforeRadio = beforeLabel.querySelector("input");
+    beforeRadio.disabled = (selectedProfile.id === "new5");
+    beforeLabel.classList.toggle("off", selectedProfile.id === "new5");
+    if (selectedProfile.id === "new5") {
+      phase = "after";
+      document.querySelector('input[name="phase"][value="after"]').checked = true;
+    }
+    applyLimits(true);
+  }
+
+  function applyLimits(resetAmount) {
+    const idecoAmount = document.getElementById("idecoAmount");
+    const wasDisabled = idecoAmount.disabled;
+    const prevVal = Number(idecoAmount.value);
+    const lim = limitFor(selectedProfile, phase);
+    const note = document.getElementById("idecoDisabledNote");
+    if (lim === 0) {
+      idecoAmount.min = 0; idecoAmount.max = 0; idecoAmount.value = 0;
+      idecoAmount.disabled = true;
+      document.getElementById("idecoMaxLabel").textContent = "拠出できません";
+      note.hidden = false;
+      note.textContent = (selectedProfile.id === "new5" && phase === "before")
+        ? "改正前の制度では、この区分でiDeCoに拠出することはできません。"
+        : "この条件では、iDeCoの上限が最低掛金（月5,000円）に満たないため、掛金を拠出できません。NISAのみの試算になります。";
+    } else {
+      idecoAmount.disabled = false;
+      idecoAmount.min = MIN_IDECO; idecoAmount.max = lim;
+      if (resetAmount || wasDisabled || !prevVal || prevVal > lim || prevVal < MIN_IDECO) idecoAmount.value = Math.min(lim, DEFAULT_IDECO);
+      else idecoAmount.value = prevVal;
+      document.getElementById("idecoMaxLabel").textContent = lim.toLocaleString() + "円（月額上限）";
+      note.hidden = true;
+    }
+    const lb = limitFor(selectedProfile, "before"), la = limitFor(selectedProfile, "after");
+    const p = selectedProfile;
+    let html = `<b>${p.label}（${p.sub}）</b>の月額上限は、改正前（2026年11月分まで）が ` +
+      (lb ? `<b>${yen(lb)}</b>` : `<b>拠出不可</b>`) +
+      `、改正後（2026年12月分から）が ` + (la ? `<b>${yen(la)}</b>` : `<b>拠出不可</b>`) + ` です。`;
+    if (p.otherLabel && (p.id === "employee_pension" || p.id === "new5" || p.id === "self" || p.id === "opt60")) {
+      html += `<br>入力した他制度の掛金を差し引いて計算しています。上限は1,000円単位に切り下げています。`;
+    }
+    if (p.extra) html += `<br>${p.extra}`;
+    document.getElementById("limitNote").innerHTML = html;
     recalc();
   }
+
+  document.querySelectorAll('input[name="phase"]').forEach(r => {
+    r.addEventListener("change", () => { phase = r.value; applyLimits(false); });
+  });
+  otherInput.addEventListener("input", () => applyLimits(false));
 
   function yen(n) {
     return "¥" + Math.round(n).toLocaleString();
@@ -651,7 +759,7 @@
       tab.classList.toggle("enabled", stepNum <= maxStepReached);
       tab.classList.toggle("done", stepNum < n);
     });
-    document.querySelector(".sticky-total").style.display = (n === 1) ? "none" : "flex";
+    document.querySelector(".sticky-total").classList.toggle("hide-sticky", n === 1);
     window.scrollTo({ top: document.querySelector(".steps-nav").offsetTop - 10, behavior: "smooth" });
     if (n === 3) drawChart();
   }
@@ -685,11 +793,11 @@
   }
 
   function recalc() {
-    document.getElementById("idecoAmountVal").textContent = yen(idecoAmount.value) + "/月";
+    document.getElementById("idecoAmountVal").textContent = idecoAmount.disabled ? "—" : yen(idecoAmount.value) + "/月";
     document.getElementById("nisaAmountVal").textContent = yen(nisaAmount.value) + "/月";
     document.getElementById("yearsVal").textContent = years.value + "年";
 
-    const idecoMonthly = Number(idecoAmount.value);
+    const idecoMonthly = idecoAmount.disabled ? 0 : Number(idecoAmount.value);
     const nisaMonthly = Number(nisaAmount.value);
     const yrs = Number(years.value);
     const rate = Number(rateSel.value);
@@ -727,14 +835,18 @@
 
     document.getElementById("stickyFv").textContent = yen(totalFv);
 
-    // 現行 vs 2027年以降 比較（iDeCo単体・今の掛金設定のまま上限だけ入れ替えた場合の節税総額目安）
-    const currentAnnualSave = selectedProfile.currentLimit * 12 * (taxRate + 0.10);
-    const futureAnnualSave = selectedProfile.futureLimit * 12 * (taxRate + 0.10);
-    document.getElementById("cmpCurrent").textContent = yen(currentAnnualSave) + "/年";
-    document.getElementById("cmpFuture").textContent = yen(futureAnnualSave) + "/年";
-    const diff = futureAnnualSave - currentAnnualSave;
+    // 改正前 vs 改正後：それぞれの上限まで拠出した場合の、年間の節税額の目安
+    const limB = limitFor(selectedProfile, "before"), limA = limitFor(selectedProfile, "after");
+    const saveB = limB * 12 * (taxRate + 0.10), saveA = limA * 12 * (taxRate + 0.10);
+    document.getElementById("cmpCurrent").textContent = limB ? yen(saveB) + "/年" : "—";
+    document.getElementById("cmpFuture").textContent = limA ? yen(saveA) + "/年" : "—";
+    document.getElementById("cmpCurrentLimit").textContent = limB ? "月額 " + yen(limB) + " まで拠出した場合" : "この区分・条件では拠出できません";
+    document.getElementById("cmpFutureLimit").textContent = limA ? "月額 " + yen(limA) + " まで拠出した場合" : "この条件では拠出できません";
+    const diff = saveA - saveB;
     document.getElementById("cmpDiff").textContent =
-      diff > 0 ? `上限まで拠出した場合、年間の節税額が${yen(diff)}増える見込み` : "上限額の変更なし";
+      (limB === 0 && limA > 0) ? `改正前は拠出できなかった区分です。改正後に上限まで拠出すると、年間の節税額の目安は${yen(saveA)}です`
+      : diff > 0 ? `年間の節税額の目安が${yen(diff)}増えます（上限まで拠出した場合）`
+      : (limA ? "上限額の変更なし" : "");
 
     if (!document.getElementById("step3").classList.contains("hidden")) {
       drawChart();
@@ -743,7 +855,7 @@
 
   // ---- 推移グラフ（元本 vs 運用益、年ごとの積み上げ） ----
   function drawChart() {
-    const idecoMonthly = Number(idecoAmount.value);
+    const idecoMonthly = idecoAmount.disabled ? 0 : Number(idecoAmount.value);
     const nisaMonthly = Number(nisaAmount.value);
     const yrs = Number(years.value);
     const rate = Number(rateSel.value);
