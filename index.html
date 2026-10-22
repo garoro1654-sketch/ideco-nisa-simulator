@@ -385,6 +385,23 @@
   .field-note{font-size:11.5px;color:var(--ink-faint);margin-top:6px;line-height:1.7;}
   .field-note.warn{color:#8A4B00;background:#FFF6E5;border-radius:6px;padding:8px 10px;}
 
+  /* 説明文ブロック */
+  .about-tool{background:var(--card);border:1px solid var(--line-soft);border-radius:10px;padding:26px 24px;margin:28px 0;box-shadow:0 1px 2px rgba(18,21,28,0.04);}
+  .about-tool h2{font-size:16px;margin:0 0 14px;}
+  .about-tool h3{font-size:14px;margin:26px 0 8px;padding-top:18px;border-top:1px solid var(--line-soft);}
+  .about-tool h3:first-of-type{border-top:none;padding-top:0;margin-top:0;}
+  .about-tool p, .about-tool li{font-size:13.5px;color:var(--ink-soft);margin:0 0 10px;}
+  .about-tool ul, .about-tool ol{margin:0 0 10px;padding-left:1.4em;}
+  .about-tool a{color:var(--accent);}
+  .about-tool .formula{background:var(--paper);border:1px solid var(--line-soft);border-radius:6px;padding:10px 14px;font-size:13px;color:var(--ink);margin:0 0 10px;}
+  .about-tool .q{font-weight:700;color:var(--ink);margin:16px 0 2px;}
+  .about-tool .a{margin:0 0 6px;}
+  .about-tool .updated{font-size:12px;color:var(--ink-faint);margin:18px 0 0;}
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:10px 0 14px;}
+  .table-wrap table{border-collapse:collapse;width:100%;min-width:520px;font-size:12.5px;}
+  .table-wrap th,.table-wrap td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;line-height:1.6;color:var(--ink-soft);}
+  .table-wrap th{background:var(--accent-soft);color:var(--ink);font-weight:600;}
+
   /* mobile sticky total */
   .sticky-total{
     display:none;
@@ -529,6 +546,7 @@
       <div class="row total"><span>iDeCoの節税額 合計</span><span class="amt" id="r_taxsave">¥0</span></div>
       <div class="row saving" style="border-top:1px dotted var(--line-soft);margin-top:8px;padding-top:12px;"><span>NISAの非課税メリット（運用益20.315%相当）</span><span class="amt" id="r_nisasave">¥0</span></div>
     </div>
+    <div class="field-note warn" id="nisaCapNote" hidden>NISAの積立累計が、非課税保有限度額の1,800万円を超えています。このシミュレーターは限度額を考慮せず、積立額の全額を非課税として計算しているため、NISAの非課税メリットは実際より大きく表示されています。</div>
 
     <div class="chart-block">
       <h3>資産評価額の推移（元本と運用益の内訳）</h3>
@@ -563,6 +581,78 @@
     <div class="step-actions">
       <button id="toStep2From3">条件を変更する</button>
     </div>
+  </section>
+
+  <section class="about-tool" id="about-tool">
+    <h2>このシミュレーターについて</h2>
+
+    <h3>できること・できないこと</h3>
+    <p>職業（国民年金の加入区分）と、毎月の積立額・積立期間・想定利回りを入力すると、iDeCoの節税額の目安と、NISAの非課税メリットの目安、積み立てた資産額の概算を表示します。2026年12月1日に施行されるiDeCoの制度改正の前と後で、掛金の上限がどう変わるのかも見比べられます。</p>
+    <p>一方で、次のことは計算に含まれていません。結果は、ご自身の実際の数字と差が出ます。</p>
+    <ul>
+      <li>iDeCoの手数料（加入時・毎月）や、投資信託の運用コスト（信託報酬など）。</li>
+      <li>iDeCoを受け取るときの税金（退職所得控除や公的年金等控除）。</li>
+      <li>市場の値動き。この試算では、毎年同じ利回りで増えると仮定しています。実際には、年によって上下し、元本を割り込むこともあります。</li>
+      <li>復興特別所得税などの上乗せ（所得税額の2.1%相当）。</li>
+      <li>iDeCoに加入できる条件（年齢、国民年金の保険料の納付状況など）の判定。</li>
+      <li>NISAの非課税保有限度額（1,800万円）の上限。積立額がこれを超える場合は、画面に注意が出ます。</li>
+    </ul>
+
+    <h3>使い方</h3>
+    <ol>
+      <li>「職業を選ぶ」で、ご自身に近い区分を選びます。勤務先に企業型DCやDBなどの企業年金がある場合は、その掛金（月額）も入力します。入力した金額を、iDeCoの上限から差し引いて計算します。</li>
+      <li>「試算に使う上限」で、改正後（2026年12月分の掛金から）と、改正前（2026年11月分の掛金まで）のどちらで試算するかを選びます。</li>
+      <li>「積立条件」で、iDeCoとNISAの毎月の積立額、積立期間、想定利回り、所得税率の目安を選びます。</li>
+      <li>「試算結果」で、明細、資産の推移のグラフ、改正前後の節税額の比較を確認します。条件を変えると、結果はすぐに更新されます。</li>
+    </ol>
+
+    <h3>計算の前提</h3>
+    <p>毎月の掛金を、月末に積み立てる計算にしています。月利は、年率の想定利回りを12で割った値で、複利で増えると仮定します。</p>
+    <p class="formula">資産額 ＝ 毎月の掛金 ×（（1＋月利）<sup>月数</sup> − 1）÷ 月利<br>運用益 ＝ 資産額 − 積立額の累計</p>
+    <p>iDeCoの掛金は、全額が所得控除の対象です。節税額は、所得税率と、住民税率（10%として計算）の合計を、年間の掛金にかけて求めます。掛金と税率は、積立期間を通して一定と仮定します。</p>
+    <p class="formula">iDeCoの節税額（年） ＝ 年間の掛金 ×（所得税率 ＋ 10%）</p>
+    <p>NISAは、運用益にかかる税金（20.315%）が非課税になります。この試算では、NISA分の運用益に20.315%をかけた金額を、非課税メリットとして表示します。運用益が出なければ、メリットも生じません。</p>
+    <p class="formula">NISAの非課税メリット ＝ NISA分の運用益 × 20.315%</p>
+    <p>計算の考え方は、「<a href="articles/setsuzei-keisan.html">iDeCo・NISAの節税効果はどう計算する？</a>」で、税率の早見表とあわせて説明しています。</p>
+
+    <h3>区分ごとの掛金の上限（月額）</h3>
+    <div class="table-wrap">
+    <table>
+      <tr><th>区分</th><th>改正前（2026年11月分まで）</th><th>改正後（2026年12月分から）</th></tr>
+      <tr><td>第1号（自営業・フリーランス・学生など）</td><td>68,000円（国民年金基金等と合算）</td><td>75,000円（国民年金基金等と合算）</td></tr>
+      <tr><td>第2号・企業年金なしの会社員</td><td>23,000円</td><td>62,000円</td></tr>
+      <tr><td>第2号・企業型DCやDBなどがある会社員</td><td>20,000円（企業年金等と合わせて55,000円まで）</td><td>企業年金等と合わせて62,000円まで</td></tr>
+      <tr><td>第2号・公務員（共済組合）</td><td>20,000円</td><td>54,000円（62,000円−共済掛金相当額8,000円）</td></tr>
+      <tr><td>第3号（専業主婦・主夫）</td><td>23,000円</td><td>23,000円（変更なし）</td></tr>
+      <tr><td>第4号（60歳以上65歳未満で国民年金に任意加入）</td><td>68,000円（国民年金基金等と合算）</td><td>75,000円（国民年金基金等と合算）</td></tr>
+      <tr><td>第5号（60歳以上70歳未満で国民年金の被保険者ではない方。2026年12月新設）</td><td>拠出できません</td><td>原則62,000円（企業年金等がある方は合算）</td></tr>
+    </table>
+    </div>
+    <p>掛金は、月5,000円以上、1,000円単位で設定します。差し引きの結果が5,000円に満たない場合は、拠出できません。詳しくは「<a href="articles/ideco-2027-kaisei.html">2026年12月施行のiDeCo改正の解説</a>」をご覧ください。</p>
+
+    <h3>よくある質問</h3>
+    <p class="q">想定利回りは、何%にすればよいですか？</p>
+    <p class="a">将来の利回りは分からないため、特定の数字をおすすめすることはしていません。選択肢には、1.0%から7.0%までを用意しています。4.62%は、年金積立金の運用の過去の実績にもとづく数字です。過去の実績は、将来の運用成果を約束するものではありません。いくつかの利回りで試して、結果の幅を見る使い方もできます。</p>
+    <p class="q">所得税率は、どう選べばよいですか？</p>
+    <p class="a">所得税率は、給与の額ではなく、課税所得で決まります。確定申告書の「課税される所得金額」の欄で確認できます。会社員の方は、源泉徴収票の「給与所得控除後の給与等の金額」から「所得控除の額の合計額」を引くと、目安になります。迷う場合は、低めの税率で試算すると、節税額を控えめに見積もれます。</p>
+    <p class="q">勤務先に企業年金があるかどうかは、どこで分かりますか？</p>
+    <p class="a">企業型DCやDBなどの有無と、掛金の額は、勤務先の人事・総務の担当部署や、退職金・企業年金の案内資料で確認できます。DBなどの場合に使う「他制度掛金相当額」も、勤務先の案内で確認してください。</p>
+    <p class="q">iDeCoの掛金は、あとから変えられますか？</p>
+    <p class="a">掛金額の変更は、原則として年1回（12月分から翌年11月分までの間）です。2026年12月の上限引き上げについては、改正前の上限を超える金額への引き上げは、この回数に数えないと、運営管理機関が案内しています。変更の受付方法と期限は、利用している金融機関によって異なります。</p>
+    <p class="q">手数料や、受け取るときの税金はどうなりますか？</p>
+    <p class="a">この試算には含まれていません。手数料は「<a href="articles/ideco-tesuryo.html">iDeCoの手数料はいくらかかる？</a>」、受け取るときの税金は「<a href="articles/ideco-uketori-zeikin.html">iDeCoの受け取り方と税金</a>」で説明しています。</p>
+    <p class="q">入力した内容は、保存されますか？</p>
+    <p class="a">保存されません。計算はお使いのブラウザの中だけで行われ、入力内容が外部に送信されることはありません。ページを閉じると、入力内容は消えます。</p>
+
+    <h3>出典</h3>
+    <ul>
+      <li><a href="https://www.mhlw.go.jp/content/12500000/001726959.pdf" target="_blank" rel="noopener">厚生労働省 リーフレット（iDeCoの拠出限度額・加入可能年齢の引き上げ）</a></li>
+      <li><a href="https://www.ideco-koushiki.jp/" target="_blank" rel="noopener">iDeCo公式サイト（国民年金基金連合会）</a></li>
+      <li><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1135.htm" target="_blank" rel="noopener">国税庁 タックスアンサー No.1135 小規模企業共済等掛金控除</a></li>
+      <li><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm" target="_blank" rel="noopener">国税庁 タックスアンサー No.2260 所得税の税率</a></li>
+      <li><a href="https://www.fsa.go.jp/policy/nisa2/" target="_blank" rel="noopener">金融庁 NISA特設ウェブサイト</a></li>
+    </ul>
+    <p class="updated">このページの最終更新日：2026年10月22日。制度の数字は、上記の公表資料で2026年10月に確認しました。制度は変わることがあるため、最新の情報は公式サイトでご確認ください。</p>
   </section>
 
   <div class="articles-block">
@@ -832,6 +922,7 @@
     document.getElementById("r_taxsaveResident").textContent = yen(taxSaveResidentTotal);
     document.getElementById("r_taxsave").textContent = yen(taxSaveTotal);
     document.getElementById("r_nisasave").textContent = yen(nisaTaxBenefit);
+    document.getElementById("nisaCapNote").hidden = !(nisaTotal > 18000000);
 
     document.getElementById("stickyFv").textContent = yen(totalFv);
 
